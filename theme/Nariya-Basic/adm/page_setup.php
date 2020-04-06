@@ -49,6 +49,24 @@ body {
 	font-size:28px !important;
 }
 </style>
+
+<script>
+// Page Loader
+$(window).on('load', function () {
+	$("#modal_loader").delay(100).fadeOut("slow");
+});
+$(document).ready(function() {
+	$('#modal_loader').on('click', function () {
+		$('#modal_loader').fadeOut();
+	});
+});
+</script>
+<div id="modal_loader">
+	<div class="modal_loader">
+		<i class="fa fa-spinner fa-spin"></i>
+	</div>
+</div>
+
 <div class="fsetup-head bg-na-navy en">
 	<button type="button" class="close white" onclick="closeClip();"><span aria-hidden="true" class="white">&times;</span>&nbsp;</button>
 	<b>
@@ -61,11 +79,27 @@ function closeClip(){
 	window.parent.closeSetupModal();
 }
 </script>
-<form id="fsetup" name="fsetup" method="post" action="<?php echo $action_url ?>" class="form-horizontal na-fadin f-small">
-<input type="hidden" name="pid" value="<?php echo $pid ?>"
+<form id="fsetup" name="fsetup" method="post" action="<?php echo $action_url ?>" class="form-horizontal f-small">
+<input type="hidden" name="pid" value="<?php echo $pid ?>">
 <?php
 include_once (NA_THEME_ADMIN_PATH.'/form/form.php');
 ?>
+
+<ul class="list-group">
+	<li class="list-group-item">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">초기화</label>
+			<div class="col-sm-10">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="freset" value="1"> 설정값 초기화(삭제) 합니다.
+					</label>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+
 </form>
 <?php
 // Setup Modal

@@ -789,19 +789,36 @@ function na_shadow($type='1') {
 	return $line;
 }
 
+// 회원등급명
+function na_grade($grade) {
+	global $nariya;
+
+	if(!$grade)
+		$grade = 1;
+
+	$g = 'mb_gn'.$grade;
+
+	$gn = (isset($nariya[$g]) && $nariya[$g]) ? $nariya[$g] : '';
+
+	return $gn;
+}
+
 // 회원정보 재가공
 function na_member($member) {
 	global $g5, $is_member;
 
-    if ($is_member) {
+	$member['is_auth'] = false;
+
+	if ($is_member) {
 		$member['sideview'] = na_name_photo($member['mb_id'], get_sideview($member['mb_id'], $member['mb_nick'], $member['mb_email'], $member['mb_homepage']));
 		$member['mb_scrap_cnt'] = (int)$member['mb_scrap_cnt'];
-		$member['is_auth'] = false;
 		$sql = " select count(*) as cnt from {$g5['auth_table']} where mb_id = '{$member['mb_id']}' ";
         $row = sql_fetch($sql);
         if ($row['cnt'])
            	$member['is_auth'] = true;
     }
+
+	$member['mb_grade'] = na_grade($member['mb_level']);
 
 	return $member;
 }
@@ -1196,7 +1213,7 @@ function na_bo_list($gr_list, $gr_except, $bo_list, $bo_except) {
 		// 지정그룹의 게시판 다 뽑기
 		$result = sql_query(" select bo_table from {$g5['board_table']} where find_in_set(gr_id, '{$gr_list}') ", false);
 		for ($i=0; $row=sql_fetch_array($result); $i++) {
-			$gr[$i] = $row['bo_table'];
+			$gr[] = $row['bo_table'];
 		}
 
 		if($bo_list) {
@@ -1218,9 +1235,9 @@ function na_bo_list($gr_list, $gr_except, $bo_list, $bo_except) {
 			}
 		} else {
 			if($gr_except) {
-				$minus = $bo;				
+				$minus = $gr;				
 			} else {
-				$plus = $bo;
+				$plus = $gr;
 			}
 		}
 	} else if($bo_list) {
@@ -1275,7 +1292,7 @@ function na_board_rows($wset) {
 		$sql_term = na_sql_term($term, 'bn_datetime');
 		
 		// 공통쿼리
-		$sql_common = "from {$g5['board_new_table']} where (1) $sql_plus $sql_minus $sql_wr $sql_term $sql_main $sql_where";
+		$sql_common = "from {$g5['board_new_table']} where (1) $sql_plus $sql_minus $sql_wr $sql_term $sql_mb $sql_main $sql_where";
 		if($page > 1) {
 			$total = sql_fetch("select count(*) as cnt $sql_common ", false);
 			$total_count = $total['cnt'];
@@ -1310,7 +1327,7 @@ function na_board_rows($wset) {
 
 		$tmp_write_table = $g5['write_prefix'] . $bo_table;
 
-		$sql_common = "from $tmp_write_table where wr_is_comment = '{$sql_wr}' $sql_ca $sql_term $sql_main $sql_where";
+		$sql_common = "from $tmp_write_table where wr_is_comment = '{$sql_wr}' $sql_ca $sql_term $sql_mb $sql_main $sql_where";
 		if($page > 1) {
 			$total = sql_fetch("select count(*) as cnt $sql_common ", false);
 			$total_count = $total['cnt'];

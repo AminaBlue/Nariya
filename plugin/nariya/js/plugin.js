@@ -93,6 +93,19 @@ window.closeClipModal = function() {
 	$('#clipModal').modal('hide');
 }
 
+function na_iframe(url) {
+
+	$('#clipModal').on('show.bs.modal', function () {
+
+		var iframe_height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+		$("#clipView").html('<iframe id="clipContent" src="' + url + '"></iframe>');
+		$('#clipContent').height(parseInt(iframe_height * 0.85)); // 85%
+	});
+
+	$('#clipModal').modal('show');
+}
+
 function na_clip(id, clip) {
 
 	var url = g5_plugin_url + '/nariya/theme/clip_' + id + '.php';
@@ -101,14 +114,12 @@ function na_clip(id, clip) {
 		url += '?clip=1';
 	}
 
-	$("#clipView").html('<iframe src="' + url + '"></iframe>');
-	$('#clipModal').modal('show');
+	na_iframe(url);
 }
 
 function na_setup(href, clip) {
 	if(clip) {
-		$("#clipView").html('<iframe src="' + url + '"></iframe>');
-		$('#clipModal').modal('show');
+		na_iframe(href);
 	} else {
 		na_win('setup', href, 800, 800);
 	}

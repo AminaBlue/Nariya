@@ -5,6 +5,8 @@ global $config, $g5_head_title, $bo_table, $view, $it, $co, $pset, $tset;
 
 // 대표이미지
 $image = na_url($tset['seo_img']);
+$desc = $tset['seo_desc'];
+$keys = $tset['seo_key'];
 
 // 게시물
 if(isset($view['wr_id']) && $view['wr_id']) {
@@ -43,9 +45,6 @@ if(isset($view['wr_id']) && $view['wr_id']) {
 } else if(IS_YC && isset($it['it_id']) && $it['it_id']) {
 	$author = na_get_text($config['cf_title']);
 	$desc = $it['it_basic'].' '.$it['it_explan'];
-} else {
-	$desc = $tset['seo_desc'];
-	$keys = $tset['seo_key'];
 }
 
 // 내용(description)이 없으면 SEO용 메타태그 생성안함

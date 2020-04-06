@@ -138,6 +138,86 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<input type="text" name="na[youtube_key]" value="<?php echo $nariya['youtube_key'] ?>" class="frm_input" size="80">
 				</td>
 			</tr>
+			<tr>
+				<th scope="row">
+					회원등급명
+				</th>
+				<td colspan="3">
+					<?php echo help('회원 등급에 따른 이름으로 미설정시 출력되지 않습니다.') ?>
+
+					<div class="tbl_head01 tbl_wrap">
+						<table>
+						<caption>회원등급명</caption>
+						<thead>
+						<tr>
+							<th scope="col">구분</th>
+							<th scope="col">1등급</th>
+							<th scope="col">2등급</th>
+							<th scope="col">3등급</th>
+							<th scope="col">4등급</th>
+							<th scope="col">5등급</th>
+							<th scope="col">6등급</th>
+							<th scope="col">7등급</th>
+							<th scope="col">8등급</th>
+							<th scope="col">9등급</th>
+							<th scope="col">10등급</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>
+								회원등급명
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn1]" value="<?php echo $nariya['mb_gn1'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn2]" value="<?php echo $nariya['mb_gn2'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn3]" value="<?php echo $nariya['mb_gn3'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn4]" value="<?php echo $nariya['mb_gn4'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn5]" value="<?php echo $nariya['mb_gn5'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn6]" value="<?php echo $nariya['mb_gn6'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn7]" value="<?php echo $nariya['mb_gn7'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn8]" value="<?php echo $nariya['mb_gn8'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn9]" value="<?php echo $nariya['mb_gn9'] ?>" class="frm_input">
+							</td>
+							<td>
+								<input type="text" name="na[mb_gn10]" value="<?php echo $nariya['mb_gn10'] ?>" class="frm_input">
+							</td>
+						</tr>
+						<tr>
+							<td>예시</td>
+							<td>비회원</td>
+							<td>일반회원</td>
+							<td>정회원</td>
+							<td>VIP</td>
+							<td>일반운영자</td>
+							<td>그룹운영자</td>
+							<td>통합운영자</td>
+							<td>일반관리자</td>
+							<td>중간관리자</td>
+							<td>최고관리자</td>
+						</tr>
+						</tbody>
+						</table>
+				    </div>
+
+				</td>
+			</tr>
 			</tbody>
 			</table>
 		</div>

@@ -24,7 +24,8 @@
 	margin-right:0; 
 }
 #nt_lnb ul > li > a { 
-	float:left; 
+	float:left;
+	white-space:nowrap;	
 }
 @media all and (max-width:991px) {
 	.responsive #nt_lnb .nt-container { 

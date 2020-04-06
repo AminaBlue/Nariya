@@ -23,11 +23,18 @@ $(function(){
 		return false;
 	});
 	$(document).on('click', '.btn-setup', function() {
+
+		var setup_href = this.href;
+
 		<?php if($is_clip_modal) { ?>
-			$("#setupWin").html('<iframe src="' + this.href + '"></iframe>');
+			$('#setupModal').on('show.bs.modal', function () {
+				var setup_height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+				$("#setupWin").html('<iframe id="setupContent" src="' + setup_href + '"></iframe>');
+				$('#setupContent').height(parseInt(setup_height * 0.85)); // 85%
+			});
 			$('#setupModal').modal('show');
 		<?php } else { ?>
-			na_win('setup', this.href, 800, 800);
+			na_win('setup', setup_href, 800, 800);
 		<?php } ?>
 		return false;
 	});

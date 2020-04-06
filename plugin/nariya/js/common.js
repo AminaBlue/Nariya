@@ -540,6 +540,14 @@ var win_poll = function(href) {
 }
 
 /**
+ * 쿠폰
+ **/
+var win_coupon = function(href) {
+    var new_win = window.open(href, "win_coupon", "left=100,top=100,width=700, height=600, scrollbars=1");
+    new_win.focus();
+}
+
+/**
  * 스크린리더 미사용자를 위한 스크립트 - 지운아빠 2013-04-22
  * alt 값만 갖는 그래픽 링크에 마우스오버 시 title 값 부여, 마우스아웃 시 title 값 제거
  **/
@@ -632,18 +640,26 @@ $(function(){
     });
     */
 
+    $(document).on("click", ".win_coupon", function() {
+		win_coupon(this.href);
+        return false;
+    });
+
     // 사이드뷰
     var sv_hide = false;
     $(document).on("click", ".sv_member, .sv_guest", function() {
-        $(".sv").removeClass("sv_on");
+		$(".sv").removeClass("sv_on");
         $(this).closest(".sv_wrap").find(".sv").addClass("sv_on");
     });
 
-    $(document).on("hover", ".sv, .sv_wrap", function() {
-        sv_hide = false;
-    }, function() {
-        sv_hide = true;
-    });
+	$(document).on({
+		mouseenter: function () {
+	        sv_hide = false;
+		},
+		mouseleave: function () {
+	        sv_hide = true;
+		}
+	}, ".sv, .sv_wrap");
 
 	$(document).on("focusin",".sv_member, .sv_guest", function(){    
         sv_hide = false;
@@ -666,11 +682,14 @@ $(function(){
         $(this).siblings('.sel_ul').addClass('sel_on');
     });
 
-    $(document).on("hover", ".sel_wrap", function() {
-        sel_hide = false;
-    }, function() {
-        sel_hide = true;
-    });
+	$(document).on({
+		mouseenter: function () {
+	        sel_hide = false;
+		},
+		mouseleave: function () {
+	        sel_hide = true;
+		}
+	}, ".sel_wrap");
 
 	$(document).on("focusin",".sel_a", function(){    
         sel_hide = false;

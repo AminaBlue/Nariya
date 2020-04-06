@@ -654,7 +654,7 @@ function na_thumb($img, $thumb_w, $thumb_h) {
 		if(is_file($srcfile)) {
 			$filename = basename($srcfile);
 			$filepath = dirname($srcfile);
-			$tname = thumbnail($filename, $filepath, $filepath, $thumb_w, $thumb_h, true, true);
+			$tname = thumbnail($filename, $filepath, $filepath, $thumb_w, $thumb_h, false, true);
 			$img = G5_URL.str_replace($filename, $tname, $data_path);
 		}
 	}

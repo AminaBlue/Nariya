@@ -10,7 +10,7 @@ $wset['thumb_w'] = ($wset['thumb_w'] == "") ? 400 : (int)$wset['thumb_w'];
 $wset['thumb_h'] = ($wset['thumb_h'] == "") ? 225 : (int)$wset['thumb_h'];
 
 // 높이
-$height = ($wset['thumb_w'] && $wset['thumb_h']) ? ($wset['thumb_w'] / $wset['thumb_h']) * 100 : '56.25';
+$height = ($wset['thumb_w'] && $wset['thumb_h']) ? ($wset['thumb_h'] / $wset['thumb_w']) * 100 : '56.25';
 
 // 마진(간격)
 $margin_w = ($wset['margin_w'] == "") ? 15 : (int)$wset['margin_w'];
@@ -21,7 +21,7 @@ $id = 'banner_'.na_rid();
 ?>
 <style>
 	#<?php echo $id;?> .img-wrap { 
-		padding-bottom:<?php echo $height; ?>;
+		padding-bottom:<?php echo $height; ?>%;
 	}
 </style>
 <div id="<?php echo $id;?>" class="basic-banner">

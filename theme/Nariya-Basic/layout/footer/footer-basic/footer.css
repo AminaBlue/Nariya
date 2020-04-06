@@ -29,6 +29,7 @@
 }
 #nt_footer .nt-links ul > li > a { 
 	color: #888; 
+	white-space:nowrap;	
 }
 #nt_footer .nt-copyright { 
 	text-align:center; 

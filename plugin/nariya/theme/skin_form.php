@@ -75,11 +75,29 @@ if($is_board_skin) {
 $g5['title'] = $title;
 include_once(G5_THEME_PATH.'/head.sub.php');
 
+// add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
+add_stylesheet('<link rel="stylesheet" href="'.NA_PLUGIN_URL.'/css/setup.css">', 0);
+
 ?>
 
-<link rel="stylesheet" href="<?php echo NA_PLUGIN_URL ?>/css/setup.css">
+<script>
+// Page Loader
+$(window).on('load', function () {
+	$("#modal_loader").delay(100).fadeOut("slow");
+});
+$(document).ready(function() {
+	$('#modal_loader').on('click', function () {
+		$('#modal_loader').fadeOut();
+	});
+});
+</script>
+<div id="modal_loader">
+	<div class="modal_loader">
+		<i class="fa fa-spinner fa-spin"></i>
+	</div>
+</div>
 
-<form id="fsetup" name="fsetup" class="form-horizontal na-fadein f-small" action="./skin_update.php" method="post" onsubmit="return fsetup_submit(this);">
+<form id="fsetup" name="fsetup" class="form-horizontal f-small" action="./skin_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="skin" value="<?php echo urlencode($skin) ?>">
 <input type="hidden" name="bo_table" value="<?php echo urlencode($bo_table) ?>">
 <input type="hidden" name="both" value="">

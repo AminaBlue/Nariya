@@ -320,20 +320,27 @@ function na_skin_config($skin, $opt='') {
 
 // Admin
 function na_admin($val='', $opt='') {
-	global $is_admin, $member, $nariya;
+	global $is_admin, $member, $group, $board, $nariya;
 
 	if(!$member['mb_id'])
 		return;
 
 	// 게시판 관리자
 	if($opt) {
-		if($val && in_array($member['mb_id'], array_map('trim', explode(",", $val))))
+		if($val && in_array($member['mb_id'], array_map('trim', explode(",", $val)))) {
 			$is_admin = 'board';
+			if(isset($board['bo_admin'])) {
+				$board['bo_admin'] = $member['mb_id']; // 게시판 관리자 변경
+			}
+		}
 	} else {
 		if($nariya['cf_admin'] && in_array($member['mb_id'], array_map('trim', explode(",", $nariya['cf_admin'])))) {
 			$is_admin = 'super'; // 통합 최고관리자
 		} else if($nariya['cf_group'] && in_array($member['mb_id'], array_map('trim', explode(",", $nariya['cf_group'])))) {
 			$is_admin = 'group'; // 통합 그룹관리자
+			if(isset($group['gr_admin'])) {
+				$group['gr_admin'] = $member['mb_id']; // 그룹 관리자 변경
+			}
 		}
 	}
 }

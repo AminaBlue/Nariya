@@ -38,11 +38,29 @@ $mo = na_file_var_load(G5_THEME_PATH.'/storage/widget/widget-'.$id.'-mo.php');
 $g5['title'] = '위젯 설정';
 include_once(G5_THEME_PATH.'/head.sub.php');
 
+// add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
+add_stylesheet('<link rel="stylesheet" href="'.NA_PLUGIN_URL.'/css/setup.css">', 0);
+
 ?>
 
-<link rel="stylesheet" href="<?php echo NA_PLUGIN_URL ?>/css/setup.css">
+<script>
+// Page Loader
+$(window).on('load', function () {
+	$("#modal_loader").delay(100).fadeOut("slow");
+});
+$(document).ready(function() {
+	$('#modal_loader').on('click', function () {
+		$('#modal_loader').fadeOut();
+	});
+});
+</script>
+<div id="modal_loader">
+	<div class="modal_loader">
+		<i class="fa fa-spinner fa-spin"></i>
+	</div>
+</div>
 
-<form id="fsetup" name="fsetup" class="form-horizontal na-fadein f-small" action="./widget_update.php" method="post" onsubmit="return fsetup_submit(this);">
+<form id="fsetup" name="fsetup" class="form-horizontal f-small" action="./widget_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="wname" value="<?php echo urlencode($wname) ?>">
 <input type="hidden" name="wid" value="<?php echo urlencode($wid) ?>">
 <input type="hidden" name="opt" value="<?php echo urlencode($opt) ?>">

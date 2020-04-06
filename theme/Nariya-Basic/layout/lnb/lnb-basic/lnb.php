@@ -22,6 +22,9 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 			<ul>
 			<?php if($is_member) { // 로그인 상태 ?>
 				<li><?php echo $member['sideview'] ?></li>
+				<?php if ($member['mb_grade']) { ?>
+					<li><a><?php echo $member['mb_grade'] ?></a></li>
+				<?php } ?>
 				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
 					<li><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a></li>
 				<?php } ?>

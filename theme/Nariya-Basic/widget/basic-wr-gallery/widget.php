@@ -9,7 +9,7 @@ $wset['thumb_w'] = ($wset['thumb_w'] == "") ? 320 : (int)$wset['thumb_w'];
 $wset['thumb_h'] = ($wset['thumb_h'] == "") ? 180 : (int)$wset['thumb_h'];
 
 if($wset['thumb_w'] && $wset['thumb_h']) {
-	$height = ($wset['thumb_w'] / $wset['thumb_h']) * 100;
+	$height = ($wset['thumb_h'] / $wset['thumb_w']) * 100;
 } else {
 	$height = ($wset['thumb_d']) ? $wset['thumb_d'] : '56.25';
 }
@@ -25,7 +25,7 @@ $id = 'img_'.na_rid();
 <style>
 	#<?php echo $id;?> { margin-right:<?php echo $margin_w * (-1);?>px; margin-bottom:<?php echo $margin_h * (-1);?>px;}
 	#<?php echo $id;?> li {float:left; padding-right:<?php echo $margin_w ?>px; padding-bottom:<?php echo $margin_h ?>px; <?php echo na_width($wset['item'], 4) ?>}
-	#<?php echo $id;?> .img-wrap { padding-bottom:<?php echo $height ?>; }
+	#<?php echo $id;?> .img-wrap { padding-bottom:<?php echo $height ?>%; }
 	<?php if(_RESPONSIVE_) { // 반응형일 때만 작동 ?>
 	@media (max-width:1199px) { 
 		.responsive #<?php echo $id;?> li {<?php echo na_width($wset['lg'], 4) ?>}

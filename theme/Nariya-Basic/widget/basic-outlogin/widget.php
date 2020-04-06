@@ -37,6 +37,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 				<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="win_scrap">
 					스크랩
 				</a>
+				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+					<span class="light f-tiny">|</span>
+					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a>
+				<?php } ?>
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -68,8 +72,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 				</a>
 			<?php } ?>
 			<span class="pull-right">
-				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
-					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a>
+				<?php if ($member['mb_grade']) { ?>
+					<?php echo $member['mb_grade'] ?>
 					<span class="light f-tiny">|</span>
 				<?php } ?>
 				<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php">

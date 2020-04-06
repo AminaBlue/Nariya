@@ -1,5 +1,11 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
+
+global $is_member, $editor_content_js;
+
+if(!$is_member)
+	return;
+
 ?>
 <!-- 임시 저장글 모달 { -->
 <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-hidden="true">
