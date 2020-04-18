@@ -435,6 +435,12 @@ function na_script($id){
 			add_javascript('<script src="'.NA_PLUGIN_URL.'/app/bs-iconpicker/js/iconset/iconset-fontawesome-4.7.0.min.js"></script>', 0);
 			add_javascript('<script src="'.NA_PLUGIN_URL.'/app/bs-iconpicker/js/bootstrap-iconpicker.js"></script>', 0);
 		}
+	} else if($id == 'mask') {
+		if(!defined('NA_MASK')) {
+			define('NA_MASK', true);
+			add_stylesheet('<link rel="stylesheet" href="'.NA_PLUGIN_URL.'/css/mask.css">', -1);
+			include_once(NA_PLUGIN_PATH.'/theme/mask.php');
+		}
 	}
 
 	return;

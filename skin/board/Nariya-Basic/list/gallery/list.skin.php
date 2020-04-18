@@ -125,7 +125,7 @@ if($board['bo_notice']) {
 		}
 
 		// 이미지 추출
-		$img = na_wr_img($list[$i]['bo_table'], $list[$i]);
+		$img = na_wr_img($bo_table, $list[$i]);
 
 		// 썸네일 생성
 		$thumb = ($boset['thumb_w']) ? na_thumb($img, $boset['thumb_w'], $boset['thumb_h']) : $img;
