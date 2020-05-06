@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/********************************************************
+■ Wing : 좌우 배너
+********************************************************/
+#nt_wing .nt-container { 
+	position:relative; 
+	overflow:visible !important;
+}
+#nt_wing img { 
+	max-width:100%; 
+}
+#nt_wing .wing-left,
+#nt_wing .wing-right { 
+	position:absolute; 
+	width:160px; 
+}
+#nt_wing .wing-left { 
+	left:-175px;
+}
+#nt_wing .wing-right { 
+	right:-175px;
+}

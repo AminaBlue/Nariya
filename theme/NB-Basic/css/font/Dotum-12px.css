@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+/********************************************************
+■ PC 폰트
+********************************************************/
+
+/* 기준 폰트 */
+html {
+	font-size:12px;
+}
+
+/* 내용 등 기본 폰트 */
+body {
+	font-size:1.0rem !important;
+	font-family:"dotum", sans-serif !important;
+	line-height:1.9;
+}
+
+/* 주석 등 : 11px */
+.f-xs {
+	font-size:0.92rem !important;
+}
+
+/* 정보(조회, 날짜) 등 : 12x */
+.f-sm {
+	font-size:1.0rem !important;
+}
+
+/* 주메뉴, 텍스트 로고 등 : 16px */
+.f-md {
+	font-size:1.34rem !important;
+	line-height:1.5 !important;
+	font-family: "Roboto", sans-serif !important;
+	padding-top:0.75rem;
+	padding-bottom:0.75rem;
+}
+
+/* 모바일 헤더(텍스트 로고) 등 : 16px */
+.f-mo {
+	font-size:1.34rem !important;
+	line-height:1.5 !important;
+	font-family: "Roboto", sans-serif !important;
+	padding-top:0.75rem;
+	padding-bottom:0.75rem;
+}
+
+/* 일반 위젯 타이틀 등 : 15px */
+.f-lg {
+	font-size:1.25rem !important;
+	line-height:1.7 !important;
+	font-family: "Roboto", sans-serif !important;
+	margin-bottom:0.25rem !important;
+}
+
+/* 특수 위젯 타이틀 등 : 18px */
+.f-xl {
+	font-size:1.5rem !important;
+	line-height:1.5 !important;
+	font-family: "Roboto", sans-serif !important;
+	margin-bottom:0.25rem !important;
+}
+
+/* 체크박스 재지정 */
+.custom-checkbox .custom-control-label::before,
+.custom-checkbox .custom-control-label::after {
+	top:0.15rem !important;
+	width:1.4rem !important;	
+	height:1.4rem !important;
+}
+
+/* 체크박스와 글자간 간격 */
+.custom-checkbox .custom-control-label span {
+	display:inline-block;
+	cursor: pointer;
+	margin-top:0px;
+	padding-left:6px;
+}
+
+/* 스위치와 글자간 간격 */
+.custom-switch .custom-control-label::before,
+.custom-switch .custom-control-label::after {
+	margin-top:2px;
+}

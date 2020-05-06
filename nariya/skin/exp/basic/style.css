@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+/* 타이틀 */
+.win-title { 
+	margin:0; 
+	padding:10px 15px; 
+	line-height:40px; 
+	font-size:18px;
+	text-align:left;
+}
+.win-title img { 
+	border-radius: 50%; 
+	width: 40px; 
+	height: 40px; 
+	display:inline-block;
+	margin-right:5px;
+}
+.win-title button { 
+	margin-top:5px;
+}
+.win-cont .list-group-item {
+	border-left:0;
+	border-right:0;
+}
+.win-del { 
+	font-size:14px;
+	color:#aaa;
+}
+.win-del:hover,
+.win-del:focus,
+.win-del:active { 
+	color:#000;
+}
+.empty_list {
+	padding:50px 15px;
+	color:#888;
+	text-align:center;
+}

@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+/********************************************************
+■ Page Title
+********************************************************/
+#nt_title { 
+	background-color: #fafafa; 
+	border-bottom:1px solid #dfdfdf; 
+}
+#nt_title .d-flex { 
+	padding-top:2.0rem;
+}
+#nt_title .page-title { 
+	font-size:1.75rem;
+	line-height:1.6;
+	letter-spacing:-1px; 
+}
+#nt_title .breadcrumb a {
+	color:#888;
+}
+#nt_title .breadcrumb-item + .breadcrumb-item::before {
+	font-family: dotum;
+	font-weight: normal;
+	color:#aaa;
+	content:">";
+}
+@media all and (max-width:992px) {
+	.responsive #nt_title .d-flex { 
+		padding-top:1.75rem;
+	}
+	.responsive #nt_title .page-title { 
+		font-size:1.5rem;
+	}
+}
+@media all and (max-width:767px) {
+	.responsive #nt_title .d-flex { 
+		padding-top:1.5rem; 
+	}
+	.responsive #nt_title .page-title { 
+		font-size:1.35rem;
+	}
+}
+@media all and (max-width:575px) {
+	.responsive #nt_title .d-flex { 
+		padding-top:1.25rem; 
+		font-size:1.25rem;
+	}
+}

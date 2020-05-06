@@ -46,8 +46,15 @@ $list = (is_array($list)) ? $list : array();
 $list_cnt = count($list);
 
 $noti_skin = na_fid($nariya['noti']);
-$noti_skin_url = NA_PLUGIN_URL.'/skin/noti/'.$noti_skin;
-$noti_skin_path = NA_PLUGIN_PATH.'/skin/noti/'.$noti_skin;
+if(defined('NA_URL')) {
+	$noti_skin_url = NA_URL.'/skin/noti/'.$noti_skin;
+	$noti_skin_path = NA_PATH.'/skin/noti/'.$noti_skin;
+} else if(defined('NA_PLUGIN_URL')) {
+	$noti_skin_url = NA_PLUGIN_URL.'/skin/noti/'.$noti_skin;
+	$noti_skin_path = NA_PLUGIN_PATH.'/skin/noti/'.$noti_skin;
+} else {
+	alert('잘못된 접근입니다.', G5_URL);
+}
 
 $query_string = preg_replace("/&?page\=\d+/", "", clean_query_string($_SERVER['QUERY_STRING']));
 $write_pages = get_paging($page_rows, $page, $total_page, "{$_SERVER['PHP_SELF']}?$query_string&amp;page=");

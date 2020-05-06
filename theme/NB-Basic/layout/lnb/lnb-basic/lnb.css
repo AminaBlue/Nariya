@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/********************************************************
+■ LNB
+********************************************************/
+#nt_lnb ul { 
+	list-style: none; 
+	margin: 0; 
+}
+#nt_lnb ul > li { 
+	float: left; 
+	padding: 0 13px; 
+}
+#nt_lnb ul > li::after { 
+	font-family: dotum;
+	font-weight: normal;
+	float: right; 
+	color:#ccc; 
+	content: "/"; 
+	margin-right:-15px;
+}
+#nt_lnb ul > li:first-child { 
+	padding-left:0;
+}
+#nt_lnb ul > li:last-child { 
+	padding-right:0;
+}
+#nt_lnb ul > li:last-child::after { 
+	content: ""; 
+	margin-right:0; 
+}
+#nt_lnb ul > li > a { 
+	float:left;
+	white-space:nowrap;	
+}

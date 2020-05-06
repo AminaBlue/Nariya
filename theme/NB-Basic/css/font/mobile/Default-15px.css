@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+/********************************************************
+■ 모바일 폰트
+********************************************************/
+
+/* 기준 폰트 */
+html {
+	font-size:15px;
+}
+
+/* 내용 등 기본 폰트 : 16px */
+body {
+	font-size:1.07rem !important; 
+	line-height:1.8;
+}
+
+/* 주석 등 : 13px */
+.f-xs {
+	font-size:0.87rem !important;;
+}
+
+/* 조회, 날짜 등 정보 : 14px */
+.f-sm {
+	font-size:0.94rem !important;
+}
+
+/* 메뉴바의 주메뉴 등 : 20px */
+.f-md {
+	font-size:1.34rem !important;
+	line-height:1.8 !important;
+	font-family: "Roboto", sans-serif;
+	padding-top:0.5rem;
+	padding-bottom:0.5rem;
+}
+
+/* 모바일 헤더(텍스트 로고) 등 : 20px */
+.f-mo {
+	font-size:1.34rem !important;
+	line-height:1.8 !important;
+	font-family: "Roboto", sans-serif !important;
+	padding-top:0.5rem;
+	padding-bottom:0.5rem;
+}
+
+/* 일반 위젯 타이틀 등 : 18px */
+.f-lg {
+	font-size:1.20rem !important;
+	line-height:1.7 !important;
+	font-family: "Roboto", sans-serif !important;
+	margin-bottom:0.25rem !important;
+}
+
+/* 특수 위젯 타이틀 등 : 22px */
+.f-xl {
+	font-size:1.47rem !important;
+	line-height:1.5 !important;
+	font-family: "Roboto", sans-serif;
+	font-weight:bold;
+	margin-bottom:0.25rem !important;
+}

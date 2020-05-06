@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+/********************************************************
+■ PC Header
+********************************************************/
+#header_pc .nt-container { 
+	background: url('./header.jpg') no-repeat right bottom;
+}
+#header_pc .header-search { 
+	width:100%;
+	max-width:500px; 
+}
+#header_pc .header-search form { 
+	padding:0; 
+	border-width:2px;
+	border-style:solid;
+}
+#header_pc .header-search input { 
+	font-size:16px !important;
+	background: #fff; 
+	border:0 !important; 
+	box-shadow:none !important; 
+	-webkit-box-shadow:none !important; 
+}
+#header_pc .header-search .form-control:focus { 
+	box-shadow:none !important; 
+	-webkit-box-shadow: none !important; 
+}
+#header_pc .header-search .btn { 
+	border:0; 
+	background: none !important; 
+	outline:none; 
+}
