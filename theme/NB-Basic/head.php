@@ -126,7 +126,7 @@ if($nt_top_path)
 
 	<div id="nt_body" class="nt-body px-0 px-sm-4">
 	<?php if($is_page_col) { ?>
-		<div class="nt-container py-3 py-lg-4">
+		<div class="nt-container py-3 py-sm-4">
 		<?php if($is_page_col == "two") { ?>
 			<div class="row na-row">
 				<div class="col-md-<?php echo $is_content_col ?><?php echo ($tset['left_side']) ? ' order-md-2' : '';?> na-col">

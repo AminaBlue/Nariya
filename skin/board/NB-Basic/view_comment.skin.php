@@ -243,7 +243,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 				<?php } ?>
 
 				<div class="input-group mb-3">
-					<textarea id="wr_content" name="wr_content" maxlength="10000" rows=4 class="form-control" 
+					<textarea id="wr_content" name="wr_content" maxlength="10000" rows="4" class="form-control" 
 					<?php if ($comment_min || $comment_max) { ?>onkeyup="check_byte('wr_content', 'char_count');"<?php } ?>><?php echo $c_wr_content;  ?></textarea>
 					<?php if ($comment_min || $comment_max) { ?><script> check_byte('wr_content', 'char_count'); </script><?php } ?>
 					<div class="input-group-append">

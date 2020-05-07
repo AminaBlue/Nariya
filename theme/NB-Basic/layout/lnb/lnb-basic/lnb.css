@@ -33,3 +33,6 @@
 	float:left;
 	white-space:nowrap;	
 }
+#nt_lnb .dropdown-toggle::after {
+	color:#ccc;
+}

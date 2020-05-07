@@ -97,48 +97,11 @@ include_once(NA_PATH.'/theme/loader.php');
 
 <div id="topHeight"></div>
 
-<form id="fsetup" name="fsetup" action="./skin_update.php" method="post">
+<form id="fsetup" name="fsetup" action="./skin_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="skin" value="<?php echo urlencode($skin) ?>">
 <input type="hidden" name="bo_table" value="<?php echo urlencode($bo_table) ?>">
-
-<ul class="list-group f-sm font-weight-normal">
-	<?php if($skin == 'board') { ?>
-		<li class="list-group-item">
-			<div class="form-group row mb-0">
-				<label class="col-sm-2 col-form-label">설정 복사</label>
-				<div class="col-sm-10">
-					<a role="button" href="<?php echo NA_URL ?>/theme/skin_copy.php?bo_table=<?php echo $bo_table ?>" class="btn btn-primary btn-setup">스킨 설정값 복사해 주기</a>
-				</div>
-			</div>
-		</li>
-	<?php } ?>
-	<li class="list-group-item">
-		<div class="form-group row mb-0">
-			<label class="col-sm-2 col-form-label">설정 리셋</label>
-			<div class="col-sm-10">
-				<p class="form-control-plaintext pt-1 pb-0 float-left">
-					<div class="custom-control custom-checkbox custom-control-inline">
-						<input type="checkbox" name="freset" value="1" class="custom-control-input" id="fresetCheck">
-						<label class="custom-control-label" for="fresetCheck"><span>스킨 설정값을 초기화(삭제) 합니다.</span></label>
-					</div>
-				</p>
-			</div>
-		</div>
-	</li>
-	<li class="list-group-item border-bottom-0">
-		<div class="form-group row mb-0">
-			<label class="col-sm-2 col-form-label">설정 저장</label>
-			<div class="col-sm-10">
-				<p class="form-control-plaintext pt-1 pb-0 float-left">
-					<div class="custom-control custom-checkbox custom-control-inline">
-						<input type="checkbox" name="both" value="1" class="custom-control-input" id="fbothCheck">
-						<label class="custom-control-label" for="fbothCheck"><span>PC/모바일 모두 적용(저장)합니다.</span></label>
-					</div>
-				</p>
-			</div>
-		</div>
-	</li>
-</ul>
+<input type="hidden" name="both" value="">
+<input type="hidden" name="freset" value="">
 
 <div class="f-sm font-weight-normal">
 	<?php 
@@ -152,27 +115,60 @@ include_once(NA_PATH.'/theme/loader.php');
 <div id="bottomHeight"></div>
 
 <div id="bottomNav" class="p-0">
-	<button type="submit" class="btn btn-primary btn-block btn-lg rounded-0 en">Save</button>
+	<div class="btn-group btn-group-lg w-100" role="group">
+		<button type="submit" class="btn btn-primary rounded-0 en order-3" onclick="document.pressed='save'">Save</button>
+		<button type="submit" class="btn btn-primary rounded-0 en order-2" onclick="document.pressed='reset'">Reset</button>
+		<?php if($skin == 'board') { 
+			if(IS_DEMO && !$is_admin){
+				$copy_href = "javascript:alert('데모화면에서는 하실 수 없는 작업입니다.');"; 
+				$copy_css = '';
+			} else {
+				$copy_href = NA_URL.'/theme/skin_copy.php?bo_table='.$bo_table; 
+				$copy_css = ' btn-setup';
+			}
+		?>
+			<a role="button" href="<?php echo $copy_href ?>" class="btn btn-primary rounded-0 en order-1<?php echo $copy_css ?>">Copy to</a>
+		<?php } ?>
+	</div>
 </div>
 
 </form>
 
 <script>
-	$(document).ready(function() {
+function fsetup_submit(f) {
 
-		var topHeight = $("#topNav").height();
-		var bottomHeight = $("#bottomNav").height();
+	if(document.pressed == "save") {
+		if (confirm("PC/모바일 동일 설정값을 적용하시겠습니까?\n\n취소시 현재 모드의 설정값만 저장됩니다.")) {
+			f.both.value = 1;
+		}
+	}
 
-		$("#topHeight").height(topHeight);
-		$("#bottomHeight").height(bottomHeight);
+	if(document.pressed == "reset") {
+		if (confirm("정말 초기화 하시겠습니까?\n\nPC/모바일 설정 모두 초기화 되며, 이전 설정값으로 복구할 수 없습니다.")) {
+			f.freset.value = 1;
+		} else {
+			return false;
+		}
+	}
 
-		$("#topNav").addClass('fixed-top');
-		$("#bottomNav").addClass('fixed-bottom');
+	return true;
+}
 
-		$('.close-setup').click(function() {
-			window.parent.closeSetupModal();
-		});
+$(document).ready(function() {
+
+	var topHeight = $("#topNav").height();
+	var bottomHeight = $("#bottomNav").height();
+
+	$("#topHeight").height(topHeight);
+	$("#bottomHeight").height(bottomHeight);
+
+	$("#topNav").addClass('fixed-top');
+	$("#bottomNav").addClass('fixed-bottom');
+
+	$('.close-setup').click(function() {
+		window.parent.closeSetupModal();
 	});
+});
 </script>
 <?php 
 include_once(NA_PATH.'/theme/setup.php');

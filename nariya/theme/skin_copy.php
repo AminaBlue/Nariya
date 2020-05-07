@@ -43,7 +43,7 @@ include_once(NA_PATH.'/theme/loader.php');
 <ul class="list-group f-sm font-weight-normal">
 	<li class="list-group-item">
 		<div class="form-group row mb-0">
-			<label class="col-sm-2 col-form-label">모두 복사</label>
+			<label class="col-sm-2 col-form-label">복사 옵션</label>
 			<div class="col-sm-10">
 				<p class="form-control-plaintext pt-1 pb-0 float-left">
 					<div class="custom-control custom-checkbox custom-control-inline">
@@ -86,7 +86,7 @@ include_once(NA_PATH.'/theme/loader.php');
 <div id="bottomHeight"></div>
 
 <div id="bottomNav" class="p-0">
-	<button type="submit" class="btn btn-primary btn-block btn-lg rounded-0 en">Copy</button>
+	<button type="submit" class="btn btn-primary btn-block btn-lg rounded-0 en">Copy to</button>
 </div>
 
 </form>

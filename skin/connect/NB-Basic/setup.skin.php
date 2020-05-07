@@ -12,8 +12,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<table class="table table-bordered mb-0">
 					<tbody>
 					<tr class="bg-light">
-					<th class="text-center col-w2">구분</th>
-					<th class="text-center col-w3">설정</th>
+					<th class="text-center nw-c1">구분</th>
+					<th class="text-center nw-c2">설정</th>
 					<th class="text-center">비고</th>
 					</tr>
 					<tr>
@@ -37,7 +37,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					</tr>
 					<tr>
 					<td class="text-center">
-						헤드 라인 컬러
+						목록 헤드 색상
 					</td>
 					<td class="text-center">
 						<select name="wset[head_color]" class="custom-select">
@@ -46,7 +46,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						</select>
 					</td>
 					<td class="text-muted">
-						기본 헤드 및 상단 라인 컬러
+						&nbsp;
 					</td>
 					</tr>
 					</tbody>

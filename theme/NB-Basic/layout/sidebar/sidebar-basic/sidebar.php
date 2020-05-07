@@ -65,7 +65,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 		<?php if($is_member) { ?>
 			<div class="d-md-none">
 				<div class="btn-group w-100" role="group" aria-label="Member Menu">
-					<a class="btn btn-primary text-white rounded-0" data-toggle="collapse" href="#mymenu" role="button" aria-expanded="false" aria-controls="mymenu">
+					<a class="btn btn-primary text-white rounded-0" data-toggle="collapse" href="#mymenu_sidebar" role="button" aria-expanded="false" aria-controls="mymenu_sidebar">
 						마이메뉴
 					</a>
 					<?php if(IS_NA_NOTI) { // 알림 ?>
@@ -83,10 +83,10 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 					</a>
 				</div>
 
-				<div class="collapse" id="mymenu">
-					<div class="clearfix px-3 py-1">
+				<div class="collapse" id="mymenu_sidebar">
+					<div class="clearfix px-3 py-2">
 
-						<div class="d-flex align-items-center mt-2 mb-1">
+						<div class="d-flex align-items-center my-1">
 							<div class="flex-grow-1">
 								<?php echo str_replace('sv_member', 'sv_member font-weight-bold', $member['sideview']); ?>
 							</div>
@@ -97,7 +97,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 
 						<?php 
 						// 멤버쉽 플러그인	
-						if(!IS_NA_XP) { 
+						if(IS_NA_XP) { 
 							$per = (int)(($member['as_exp'] / $member['as_max']) * 100);
 						?>
 							<div class="clearfix f-sm">
@@ -118,42 +118,42 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 						<ul class="row mx-n2">
 							<?php if($config['cf_use_point']) { ?>
 								<li class="col-12 px-1">
-									<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point mb-2">
+									<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point f-sm mb-2">
 										포인트 <b class="orangered"><?php echo number_format($member['mb_point']);?></b>
 									</a>
 								</li>
 							<?php } ?>
 							<?php if(IS_NA_NOTI) { // 알림 ?>
 								<li class="col-6 px-1">
-									<a href="<?php echo G5_BBS_URL ?>/noti.php" class="btn btn-block btn-basic mb-2">
+									<a href="<?php echo G5_BBS_URL ?>/noti.php" class="btn btn-block btn-basic f-sm mb-2">
 										알림<?php if ($member['as_noti']) { ?> <b class="orangered"><?php echo number_format($member['as_noti']) ?></b><?php } ?>
 									</a>
 								</li>
 							<?php } ?>
 							<li class="col-6 px-1">
-								<a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="btn btn-block btn-basic win_memo mb-2">
+								<a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="btn btn-block btn-basic win_memo f-sm mb-2">
 									쪽지<?php if ($member['mb_memo_cnt']) { ?> <span class="orangered"><?php echo number_format($member['mb_memo_cnt']);?></span><?php } ?>
 								</a>
 							</li>
 							<li class="col-6 px-1">
-								<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="btn btn-block btn-basic win_scrap mb-2">
+								<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="btn btn-block btn-basic win_scrap f-sm mb-2">
 									스크랩
 								</a>
 							</li>
 							<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
 								<li class="col-6 px-1">
-									<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="btn btn-block btn-basic mb-2">
+									<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="btn btn-block btn-basic f-sm mb-2">
 										관리자
 									</a>
 								</li>
 							<?php } ?>
 							<li class="col-6 px-1">
-								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php" class="btn btn-block btn-basic mb-2">
+								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php" class="btn btn-block btn-basic f-sm mb-2">
 									정보수정
 								</a>
 							</li>
 							<li class="col-6 px-1">
-								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=member_leave.php" class="btn btn-block btn-basic mb-2">
+								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=member_leave.php" class="btn btn-block btn-basic f-sm mb-2">
 									회원탈퇴
 								</a>
 							</li>

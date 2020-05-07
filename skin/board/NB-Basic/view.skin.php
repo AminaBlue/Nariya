@@ -91,7 +91,7 @@ $view_subject = get_text($view['wr_subject']);
 							</a>
 						<?php } ?>
 						<?php if($update_href || $delete_href || $copy_href || $move_href || $search_href) { ?>
-							<button type="button" class="btn btn_b01 nofocus dropdown-toggle py-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="게시물 옵션">
+							<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시물 옵션">
 								<span class="sr-only">게시물 옵션</span>
 							</button>
 							<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right">

@@ -13,13 +13,13 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<table class="table table-bordered mb-0">
 					<tbody>
 					<tr class="active">
-						<th class="text-center col-w2">구분</th>
-						<th class="text-center col-w3">사용</th>
+						<th class="text-center nw-c1">구분</th>
+						<th class="text-center nw-c2">사용</th>
 						<th class="text-center">비고</th>
 					</tr>
 					<tr>
 						<td class="text-center">
-							목록 헤더 컬러
+							목록 헤더 색상
 						</td>
 						<td class="text-center">
 							<select name="wset[head_color]" class="form-control">

@@ -84,7 +84,7 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 				</div>
 				<div class="btn-group" role="group">
 					<?php if ($admin_href) { ?>
-						<a href="<?php echo $admin_href ?>" class="btn btn_admin nofocue py-1" title="관리자" role="button">
+						<a href="<?php echo $admin_href ?>" class="btn btn_admin nofocus py-1" title="관리자" role="button">
 							<i class="fa fa-cog fa-spin fa-lg" aria-hidden="true"></i>
 							<span class="sr-only">관리자</span>
 						</a>
@@ -106,7 +106,7 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 						</a>
 					<?php } ?>
 					<?php if ($is_admin == 'super' || $is_auth || IS_DEMO) {  ?>
-						<button type="button" class="btn btn_b01 nofocus dropdown-toggle py-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="게시판 리스트 옵션">
+						<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시판 리스트 옵션">
 							<span class="sr-only">게시판 리스트 옵션</span>
 						</button>
 						<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right">

@@ -59,31 +59,19 @@ include_once(NA_PATH.'/theme/loader.php');
 
 <div id="topHeight"></div>
 
-<form id="fsetup" name="fsetup" action="./widget_update.php" method="post">
+<form id="fsetup" name="fsetup" action="./widget_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="wname" value="<?php echo urlencode($wname) ?>">
 <input type="hidden" name="wid" value="<?php echo urlencode($wid) ?>">
 <input type="hidden" name="opt" value="<?php echo urlencode($opt) ?>">
+<input type="hidden" name="freset" value="">
 
 <ul class="list-group f-sm font-weight-normal">
-	<li class="list-group-item">
+	<li class="list-group-item border-bottom-0">
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">위젯 경로</label>
 			<div class="col-sm-10">
 				<p class="form-control-plaintext">
 					<?php echo str_replace(G5_PATH, "", $widget_path) ?> 
-				</p>
-			</div>
-		</div>
-	</li>
-	<li class="list-group-item border-bottom-0">
-		<div class="form-group row mb-0">
-			<label class="col-sm-2 col-form-label">위젯 리셋</label>
-			<div class="col-sm-10">
-				<p class="form-control-plaintext pt-1 pb-0 float-left">
-					<div class="custom-control custom-checkbox custom-control-inline">
-						<input type="checkbox" name="freset" value="1" class="custom-control-input" id="fresetCheck">
-						<label class="custom-control-label" for="fresetCheck"><span>위젯 설정값을 초기화(삭제) 합니다.</span></label>
-					</div>
 				</p>
 			</div>
 		</div>
@@ -97,26 +85,41 @@ include_once(NA_PATH.'/theme/loader.php');
 <div id="bottomHeight"></div>
 
 <div id="bottomNav" class="p-0">
-	<button type="submit" class="btn btn-primary btn-block btn-lg rounded-0 en">Save</button>
+	<div class="btn-group btn-group-lg w-100" role="group">
+		<button type="submit" class="btn btn-primary rounded-0 en order-2">Save</button>
+		<button type="submit" class="btn btn-primary rounded-0 en order-1" onclick="document.pressed='reset'">Reset</button>
+	</div>
 </div>
 
 </form>
 <script>
-	$(document).ready(function() {
+function fsetup_submit(f) {
+	if(document.pressed == "reset") {
+		if (confirm("정말 초기화 하시겠습니까?\n\n초기화시 이전 설정값으로 복구할 수 없습니다.")) {
+			f.freset.value = 1;
+		} else {
+			return false;
+		}
 
-		var topHeight = $("#topNav").height();
-		var bottomHeight = $("#bottomNav").height();
+	}
+	return true;
+}
 
-		$("#topHeight").height(topHeight);
-		$("#bottomHeight").height(bottomHeight);
+$(document).ready(function() {
 
-		$("#topNav").addClass('fixed-top');
-		$("#bottomNav").addClass('fixed-bottom');
+	var topHeight = $("#topNav").height();
+	var bottomHeight = $("#bottomNav").height();
 
-		$('.close-setup').click(function() {
-			window.parent.closeSetupModal();
-		});
+	$("#topHeight").height(topHeight);
+	$("#bottomHeight").height(bottomHeight);
+
+	$("#topNav").addClass('fixed-top');
+	$("#bottomNav").addClass('fixed-bottom');
+
+	$('.close-setup').click(function() {
+		window.parent.closeSetupModal();
 	});
+});
 </script>
 <?php 
 include_once(NA_PATH.'/theme/setup.php');

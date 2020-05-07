@@ -8,11 +8,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$connect_skin_url.'/style.css">',
 $wset = na_skin_config('connect');
 
 // 목록헤드
-if($boset['head_skin']) {
-	add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/skin/head/'.$boset['head_skin'].'.css">', 0);
+$head_color = ($wset['head_color']) ? $wset['head_color'] : 'primary';
+if($wset['head_skin']) {
+	add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/skin/head/'.$wset['head_skin'].'.css">', 0);
 	$head_class = 'list-head';
 } else {
-	$head_class = ($wset['head_color']) ? 'border-'.$color : 'border-primary';
+	$head_class = 'na-table-head border-'.$head_color;
 }
 
 ?>
@@ -21,23 +22,24 @@ if($boset['head_skin']) {
 
 	<h2 class="sr-only">현재 접속자 목록</h2>
 
-	<div class="div-head <?php echo $head_class ?>">
-		<span class="col-w70 px-2">번호</span>
-		<span class="px-2 text-left text-sm-center">
-			<?php if($is_admin == 'super' || IS_DEMO) { ?>
-				<?php if(is_file($connect_skin_path.'/setup.skin.php')) { ?>
-					<div class="float-right">
-						<a class="btn_b01 btn-setup" href="<?php echo na_setup_href('connect') ?>" title="스킨설정">
+	<div class="na-table d-table w-100 mb-0">
+		<div class="<?php echo $head_class ?> d-table-row">
+			<div class="d-table-cell nw-6">번호</div>
+			<div class="d-table-cell text-left text-sm-center">
+				<?php if($is_admin == 'super' ||IS_DEMO) { ?>
+					<?php if(is_file($connect_skin_path.'/setup.skin.php')) { ?>
+						<a class="btn_b01 btn-setup float-right mr-3" href="<?php echo na_setup_href('connect') ?>" title="스킨설정">
 							<i class="fa fa-cogs" aria-hidden="true"></i>
 							<span class="sound_only">스킨설정</span>
 						</a>
-					</div>
+					<?php } ?>
 				<?php } ?>
-			<?php } ?>
-			접속자 위치
-		</span>
+				접속자 위치
+			</div>
+		</div>
 	</div>
-	<ul class="w-100">
+
+	<ul class="na-table d-table w-100">
     <?php
     for ($i=0; $i < count($list); $i++) {
         //$location = conv_content($list[$i]['lo_location'], 0);
@@ -47,25 +49,20 @@ if($boset['head_skin']) {
         if ($list[$i]['lo_url'] && $is_admin == 'super') $display_location = "<a href=\"".$list[$i]['lo_url']."\">".$location."</a>";
         else $display_location = $location;
     ?>
-		<li class="border-bottom">
-			<div class="d-table">
-				<div class="d-table-row">
-					<div class="d-table-cell align-middle text-center col-w70 p-2">
-						<span class="sr-only">번호</span>
-						<?php echo $list[$i]['num'] ?>
-					</div>
-					<div class="d-table-cell p-2">
-						<div class="d-sm-flex">
-							<div class="col-w120 pb-1 pb-sm-0">
-								<span class="sr-only">접속자</span>
-								<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
-							</div>
-							<div class="flex-grow-1">
-								<div class="ellipsis">
-									<span class="sr-only">위치</span>
-									<?php echo $display_location ?>
-								</div>
-							</div>
+		<li class="d-table-row border-bottom">
+			<div class="d-table-cell text-center nw-6 py-2 f-sm">
+				<span class="sr-only">번호</span>
+				<?php echo $list[$i]['num'] ?>
+			</div>
+			<div class="d-table-cell py-2 pr-3">
+				<div class="float-sm-left nw-10 nw-auto f-sm">
+					<span class="sr-only">접속자</span>
+					<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
+				</div>
+				<div class="na-title">
+					<div class="na-item">
+						<div class="na-subject">
+							<?php echo $display_location ?>
 						</div>
 					</div>
 				</div>

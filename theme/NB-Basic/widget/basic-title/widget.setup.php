@@ -9,7 +9,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 <ul class="list-group">
 	<li class="list-group-item">
 		<div class="form-group row mb-0">
-			<label class="col-sm-2 col-form-label">슬라이드</label>
+			<label class="col-sm-2 col-form-label">슬라이드 설정</label>
 			<div class="col-sm-10">
 				<style>
 					#widgetData.table { border-left:0; border-right:0; }

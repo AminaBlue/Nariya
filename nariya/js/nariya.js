@@ -167,7 +167,6 @@ function na_page(id, url, opt) {
 			case 'viewcomment'	: comment_box('', 'c'); break;
 		}
 		document.getElementById("btn_submit").disabled = false;
-		document.getElementById("btn_submit2").disabled = false;
 	}
 
 	if(opt) {
@@ -227,9 +226,10 @@ function na_comment(id) {
 						alert(data);
 						return false;
 					} else {
-						if(url) na_page(id, url);
+						if(url) {
+							na_page(id, url);
+						}
 						document.getElementById("btn_submit").disabled = false;
-						document.getElementById("btn_submit2").disabled = false;
 						document.getElementById("wr_content").value = "";
 						if(!g5_is_member) {
 							$("#captcha_reload").trigger("click");

@@ -19,43 +19,98 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 		<!-- LNB Right -->
 		<ul class="float-right">
 		<?php if($is_member) { // 로그인 상태 ?>
-			<li><?php echo $member['sideview'] ?></li>
-			<?php if ($member['mb_grade']) { ?>
-				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
-					<li><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>"><?php echo $member['mb_grade'] ?></a></li>
-				<?php } else { ?>
-					<li><a><?php echo $member['mb_grade'] ?></a></li>
-				<?php } ?>
-			<?php } else if ($is_admin == 'super' || $member['is_auth']) { ?>
-				<li><a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">관리</a></li>
-			<?php } ?>
-			<?php if($config['cf_use_point']) { ?>
-				<li>
-					<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="win_point">
-						포인트 <b class="orangered"><?php echo number_format($member['mb_point']) ?></b>
-					</a>
-				</li>
-			<?php } ?>
-			<?php if(IS_NA_NOTI) { // 알림 ?>
+			<li class="dropdown">
+				<a href="javascript:;" class="dropdown-toggle" id="mymenu_lnb" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+					마이메뉴
+				</a>
+				<div class="dropdown-menu bg-light f-sm" aria-labelledby="mymenu_lnb" style="width:240px;">
+					<div class="clearfix px-3">
+						<div class="d-flex align-items-center my-1">
+							<div class="flex-grow-1">
+								<?php echo str_replace('sv_member', 'sv_member font-weight-bold', $member['sideview']); ?>
+							</div>
+							<div class="pl-2 f-sm">
+								<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
+							</div>
+						</div>
+						<?php 
+						// 멤버쉽 플러그인	
+						if(!IS_NA_XP) { 
+							$per = (int)(($member['as_exp'] / $member['as_max']) * 100);
+						?>
+							<div class="clearfix">
+								<span class="float-left">레벨 <?php echo $member['as_level'] ?></span>
+								<span class="float-right">
+									<a href="<?php echo G5_BBS_URL ?>/exp.php" target="_blank" class="win_point">
+										Exp <?php echo number_format($member['as_exp']) ?>(<?php echo $per ?>%)
+									</a>
+								</span>
+							</div>
+							<div class="progress mb-2" title="레벨업까지 <?php echo number_format($member['as_max'] - $member['as_exp']);?> 경험치 필요">
+								<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="<?php echo $per ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $per ?>%">
+									<span class="sr-only"><?php echo $per ?>%</span>
+								</div>
+							</div>
+						<?php } ?>
+
+						<ul class="row mx-n2">
+							<?php if($config['cf_use_point']) { ?>
+								<li class="col-12 px-1">
+									<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point f-sm mb-2">
+										포인트 <b class="orangered"><?php echo number_format($member['mb_point']);?></b>
+									</a>
+								</li>
+							<?php } ?>
+							<?php if(IS_NA_NOTI) { // 알림 ?>
+								<li class="col-6 px-1">
+									<a href="<?php echo G5_BBS_URL ?>/noti.php" class="btn btn-block btn-basic f-sm mb-2">
+										알림<?php if ($member['as_noti']) { ?> <b class="orangered"><?php echo number_format($member['as_noti']) ?></b><?php } ?>
+									</a>
+								</li>
+							<?php } ?>
+							<li class="col-6 px-1">
+								<a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="btn btn-block btn-basic win_memo f-sm mb-2">
+									쪽지<?php if ($member['mb_memo_cnt']) { ?> <span class="orangered"><?php echo number_format($member['mb_memo_cnt']);?></span><?php } ?>
+								</a>
+							</li>
+							<li class="col-6 px-1">
+								<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="btn btn-block btn-basic win_scrap f-sm mb-2">
+									스크랩
+								</a>
+							</li>
+							<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+								<li class="col-6 px-1">
+									<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="btn btn-block btn-basic f-sm mb-2">
+										관리자
+									</a>
+								</li>
+							<?php } ?>
+							<li class="col-6 px-1">
+								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php" class="btn btn-block btn-basic f-sm mb-2">
+									정보수정
+								</a>
+							</li>
+							<li class="col-6 px-1">
+								<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=member_leave.php" class="btn btn-block btn-basic f-sm mb-2">
+									회원탈퇴
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<?php if(IS_NA_NOTI && isset($member['as_noti']) && $member['as_noti']) { // 알림 ?>
 				<li><a href="<?php echo G5_BBS_URL ?>/noti.php">
-					알림<?php if ($member['as_noti']) { ?> <b class="orangered"><?php echo number_format($member['as_noti']) ?></b><?php } ?>
+					알림 <b class="orangered"><?php echo number_format($member['as_noti']) ?></b>
 					</a>
 				</li>
 			<?php } ?>
-			<li><a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="win_memo">
-				쪽지<?php if ($member['mb_memo_cnt']) { ?> <b class="orangered"><?php echo number_format($member['mb_memo_cnt']) ?></b><?php } ?>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo G5_BBS_URL ?>/scrap.php" target="_blank" class="win_scrap">
-					스크랩
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=register_form.php">
-					정보수정
-				</a>
-			</li>
+			<?php if($member['mb_memo_cnt']) { // 쪽지 ?>
+				<li><a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" class="win_memo">
+					쪽지 <b class="orangered"><?php echo number_format($member['mb_memo_cnt']) ?></b>
+					</a>
+				</li>
+			<?php } ?>
 		<?php } else { // 로그아웃 상태 ?>
 			<li><a href="<?php echo G5_BBS_URL ?>/login.php?url=<?php echo $urlencode ?>">로그인</a></li>
 			<li><a href="<?php echo G5_BBS_URL ?>/register.php">회원가입</a></li>
