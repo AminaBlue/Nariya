@@ -28,9 +28,9 @@ if($wset['head_skin']) {
 			<div class="d-table-cell text-left text-sm-center">
 				<?php if($is_admin == 'super' ||IS_DEMO) { ?>
 					<?php if(is_file($connect_skin_path.'/setup.skin.php')) { ?>
-						<a class="btn_b01 btn-setup float-right mr-3" href="<?php echo na_setup_href('connect') ?>" title="스킨설정">
-							<i class="fa fa-magic" aria-hidden="true"></i>
-							<span class="sound_only">스킨설정</span>
+						<a class="btn_b01 btn-setup float-right mr-3" href="<?php echo na_setup_href('connect') ?>" title="스킨 설정">
+							<i class="fa fa-cogs fa-md" aria-hidden="true"></i>
+							<span class="sr-only">스킨 설정</span>
 						</a>
 					<?php } ?>
 				<?php } ?>
@@ -50,11 +50,11 @@ if($wset['head_skin']) {
         else $display_location = $location;
     ?>
 		<li class="d-table-row border-bottom">
-			<div class="d-table-cell text-center nw-6 py-2 f-sm">
+			<div class="d-table-cell text-center nw-6 py-2 py-md-2 f-sm">
 				<span class="sr-only">번호</span>
 				<?php echo $list[$i]['num'] ?>
 			</div>
-			<div class="d-table-cell py-2 pr-3">
+			<div class="d-table-cell py-2 py-md-2 pr-3">
 				<div class="float-sm-left nw-10 nw-auto f-sm">
 					<span class="sr-only">접속자</span>
 					<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>

@@ -5,22 +5,20 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 ?>
 <ul class="list-group">
 	<li class="list-group-item">
-
-		<div class="form-group form-row">
+		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">출력설정</label>
 			<div class="col-sm-10">
-
 				<div class="table-responsive">
 					<table class="table table-bordered mb-0">
 					<tbody>
 					<tr class="bg-light">
 						<th class="text-center nw-c1">구분</th>
-						<th class="text-center nw-c2">설정</th>
+						<th class="text-center nw-c2">사용</th>
 						<th class="text-center">비고</th>
 					</tr>
 					<tr>
 						<td class="text-center">
-							목록 라인 색상
+							목록 헤더 색상
 						</td>
 						<td class="text-center">
 							<select name="wset[head_color]" class="form-control">
@@ -35,8 +33,8 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					</tbody>
 					</table>
 				</div>
-
 			</div>
 		</div>
 	</li>
+
 </ul>

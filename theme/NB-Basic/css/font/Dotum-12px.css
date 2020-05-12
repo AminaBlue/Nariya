@@ -13,7 +13,7 @@ html {
 body {
 	font-size:1.0rem !important;
 	font-family:"dotum", sans-serif !important;
-	line-height:1.9;
+	line-height:1.8;
 }
 
 /* 주석 등 : 11px */
@@ -83,8 +83,32 @@ body {
 }
 
 /* 위젯 목록 라인 */
+.na-list li {
+	line-height:2.0;
+}
 .is-line .na-list li {
+	line-height:1.9;
 	padding-bottom:0.25rem;
 	margin-bottom:0.25rem;
 	border-bottom:1px solid #efefef;
+}
+
+/* 리스트형 스킨 목록 간격 */
+.na-flex .py-2 {
+	padding-top:0.60rem !important;
+	padding-bottom:0.60rem !important;
+}
+
+@media all and (min-width:768px) {
+	.na-table .py-md-2 {
+		padding-top:0.60rem !important;
+		padding-bottom:0.60rem !important;
+	}
+}
+
+@media all and (max-width:767px) {
+	.na-table .py-2 {
+		padding-top:0.60rem !important;
+		padding-bottom:0.60rem !important;
+	}
 }

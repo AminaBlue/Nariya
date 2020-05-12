@@ -9,70 +9,67 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 ?>
 
-<div id="mb_login" class="mbskin<?php echo ($tset['page_sub']) ? ' headsub' : ' no-headsub';?>">
+<div id="mb_login" class="f-sm py-5 m-auto" style="width:240px;">
+	<form name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post" autocomplete="off">
+	<input type="hidden" name="url" value="<?php echo $login_url ?>">
 
-	<div class="mbskin-cate bg-white">
-		<span class="login"><span class="sound_only">회원</span>로그인</span>
-		<a href="<?php echo G5_BBS_URL ?>/register.php" class="join">회원가입</a>
-	</div>
+		<h1 class="text-primary text-center text-uppercase mb-1">
+			Login
+		</h1>
 
-	<div class="mbskin-box bg-white">
-		<form class="form" role="form" name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post">
-		<input type="hidden" name="url" value="<?php echo $login_url ?>">
-			<div class="form-group">	
-				<label for="login_id" class="sound_only">아이디<strong class="sound_only"> 필수</strong></label>
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-user lightgray" aria-hidden="true"></i></span>
-					<input type="text" name="mb_id" id="login_id" required class="form-control required" placeholder="아이디">
+		<div class="bg-primary" style="height:4px;"></div>
+
+		<div class="form-group my-3">
+			<div class="custom-control custom-switch">
+			  <input type="checkbox" name="auto_login" class="custom-control-input remember-me" id="login_auto_login">
+			  <label class="custom-control-label float-left" for="login_auto_login">자동로그인</label>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="login_id" class="sr-only">아이디<strong class="sr-only"> 필수</strong></label>			
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
 				</div>
+				<input type="text" name="mb_id" id="login_id" class="form-control required" placeholder="아이디">
 			</div>
-			<div class="form-group">	
-				<label for="login_pw" class="sound_only">비밀번호<strong class="sound_only"> 필수</strong></label>
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-lock lightgray" aria-hidden="true"></i></span>
-					<input type="password" name="mb_password" id="login_pw" required class="form-control required" placeholder="비밀번호">
+		</div>
+		<div class="form-group">	
+			<div class="input-group">
+				<label for="login_pw" class="sr-only">비밀번호<strong class="sr-only"> 필수</strong></label>
+				<div class="input-group-prepend">
+					<span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
 				</div>
+				<input type="password" name="mb_password" id="login_pw" class="form-control required" placeholder="비밀번호">
 			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block en">
-					<b>로그인</b>
-				</button>    
-			</div>	
+		</div>
 
-			<div class="clearfix text-muted">
-				<span class="pull-left">
-					<label class="checkbox-inline">
-						<input type="checkbox" name="auto_login" value="1" id="login_auto_login"> 자동로그인
-					</label>
-				</span>
-				<span class="pull-right">
-					<a href="<?php echo G5_BBS_URL ?>/password_lost.php" class="win_password_lost" id="login_password_lost"><span class="text-muted">회원정보찾기</span></a>
-				</span>
-			</div>
-		</form>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary btn-block p-3 en">
+				<h5>로그인</h5>
+			</button>    
+		</div>	
 
-		<?php @include (get_social_skin_path().'/social_login.skin.php'); // 소셜로그인 사용시 소셜로그인 버튼 ?>
-	</div>
+		<div class="clearfix">
+			<a href="<?php echo G5_BBS_URL ?>/register.php" class="float-left">
+				회원가입하기
+			</a>
+			<a href="<?php echo G5_BBS_URL ?>/password_lost.php" class="win_password_lost float-right">
+				회원정보찾기
+			</a>
+		</div>
 
-	<div class="h15"></div>
+	</form>
 
-	<div class="text-center">
-		<a href="<?php echo G5_URL ?>" class="btn btn_b01" title="홈으로">
-			<i class="fa fa-home fa-2x" aria-hidden="true"></i>
-			<span class="sound_only">홈으로</span>
-		</a>
-	</div>
+	<?php @include (get_social_skin_path().'/social_login.skin.php'); // 소셜로그인 사용시 소셜로그인 버튼 ?>
+
+	<p class="text-center px-3 py-3 mt-3 border-top">
+		<a href="<?php echo G5_URL ?>">홈으로 돌아가기</a>
+	</p>
 </div>
 
 <script>
-$(function(){
-    $("#login_auto_login").click(function(){
-        if (this.checked) {
-            this.checked = confirm("자동로그인을 사용하시면 다음부터 회원아이디와 비밀번호를 입력하실 필요가 없습니다.\n\n공공장소에서는 개인정보가 유출될 수 있으니 사용을 자제하여 주십시오.\n\n자동로그인을 사용하시겠습니까?");
-        }
-    });
-});
-
 function flogin_submit(f) {
 
     if( $( document.body ).triggerHandler( 'login_sumit', [f, 'flogin'] ) !== false ){

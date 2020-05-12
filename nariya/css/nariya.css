@@ -1,4 +1,8 @@
 @charset "UTF-8";
+/* FA아이콘 */
+.fa.fa-md {
+	font-size:1.2rem !important;
+}
 
 /* 빈 FA아이콘 */
 i.empty {
@@ -250,19 +254,13 @@ img.light-circle {
 	font-weight:normal !important;
 	color:#ccc;
 }
-.bar-left::before {
-	font-family:dotum !important;
-	font-weight:normal !important;
-	font-size:0.88rem !important;
-	color:#aaa;
-	content: "|";
-}
-.bar-right::after {
-	font-family:dotum !important;
-	font-weight:normal !important;
-	font-size:0.88rem !important;
-	color:#aaa;
-	content: "|";
+.na-bar {
+	display:inline-block;
+	width:1px;
+	height:1.0rem;
+	margin:-1px 0.15rem 0;
+	background:#aaa;
+	vertical-align:middle !important;
 }
 .hide-photo .profile_img {
 	display:none;

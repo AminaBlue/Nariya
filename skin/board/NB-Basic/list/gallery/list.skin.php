@@ -65,11 +65,6 @@ $list_cnt = count($list);
 			// 현재 글
 			$li_css = ($wr_id == $list[$i]['wr_id']) ? ' bg-light' : '';
 
-			// 전체 보기에서 분류 출력하기
-			if(!$sca && $is_category && $list[$i]['ca_name']) {
-				$list[$i]['subject'] = '['.$list[$i]['ca_name'].'] '.$list[$i]['subject'];
-			}
-
 			// 현재 글
 			if($wr_id == $list[$i]['wr_id']) {
 				$li_css = ' bg-light';
@@ -159,7 +154,7 @@ $list_cnt = count($list);
 
 			// 전체 보기에서 분류 출력하기
 			if(!$sca && $is_category && $list[$i]['ca_name']) {
-				$list[$i]['subject'] = '['.$list[$i]['ca_name'].'] '.$list[$i]['subject'];
+				$list[$i]['subject'] = $list[$i]['ca_name'].' <span class="na-bar"></span> '.$list[$i]['subject'];
 			}
 
 			// 새 글, 현재 글 스타일

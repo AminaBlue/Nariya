@@ -55,7 +55,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++) { ?>
 	<?php } ?>
 	<div class="col-md-4 na-col">
 		<!-- 위젯 시작 { -->
-		<h3 class="h3 en">
+		<h3 class="h3 f-lg en">
 			<a href="<?php echo get_pretty_url($row['bo_table']); ?>">
 				<span class="pull-right more-plus">+</span>
 				<?php echo get_text($row['bo_subject']) ?>

@@ -121,22 +121,22 @@ echo '<div id="faq_hhtml">'.conv_content($fm['fm_head_html'], 1).'</div>';
 			Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page
 		</div>
 		<div class="btn-group" role="group">
+			<?php if($admin_href) { ?>
+				<a href="<?php echo $admin_href ?>" title="FAQ 수정" class="btn btn_admin nofocus py-1" role="button">
+					<i class="fa fa-cog fa-spin fa-md" aria-hidden="true"></i>
+					<span class="sr-only">FAQ 수정</span>
+				</a>
+			<?php } ?>
 			<?php if($admin_href || IS_DEMO) { ?>
-				<?php if($admin_href) { ?>
-					<a href="<?php echo $admin_href ?>" title="FAQ 수정" class="btn btn_admin nofocus py-1" role="button">
-						<i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i>
-						<span class="sr-only">FAQ 수정</span>
-					</a>
-				<?php } ?>
 				<?php if(is_file($faq_skin_path.'/setup.skin.php')) { ?>
-					<a href="<?php echo na_setup_href('faq') ?>" title="스킨설정" class="btn btn_b01 btn-setup nofocus py-1">
-						<i class="fa fa-magic" aria-hidden="true"></i>
-						<span class="sr-only">스킨설정</span>
+					<a href="<?php echo na_setup_href('faq') ?>" title="스킨 설정" class="btn btn_b01 btn-setup nofocus py-1">
+						<i class="fa fa-cogs fa-md" aria-hidden="true"></i>
+						<span class="sr-only">스킨 설정</span>
 					</a>
 				<?php } ?>
 			<?php } ?>
 			<button type="button" class="btn btn_b01 nofocus py-1" title="FAQ 검색" data-toggle="collapse" data-target="#faq_search" aria-expanded="false" aria-controls="faq_search">
-				<i class="fa fa-search" aria-hidden="true"></i>
+				<i class="fa fa-search fa-md" aria-hidden="true"></i>
 				<span class="sr-only">FAQ 검색</span>
 			</button>
 		</div>
@@ -144,13 +144,16 @@ echo '<div id="faq_hhtml">'.conv_content($fm['fm_head_html'], 1).'</div>';
 </div>
 <!-- } 페이지 정보 및 버튼 끝 -->
 
-<div id="faq_wrap" class="faq_<?php echo $fm_id; ?> border-<?php echo $head_color ?> mb-4">
+<!-- 목록 헤드 -->
+<div class="w-100 mb-0 bg-<?php echo $head_color ?>" style="height:4px;"></div>
+
+<div id="faq_wrap" class="faq_<?php echo $fm_id; ?> mb-4">
     <?php // FAQ 내용
     if( count($faq_list) ){
     ?>
     <section id="faq_con">
         <h2 class="sr-only"><?php echo $g5['title']; ?> 목록</h2>
-        <ul>
+        <ul class="na-flex">
             <?php
 			$i=0;
             foreach($faq_list as $key=>$v){

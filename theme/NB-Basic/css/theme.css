@@ -397,6 +397,13 @@ hr.hr::after {
 	font-weight:bold;
 }
 
+/* Pagenation */
+.page-link,
+.page-link:hover,
+.page-link:focus {
+    color: #333;
+}
+
 /* 라운드 스타일 */
 .na-round,
 .view_image img,

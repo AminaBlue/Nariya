@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-#faq_wrap {
-	border-top:4px solid #333;
-}
-
 #faq_wrap img { 
 	max-width:100%;
 }

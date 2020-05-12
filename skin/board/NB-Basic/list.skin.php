@@ -85,23 +85,23 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 				<div class="btn-group" role="group">
 					<?php if ($admin_href) { ?>
 						<a href="<?php echo $admin_href ?>" class="btn btn_admin nofocus py-1" title="관리자" role="button">
-							<i class="fa fa-cog fa-spin fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-cog fa-spin fa-md" aria-hidden="true"></i>
 							<span class="sr-only">관리자</span>
 						</a>
 					<?php } ?>
 					<?php if ($rss_href) { ?>
 						<a href="<?php echo $rss_href ?>" class="btn btn_b01 nofocus py-1" title="RSS">
-							<i class="fa fa-rss fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-rss fa-md" aria-hidden="true"></i>
 							<span class="sr-only">RSS</span>
 						</a>
 					<?php } ?>
 					<button type="button" class="btn btn_b01 nofocus py-1" title="게시판 검색" data-toggle="collapse" data-target="#bo_search" aria-expanded="false" aria-controls="bo_search">
-						<i class="fa fa-search fa-lg" aria-hidden="true"></i>
+						<i class="fa fa-search fa-md" aria-hidden="true"></i>
 						<span class="sr-only">게시판 검색</span>
 					</button>
 					<?php if ($write_href) { ?>
 						<a href="<?php echo $write_href ?>" class="btn btn_b01 nofocus py-1" title="글쓰기" role="button">
-							<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-pencil fa-md" aria-hidden="true"></i>
 							<span class="sr-only">글쓰기</span>
 						</a>
 					<?php } ?>
@@ -113,26 +113,26 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 							<div class="btn-group-vertical">
 								<?php if($is_skin_setup) { ?>
 									<a href="<?php echo na_setup_href('board', $bo_table) ?>" class="btn btn-primary btn-setup py-2" role="button">
-										<i class="fa fa-magic" aria-hidden="true"></i> 스킨설정
+										<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> 스킨설정
 									</a>
 								<?php } ?>
 								<?php if ($is_checkbox) { ?>
 									<a href="javascript:;" class="btn btn-primary py-2" role="button">
 										<label class="p-0 m-0" for="allCheck">
-											<i class="fa fa-check-square-o" aria-hidden="true"></i> 
+											<i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 
 											전체선택						
 										</label>
 									</a>
 									<button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-trash-o" aria-hidden="true"></i> 
+										<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> 
 										선택삭제
 									</button>
 									<button type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-files-o" aria-hidden="true"></i> 
+										<i class="fa fa-files-o fa-fw" aria-hidden="true"></i> 
 										선택복사
 									</button>
 									<button type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-arrows" aria-hidden="true"></i>
+										<i class="fa fa-arrows fa-fw" aria-hidden="true"></i>
 										선택이동
 									</button>
 								<?php } ?>

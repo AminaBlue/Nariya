@@ -75,18 +75,18 @@ $view_subject = get_text($view['wr_subject']);
 					<?php ob_start(); ?>
 					<div class="btn-group" role="group">
 						<a href="<?php echo $list_href ?>" class="btn btn_b01 nofocus py-1" title="목록" role="button">
-							<i class="fa fa-list fa-lg" aria-hidden="true"></i>
+							<i class="fa fa-list fa-md" aria-hidden="true"></i>
 							<span class="sr-only">목록</span>
 						</a>
 						<?php if ($reply_href) { ?>
 							<a href="<?php echo $reply_href ?>" class="btn btn_b01 nofocus py-1" title="답변" role="button">
-								<i class="fa fa-reply fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-reply fa-md" aria-hidden="true"></i>
 								<span class="sr-only">답변</span>
 							</a>
 						<?php } ?>
 						<?php if ($write_href) { ?>
 							<a href="<?php echo $write_href ?>" class="btn btn_b01 nofocus py-1" title="글쓰기" role="button">
-								<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+								<i class="fa fa-pencil fa-md" aria-hidden="true"></i>
 								<span class="sr-only">글쓰기</span>
 							</a>
 						<?php } ?>
@@ -98,31 +98,31 @@ $view_subject = get_text($view['wr_subject']);
 								<div class="btn-group-vertical">
 								<?php if ($update_href) { ?>
 									<a href="<?php echo $update_href ?>" class="btn btn-primary py-2" role="button">
-										<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+										<i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>
 										글수정
 									</a>
 								<?php } ?>
 								<?php if ($delete_href) { ?>
 									<a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;" class="btn btn-primary py-2" role="button">
-										<i class="fa fa-trash-o" aria-hidden="true"></i>
+										<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
 										글삭제
 									</a>
 								<?php } ?>
 								<?php if ($copy_href) { ?>
 									<a href="<?php echo $copy_href ?>" onclick="board_move(this.href); return false;" class="btn btn-primary py-2" role="button">
-										<i class="fa fa-files-o" aria-hidden="true"></i>
+										<i class="fa fa-files-o fa-fw" aria-hidden="true"></i>
 										글복사		
 									</a>
 								<?php } ?>
 								<?php if ($move_href) { ?>
 									<a href="<?php echo $move_href ?>" onclick="board_move(this.href); return false;" class="btn btn-primary py-2" role="button">
-										<i class="fa fa-arrows" aria-hidden="true"></i>
+										<i class="fa fa-arrows fa-fw" aria-hidden="true"></i>
 										글이동
 									</a>
 								<?php } ?>
 								<?php if ($search_href) { ?>
 									<a href="<?php echo $search_href ?>" class="btn btn-primary py-2" role="button">
-										<i class="fa fa-search" aria-hidden="true"></i>
+										<i class="fa fa-search fa-fw" aria-hidden="true"></i>
 										글검색
 									</a>
 								<?php } ?>

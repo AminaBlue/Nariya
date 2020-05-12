@@ -42,8 +42,6 @@ if(is_dir(G5_PATH.'/DEMO') && !defined('G5_IS_ADMIN')) {
 	$config['cf_search_skin'] = 'NB-Basic'; //검색 스킨
 	$config['cf_connect_skin'] = 'NB-Basic'; //접속자 스킨
 	$config['cf_faq_skin'] = 'NB-Basic'; //FAQ 스킨
-	$demo_config['qa_skin'] = 'NB-Basic'; //1:1문의 스킨
-	$demo_config['co_skin'] = 'NB-Basic'; //내용관리 스킨
 }
 
 // 필수 : 나리야 로드

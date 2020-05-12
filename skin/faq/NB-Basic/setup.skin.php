@@ -12,7 +12,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 				<div class="table-responsive">
 					<table class="table table-bordered mb-0">
 					<tbody>
-					<tr class="active">
+					<tr class="bg-light">
 						<th class="text-center nw-c1">구분</th>
 						<th class="text-center nw-c2">사용</th>
 						<th class="text-center">비고</th>

@@ -2,51 +2,75 @@
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 ?>
 
-<section id="bo_v_ans_form">
-    <?php if($is_admin) { // 관리자이면 답변등록 ?>
+<section id="bo_v_ans_form" class="mb-3 py-3 pb-4 border-top border-bottom">
 
-    <form name="fanswer" method="post" action="./qawrite_update.php" onsubmit="return fwrite_submit(this);" autocomplete="off">
+    <?php 
+	// 관리자이면 답변등록 
+	if($is_admin) { 
+		// 첨부파일
+		na_script('fileinput');
+	?>
+    <form name="fanswer" method="post" action="./qawrite_update.php" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" autocomplete="off" class="px-3 px-sm-0">
     <input type="hidden" name="qa_id" value="<?php echo $view['qa_id']; ?>">
     <input type="hidden" name="w" value="a">
     <input type="hidden" name="sca" value="<?php echo $sca ?>">
     <input type="hidden" name="stx" value="<?php echo $stx; ?>">
     <input type="hidden" name="page" value="<?php echo $page; ?>">
-    <?php
-    $option = '';
-    $option_hidden = '';
-
-    if ($is_dhtml_editor) {
-        $option_hidden .= '<input type="hidden" name="qa_html" value="1">';
-    } else {
-        $option .= "\n".'<label class="checkbox-inline pull-right"><input type="checkbox" id="qa_html" name="qa_html" onclick="html_auto_br(this);" value="'.$html_value.'" '.$html_checked.'> HTML</label>';
-    }
-
-    echo $option_hidden;
-    ?>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<?php echo $option ?>
-			<h3 class="panel-title">
-				<i class="fa fa-comment"></i> Answer
-			</h3>
+		<div class="row mx-n2">
+			<div class="col-sm-9 px-2">
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">답변 제목</span>
+					</div>	
+					<input type="text" name="qa_subject" value="답변 드립니다." id="qa_subject" required class="form-control required" maxlength="255">
+				</div>
+			</div>
+			<?php if ($is_dhtml_editor) { ?>
+				<input type="hidden" name="qa_html" value="1">
+			<?php } else { ?>
+				<div class="col-sm-3 px-2">
+					<div class="custom-control custom-checkbox mb-2 mt-0 mt-sm-1 ">
+						<input type="checkbox" name="qa_html" value="<?php echo $html_value ?>" id="qa_html" onclick="html_auto_br(this);" class="custom-control-input" <?php echo $html_checked ?>>
+						<label class="custom-control-label" for="qa_html"><span>HTML</span></label>
+					</div>
+				</div>
+			<?php } ?>
 		</div>
-		<div class="panel-body">
-	
-			<div class="form-group">
-				<label class="sound_only" for="qa_subject">제목</label>
-				<input type="text" name="qa_subject" value="답변 드립니다." id="qa_subject" required class="form-control required" placeholder="제목" maxlength="255">
+
+		<div class="form-group mb-3">
+			<?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
+
+			<?php if ($is_dhtml_editor) { ?>
+				<style> #qa_content { border:0; display:none; } </style>
+			<?php } else { ?>
+				<script> $("#qa_content").hide().addClass("form-control").show(); </script>
+			<?php } ?>
+		</div>
+		<div class="form-group f-sm mb-4">
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+					<label class="input-group-text" for="bf_file1">파일 1</label>
+				</div>
+				<div class="custom-file">
+					<input type="file" name="bf_file[1]" class="custom-file-input" title="파일 용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" id="bf_file1">
+					<label class="custom-file-label" for="bf_file1" data-browse="선택"></label>
+				</div>
 			</div>
 
-			<div class="form-group">
-				<?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
-			</div>
-
-			<div class="text-center">
-				<button type="submit" id="btn_submit" accesskey="s" class="btn btn-<?php echo $color ?>">답변등록</button>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<label class="input-group-text" for="bf_file2">파일 2</label>
+				</div>
+				<div class="custom-file">
+					<input type="file" name="bf_file[2]" class="custom-file-input" title="파일 용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" id="bf_file2">
+					<label class="custom-file-label" for="bf_file2" data-browse="선택"></label>
+				</div>
 			</div>
 		</div>
-	</div>
 
+		<div class="text-center">
+			<button type="submit" id="btn_submit" accesskey="s" class="btn btn-primary">답변등록</button>
+		</div>
     </form>
 
     <script>
@@ -103,35 +127,37 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 
         return true;
     }
-	$(function(){
-		$("#qa_content").addClass("form-control");
-	});
     </script>
     <?php } else { ?>
-		<p id="ans_msg" class="well text-center">문의에 대한 답변을 준비 중입니다.</p>
+		<div id="ans_msg" class="px-3 pt-2 text-center">문의에 대한 답변을 준비 중입니다.</div>
     <?php } ?>
 </section>
 
-<div class="tr">
-	<div class="td bo_prev_next text-left">
-	<?php if ($prev_href) { ?>
-		<a href="<?php echo $prev_href ?>" class="btn btn-sm btn-white">
-			<i class="fa fa-chevron-left light" aria-hidden="true"></i>
-			이전
-		</a>
-	<?php } ?>
-	</div>
-	<div class="td text-center">
-		<a href="<?php echo $list_href ?>" class="btn btn-sm btn-white">
-			목록
-		</a>  
-	</div>
-	<div class="td bo_prev_next text-right">
-	<?php if ($next_href) { ?>
-		<a href="<?php echo $next_href ?>" class="btn btn-sm btn-white">
-			다음
-			<i class="fa fa-chevron-right light" aria-hidden="true"></i>
-		</a>
-	<?php } ?>
+<div class="px-3 px-sm-0 pb-3">
+	<div class="na-table d-table w-100">
+		<div class="d-table-row">
+			<div class="d-table-cell nw-3 text-left">
+				<?php if ($prev_href) { ?>
+					<a href="<?php echo $prev_href ?>" class="btn btn_b01 nofocus float-left" title="이전 문의">
+						<i class="fa fa-chevron-left fa-md" aria-hidden="true"></i>
+						<span class="sr-only">이전 문의</span>
+					</a>
+				<?php } ?>
+			</div>
+			<div class="d-table-cell text-center">
+				<a href="<?php echo $list_href ?>" class="btn btn_b01 nofocus py-1" role="button" title="목록">
+					<i class="fa fa-list fa-md" aria-hidden="true"></i>
+					<span class="sr-only">목록</span>
+				</a>  
+			</div>
+			<div class="d-table-cell nw-3 text-right">
+				<?php if ($next_href) { ?>
+					<a href="<?php echo $next_href ?>" class="btn btn_b01 nofocus float-right" title="다음 문의">
+						<i class="fa fa-chevron-right fa-md" aria-hidden="true"></i>
+						<span class="sr-only">다음 문의</span>
+					</a>
+				<?php } ?>
+			</div>
+		</div>
 	</div>
 </div>

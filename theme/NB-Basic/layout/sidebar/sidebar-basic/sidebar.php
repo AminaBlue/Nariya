@@ -170,9 +170,10 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 					</a>
 				</div>
 				<div class="float-right">
-					<a href="<?php echo G5_BBS_URL ?>/register.php" class="bar-right">
+					<a href="<?php echo G5_BBS_URL ?>/register.php">
 						회원가입
 					</a>
+					<span class="na-bar"></span>
 					<a href="<?php echo G5_BBS_URL ?>/password_lost.php" class="win_password_lost">
 						정보찾기
 					</a>

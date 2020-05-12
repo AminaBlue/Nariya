@@ -80,7 +80,7 @@ $list_cnt = count($list);
 
 		// 전체 보기에서 분류 출력하기
 		if(!$sca && $is_category && $list[$i]['ca_name']) {
-			$list[$i]['subject'] = '['.$list[$i]['ca_name'].'] '.$list[$i]['subject'];
+			$list[$i]['subject'] = $list[$i]['ca_name'].' <span class="na-bar"></span> '.$list[$i]['subject'];
 		}
 
 		// 공지, 현재글 스타일 체크

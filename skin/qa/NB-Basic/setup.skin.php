@@ -5,129 +5,62 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 ?>
 <ul class="list-group">
 	<li class="list-group-item">
-
-		<div class="form-group">
-			<label class="col-sm-2 control-label">출력설정</label>
+		<div class="form-group row mb-0">
+			<label class="col-sm-2 col-form-label">목록 헤드</label>
 			<div class="col-sm-10">
-
 				<div class="table-responsive">
-					<table class="table table-bordered no-margin">
+					<table class="table table-bordered mb-0">
 					<tbody>
-					<tr class="active">
-						<th class="text-center col-xs-3">구분</th>
-						<th class="text-center col-xs-3">설정</th>
+					<tr class="bg-light">
+						<th class="text-center nw-c1">구분</th>
+						<th class="text-center nw-c2">설정</th>
 						<th class="text-center">비고</th>
 					</tr>
 					<tr>
-						<th class="text-center">
-							헤드스킨
-						</th>
-						<td class="text-center">
-							<select name="wset[head_skin]" class="form-control">
-								<option value="">기본헤드</option>
+					<td class="text-center">목록 헤드 스킨</td>
+					<td class="text-center">
+						<select name="wset[head_skin]" class="custom-select">
+							<option value="">기본 헤드</option>
 							<?php
 								$skinlist = na_file_list(NA_PATH.'/skin/head', 'css');
 								for ($k=0; $k<count($skinlist); $k++) {
 									echo "<option value=\"".$skinlist[$k]."\"".get_selected($wset['head_skin'], $skinlist[$k]).">".$skinlist[$k]."</option>\n";
 								} 
 							?>
-							</select>
-						</td>
-						<td class="text-muted">
-							&nbsp;
-						</td>
+						</select>
+					</td>
+					<td class="text-muted">
+						&nbsp;
+					</td>
 					</tr>
 					<tr>
-						<th class="text-center">
-							헤드컬러
-						</th>
-						<td class="text-center">
-							<select name="wset[head_color]" class="form-control">
-								<option value="">선택해 주세요</option>
-								<?php echo na_color_options($wset['head_color']);?>
-							</select>
-						</td>
-						<td class="text-muted">
-							헤드스킨이 "기본헤드"일 경우에만 적용됨
-						</td>
+					<td class="text-center">헤드 라인 컬러</td>
+					<td class="text-center">
+						<select name="wset[head_color]" class="custom-select">
+						<option value="">자동 컬러</option>
+						<?php echo na_color_options($wset['head_color']);?>
+						</select>
+					</td>
+					<td class="text-muted">
+						목록 헤드 및 상단 라인 컬러
+					</td>
 					</tr>
 					<tr>
-						<th class="text-center">
-							기본컬러
-						</th>
-						<td class="text-center">
-							<select name="wset[color]" class="form-control">
-								<option value="">선택해 주세요</option>
-								<?php echo na_color_options($wset['color']);?>
-							</select>
-						</td>
-						<td class="text-muted">
-							검색 아이콘, 페이지네이션 등
-						</td>
-					</tr>
-					</tbody>
-					</table>
-				</div>
-
-			</div>
-		</div>
-
-	</li>
-
-	<li class="list-group-item">
-		<div class="form-group">
-			<label class="col-sm-2 control-label">카테고리</label>
-			<div class="col-sm-10">
-				<div class="table-responsive">
-					<table class="table table-bordered no-margin">
-					<tbody>
-					<tr class="active">
-						<th class="text-center col-xs-3">기본</th>
-						<th class="text-center col-xs-3">1200px 이하</th>
-						<th class="text-center col-xs-2">992px 이하</th>
-						<th class="text-center col-xs-2">768px 이하</th>
-						<th class="text-center">480px 이하</th>
-					</tr>
-					<tr>
-					<td>
-						<div class="input-group">
-							<input name="wset[cw]" value="<?php echo ($wset['cw']) ? $wset['cw'] : 7; ?>" class="form-control">
-							<span class="input-group-addon">개</span>
+					<td class="text-center">검색창 보이기</td>
+					<td class="text-center">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="wset[search_open]" value="1"<?php echo get_checked('1', $wset['search_open'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+							<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"></label>
 						</div>
 					</td>
-					<td>
-						<div class="input-group">
-							<input name="wset[cwlg]" value="<?php echo ($wset['cwlg']) ? $wset['cwlg'] : 6; ?>" class="form-control">
-							<span class="input-group-addon">개</span>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<input name="wset[cwmd]" value="<?php echo ($wset['cwmd']) ? $wset['cwmd'] : 5; ?>" class="form-control">
-							<span class="input-group-addon">개</span>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<input name="wset[cwsm]" value="<?php echo ($wset['cwsm']) ? $wset['cwsm'] : 4; ?>" class="form-control">
-							<span class="input-group-addon">개</span>
-						</div>
-					</td>
-					<td>
-						<div class="input-group">
-							<input name="wset[cwxs]" value="<?php echo ($wset['cwxs']) ? $wset['cwxs'] : 3; ?>" class="form-control">
-							<span class="input-group-addon">개</span>
-						</div>
+					<td class="text-muted">
+						목록 상단에 검색창이 보이도록 출력함
 					</td>
 					</tr>
 					</tbody>
 					</table>
 				</div>
-				<p class="help-block">
-					반응구간별 카테고리 가로갯수는 최대 12까지 입력가능
-				</p>
 			</div>
 		</div>
 	</li>
-
 </ul>

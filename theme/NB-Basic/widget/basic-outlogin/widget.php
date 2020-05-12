@@ -25,7 +25,8 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 				</h5>
 				<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
 				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
-					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="bar-left">
+					<span class="bar-left"></span>
+					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">
 						관리자
 					</a>
 				<?php } ?>
@@ -123,7 +124,8 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 
 		<form id="basic_outlogin" name="basic_outlogin" method="post" action="<?php echo G5_HTTPS_BBS_URL ?>/login_check.php" autocomplete="off">
 		<input type="hidden" name="url" value="<?php echo $urlencode; ?>">
-			<div class="form-group">	
+			<div class="form-group">
+				<label for="outlogin_mb_id" class="sr-only">아이디<strong class="sr-only"> 필수</strong></label>						
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fa fa-user text-muted"></i></span>
@@ -131,7 +133,8 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 					<input type="text" name="mb_id" id="outlogin_mb_id" class="form-control required" placeholder="아이디">
 				</div>
 			</div>
-			<div class="form-group">	
+			<div class="form-group">
+				<label for="outlogin_mb_password" class="sr-only">비밀번호<strong class="sr-only"> 필수</strong></label>									
 				<div class="input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
@@ -155,9 +158,10 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 					</div>
 				</div>
 				<div class="float-right">
-					<a href="<?php echo G5_BBS_URL ?>/register.php" class="bar-right">
+					<a href="<?php echo G5_BBS_URL ?>/register.php">
 						회원가입
 					</a>
+					<span class="na-bar"></span>
 					<a href="<?php echo G5_BBS_URL ?>/password_lost.php" class="win_password_lost">
 						정보찾기
 					</a>

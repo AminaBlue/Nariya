@@ -37,7 +37,7 @@ for ($i=0; $i < 12; $i++) { ?>
 	<?php } ?>
 	<div class="col-md-4 na-col">
 		<!-- 위젯 시작 { -->
-		<h3 class="h3 en">
+		<h3 class="h3 f-lg en">
 			<a href="<?php echo get_pretty_url('video'); ?>">
 				<span class="pull-right more-plus"></span>
 				게시판

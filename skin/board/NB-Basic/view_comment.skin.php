@@ -164,9 +164,11 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 						</ul>
 					</div>
 					<div class="col-md-3 pt-3">
-						<button class="btn btn-basic btn-block" onclick="na_comment_new('viewcomment','<?php echo $comment_url ?>','<?php echo $total_count ?>');">
-							새로운 댓글 확인
-						</button>
+						<div class="px-3 px-sm-0">
+							<button class="btn btn-basic btn-block" onclick="na_comment_new('viewcomment','<?php echo $comment_url ?>','<?php echo $total_count ?>');">
+								새로운 댓글 확인
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -270,32 +272,32 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 					<li class="text-nowrap">
 						<div class="btn-group" role="group">
 							<button type="button" class="btn nofocus p-0 mx-2" title="이모티콘" onclick="na_clip('emo');">
-								<i class="fa fa-smile-o fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-smile-o fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">이모티콘</span>
 							</button>
 							<button type="button" class="btn nofocus p-0 mx-2" title="폰트어썸 아이콘" onclick="na_clip('fa');">
-								<i class="fa fa-font-awesome fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-font-awesome fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">폰트어썸 아이콘</span>
 							</button>
 							<button type="button" class="btn nofocus p-0 mx-2" title="동영상" onclick="na_clip('video');">
-								<i class="fa fa-youtube-play fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-youtube-play fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">동영상</span>
 							</button>
 							<button type="button" class="btn nofocus p-0 mx-2" title="지도" onclick="na_clip('map');">
-								<i class="fa fa-map-marker fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-map-marker fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">지도동영상</span>
 							</button>
 							<button type="button" class="btn nofocus d-none d-sm-block p-0 mx-2" title="댓글창 늘이기" onclick="na_textarea('wr_content','down');">
-								<i class="fa fa-plus-circle fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-plus-circle fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">댓글창 늘이기</span>
 							</button>
 							<button type="button" class="btn nofocus d-none d-sm-block p-0 mx-2" title="댓글창 줄이기" onclick="na_textarea('wr_content','up');">
-								<i class="fa fa-minus-circle fa-lg text-muted" aria-hidden="true"></i>
+								<i class="fa fa-minus-circle fa-md text-black-50" aria-hidden="true"></i>
 								<span class="sr-only">댓글창 줄이기</span>
 							</button>
-							<button type="button" class="btn nofocus p-0 ml-2" title="새댓글 작성" onclick="comment_box('','c');">
-								<i class="fa fa-refresh fa-lg text-muted" aria-hidden="true"></i>
-								<span class="sr-only">새댓글 작성</span>
+							<button type="button" class="btn nofocus p-0 ml-2" title="새 댓글 작성" onclick="comment_box('','c');">
+								<i class="fa fa-refresh fa-md text-black-50" aria-hidden="true"></i>
+								<span class="sr-only">새 댓글 작성</span>
 							</button>
 						</div>
 					</li>
@@ -309,7 +311,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 			</form>
 		</aside>
 	<?php } else { ?>
-		<div id="bo_vc_login" class="alert alert-dark bg-light border mt-3 mb-0 py-4 text-center f-sm" role="alert">
+		<div id="bo_vc_login" class="alert alert-dark bg-light border mb-0 py-4 text-center f-sm" role="alert">
 			<?php if($is_guest) { ?>
 				<a href="<?php echo G5_BBS_URL ?>/login.php?wr_id=<?php echo $wr_id.$qstr ?>&amp;url=<?php echo urlencode(get_pretty_url($bo_table, $wr_id, $qstr).'#bo_vc_w') ?>">로그인한 회원만 댓글 등록이 가능합니다.</a>
 			<?php } else { ?>

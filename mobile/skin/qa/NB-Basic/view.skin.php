@@ -2,120 +2,121 @@
 if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 
+// 등록자 이름과 닉네임
+$mb = get_member($view['mb_id'], 'mb_nick, mb_name');
+
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 
 // 스킨 설정값
 $wset = na_skin_config('qa');
 
-$color = (isset($wset['color']) && $wset['color']) ? $wset['color'] : 'primary';
 ?>
 
 <!-- 게시물 읽기 시작 { -->
 
-<article id="bo_v">
-    <header>
-		<h2 id="bo_v_title">
+<article id="bo_v" class="mb-4">
+	<header class="font-weight-normal mb-2 px-3 px-sm-0">
+		<?php if ($view['category']) { ?>
+			<div class="f-sm text-muted">
+				<span class="sr-only">분류</span>
+				<?php echo $view['category'] ?>
+			</div>
+		<?php } ?>
+		<h1 id="bo_v_title">
             <?php echo $view['subject']; // 글제목 출력 ?>
-        </h2>
+        </h1>
     </header>
 
-    <section id="bo_v_info">
-        <h3 class="sound_only">페이지 정보</h3>
-		<div class="profile-info f-small">
-			<div class="pull-left">
-				<span class="sound_only">작성자</span>
-				<?php echo na_name_photo($view['mb_id'], get_sideview($view['mb_id'], $view['qa_name'], $view['qa_email'], '')) ?>
-			</div>
-			<div class="pull-right text-muted">
-				<span class="sound_only">작성일</span>
-				<i class="fa fa-clock-o" aria-hidden="true"></i> 
-				<time datetime="<?php echo date('Y-m-d\TH:i:s+09:00', strtotime($view['qa_datetime'])) ?>"><?php echo date("Y.m.d H:i", strtotime($view['qa_datetime'])) ?></time>
-			</div>
-			<div class="clearfix"></div>
+	<section id="bo_v_info" class="f-sm font-weight-normal mb-3">
+		<div class="clearfix bg-light border-top border-bottom text-muted px-3 py-2">
+			<span class="sr-only">작성자</span>
+			<?php echo na_name_photo($view['mb_id'], get_sideview($view['mb_id'], get_text($mb['mb_nick']), $view['qa_email'], '')) ?>
+			(<?php echo get_text($mb['mb_name']) ?>)
 		</div>
 
-		<div class="content-info f-small">
-		    <?php if($view['email'] || $view['hp']) { ?>
-        	<div class="pull-left">
-	            <?php if($view['email']) { ?>
-				<span class="space-right">
-		            <span class="sound_only">이메일</span>
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					<?php echo $view['email']; ?>
-				</span>
+		<?php if($view['email'] || $view['hp']) { ?>
+			<div class="clearfix border-bottom text-muted px-3 py-2">
+				<?php if ($view['email']) { ?>
+					<span class="mr-4">
+						<span class="sr-only">이메일</span>
+						<i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
+						<?php echo $view['email'] ?>
+					</span>
 				<?php } ?>
-	            <?php if($view['hp']) { ?>
-				<span class="space-right">
-		            <span class="sound_only">휴대폰</span>
-					<i class="fa fa-phone" aria-hidden="true"></i>
-					<?php echo $view['hp']; ?>
-				</span>
+				<?php if ($view['hp']) { ?>
+					<span class="sr-only">연락처</span>
+					<i class="fa fa-phone fa-fw" aria-hidden="true"></i>
+					<?php echo $view['hp'] ?>
 				<?php } ?>
 			</div>
-	        <?php } ?>
-        	<div class="pull-right">
-				<!-- 게시물 상단 버튼 시작 { -->
-				<div id="bo_v_btn">
-					<?php
-					ob_start();
-					?>
-					<ul class="bo_v_com">
-						<li><a href="<?php echo $list_href ?>" class="btn_b01 btn" title="목록"><i class="fa fa-list" aria-hidden="true"></i><span class="sound_only">목록</span></a></li>
-						<?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b01 btn" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i><span class="sound_only">글쓰기</span></a></li><?php } ?>
+		<?php } ?>
+		<?php if ($view['download_count']) { ?>
+			<div class="clearfix border-bottom text-muted px-3 py-2">
+				<?php for ($i=0; $i<$view['download_count']; $i++) { // 가변 파일 ?>
+					<i class="fa fa-download fa-fw" aria-hidden="true"></i>	
+					<a href="<?php echo $view['download_href'][$i] ?>" class="view_file_download mr-3">
+						<?php echo $view['download_source'][$i] ?>
+					</a>	
+				<?php } ?>
+			</div>
+		<?php } ?>
+
+		<div class="clearfix f-sm text-muted pl-3 pt-2 pr-2">
+	        <h3 class="sr-only">작성자 정보</h3>
+			<ul class="d-flex align-items-center">
+				<li class="pr-3">
+					<span class="sr-only">작성일</span>
+					<time class="f-xs" datetime="<?php echo date('Y-m-d\TH:i:s+09:00', strtotime($view['qa_datetime'])) ?>"><?php echo date("Y.m.d H:i", strtotime($view['qa_datetime'])) ?></time>
+				</li>
+				<li id="bo_v_btn" class="flex-grow-1 text-right">
+					<!-- 게시물 상단 버튼 시작 { -->
+					<?php ob_start(); ?>
+					<div class="btn-group" role="group">
+						<a href="<?php echo $list_href ?>" class="btn btn_b01 nofocus py-1" title="목록" role="button">
+							<i class="fa fa-list fa-md" aria-hidden="true"></i>
+							<span class="sr-only">목록</span>
+						</a>
+						<?php if ($write_href) { ?>
+							<a href="<?php echo $write_href ?>" class="btn btn_b01 nofocus py-1" title="문의 쓰기" role="button">
+								<i class="fa fa-pencil fa-md" aria-hidden="true"></i>
+								<span class="sr-only">문의 쓰기</span>
+							</a>
+						<?php } ?>
 						<?php if ($update_href || $delete_href) { ?>
-						<li>
-							<button type="button" class="btn_more_opt is_view_btn btn_b01 btn" title="게시판 읽기 옵션"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound_only">게시판 읽기 옵션</span></button>
-							<ul class="more_opt is_view_btn">
+							<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시물 옵션">
+								<span class="sr-only">게시물 옵션</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right">
+								<div class="btn-group-vertical">
 								<?php if ($update_href) { ?>
-								<li>
-									<a href="<?php echo $update_href ?>" title="수정">
+									<a href="<?php echo $update_href ?>" class="btn btn-primary py-2" role="button">
+										<i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i>
 										글수정
 									</a>
-								</li>
 								<?php } ?>
 								<?php if ($delete_href) { ?>
-								<li>
-									<a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;" title="삭제">
+									<a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;" class="btn btn-primary py-2" role="button">
+										<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
 										글삭제
 									</a>
-								</li>
-							<?php } ?>
-							</ul>
-						</li>
+								<?php } ?>
 						<?php } ?>
-					</ul>
-					<script>
-					$(function($){
-						// 게시판 보기 버튼 옵션
-						$(".btn_more_opt.is_view_btn").on("click", function(e) {
-							e.stopPropagation();
-							$(".more_opt.is_view_btn").toggle();
-						})
-		;
-						$(document).on("click", function (e) {
-							if(!$(e.target).closest('.is_view_btn').length) {
-								$(".more_opt.is_view_btn").hide();
-							}
-						});
-					});
-					</script>
+					</div>
 					<?php
 					$link_buttons = ob_get_contents();
 					ob_end_flush();
 					?>
-				</div>
-				<!-- } 게시물 상단 버튼 끝 -->
-			</div>
-			<div class="clearfix"></div>
+					<!-- } 게시물 상단 버튼 끝 -->
+				</li>
+			</ul>
 		</div>
     </section>
 
-
     <section id="bo_v_atc">
-        <h3 class="sound_only">본문</h3>
-
-		<div id="bo_v_con" class="f-content">
+        <h3 class="sr-only">본문</h3>
+        <!-- 본문 내용 시작 { -->
+        <div id="bo_v_con" class="mb-4 px-3">
 			<?php
 				// 파일 출력
 				if($view['img_count']) {
@@ -127,28 +128,10 @@ $color = (isset($wset['color']) && $wset['color']) ? $wset['color'] : 'primary';
 
 					echo "</div>\n";
 				}
+
 				echo na_content(get_view_thumbnail($view['content'], $qaconfig['qa_image_width']));
 			?>
 		</div>
-
-		<?php if($view['download_count']) { ?>
-		<!-- 첨부파일 시작 { -->
-		<section id="bo_v_file" class="f-small">
-			<h3 class="sound_only">첨부파일</h3>
-			<?php
-			// 가변 파일
-			for ($i=0; $i<$view['download_count']; $i++) {
-			?>
-				<p class="ellipsis light">
-					첨부파일 :	
-					<a href="<?php echo $view['download_href'][$i];  ?>" class="view_file_download">
-						<?php echo $view['download_source'][$i] ?>
-					</a>
-				</p>
-			<?php } ?>
-		</section>
-		<!-- } 첨부파일 끝 -->
-		<?php } ?>
 	</section>
     
     <?php
@@ -162,29 +145,27 @@ $color = (isset($wset['color']) && $wset['color']) ? $wset['color'] : 'primary';
     ?>
 
     <?php if($view['rel_count']) { ?>
-
-	<div class="h20"></div>
-
-	<section id="bo_v_rel">
-		<ul class="list-group f-small">
-			<li class="list-group-item bg-light">
-		        <b>연관질문</b>
-			</li>
-			<li class="list-group-item" style="border:0">
-				<ul class="bo_v_rel">
-				<?php for($i=0; $i<$view['rel_count']; $i++) { ?>
-				<li>
-					<span class="pull-right light">&nbsp; <?php echo $rel_list[$i]['date']; ?></span>
-					<a href="<?php echo $rel_list[$i]['view_href']; ?>">
-						<span class="light"><?php echo ($rel_list[$i]['qa_status']) ? '<span class="orangered">완료</span>' : '대기'; ?> |</span>
+		<section id="bo_v_rel" class="na-table mb-4">
+			<div class="bg-light px-3 py-2 py-md-2 border-top border-bottom">
+				<b>연관질문</b>
+			</div>
+			<ul>
+			<?php for($i=0; $i<$view['rel_count']; $i++) { ?>
+				<li class="px-3 py-2 py-md-2 border-bottom f-sm">
+					<a href="<?php echo $rel_list[$i]['view_href']; ?>" class="ellipsis">
+						<span class="float-right text-muted ml-2">
+							<?php echo $rel_list[$i]['date']; ?>
+						</span>
+						<span class="text-muted">
+							<?php echo ($rel_list[$i]['qa_status']) ? '<span class="orangered">완료</span>' : '대기'; ?>
+						</span>
+						<span class="bar-left"></span>
 						<?php echo $rel_list[$i]['subject']; ?>
 					</a>
 				</li>
-				<?php } ?>
-				</ul>
-            </li>
-        </ul>
-    </section>
+			<?php } ?>
+			</ul>
+		</section>
     <?php } ?>
 
 </article>

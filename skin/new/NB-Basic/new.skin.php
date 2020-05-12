@@ -157,24 +157,24 @@ if($wset['head_skin']) {
 				Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page
 			</div>
 			<div class="btn-group" role="group">
-				<button type="button" class="btn btn_b01 nofocus py-1" title="새 글 검색" data-toggle="collapse" data-target="#new_search" aria-expanded="false" aria-controls="new_search">
-					<i class="fa fa-search" aria-hidden="true"></i>
-					<span class="sound_only">새글 검색</span>
-				</button>
 				<?php if($is_admin || IS_DEMO) { ?>
 					<?php if(is_file($new_skin_path.'/setup.skin.php')) { ?>
 						<a href="<?php echo na_setup_href('new') ?>" title="스킨 설정" class="btn btn_b01 btn-setup nofocus py-1">
-							<i class="fa fa-magic" aria-hidden="true"></i></a>
-							<span class="sound_only">스킨설정</span>
+							<i class="fa fa-cogs fa-md" aria-hidden="true"></i></a>
+							<span class="sr-only">스킨 설정</span>
 						</a>
 					<?php } ?>
 				<?php } ?>
 				<?php if($is_admin) { ?>
-					<button type="submit" onclick="document.pressed=this.value" value="선택삭제" title="선택삭제" class="btn btn_b01 nofocus py-1">
-						<i class="fa fa-trash-o" aria-hidden="true"></i>				
-						<span class="sound_only">선택삭제</span>
+					<button type="submit" onclick="document.pressed=this.value" value="선택삭제" title="선택 삭제" class="btn btn_b01 nofocus py-1">
+						<i class="fa fa-trash-o fa-md" aria-hidden="true"></i>				
+						<span class="sr-only">선택 삭제</span>
 					</button>
 				<?php } ?>
+				<button type="button" class="btn btn_b01 nofocus py-1" title="새 글 검색" data-toggle="collapse" data-target="#new_search" aria-expanded="false" aria-controls="new_search">
+					<i class="fa fa-search fa-md" aria-hidden="true"></i>
+					<span class="sr-only">새글 검색</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -213,8 +213,9 @@ if($wset['head_skin']) {
 				$num = $total_count - ($page - 1) * $config['cf_page_rows'] - $i;
 
 				// 글 구분
+				$list[$i]['wr_subject'] = na_get_text($list[$i]['wr_subject']);
 				if($list[$i]['comment']) {
-					$list[$i]['wr_subject'] = '[댓글] '.$list[$i]['wr_subject'];
+					$list[$i]['wr_subject'] = '댓글 <span class="na-bar"></span> '.$list[$i]['wr_subject'];
 				}
 
 				// 아이콘
@@ -241,7 +242,7 @@ if($wset['head_skin']) {
 							<?php } ?>
 							<a href="<?php echo $list[$i]['href'] ?>" class="na-subject">
 								<?php echo $wr_icon ?>
-								<?php echo na_get_text($list[$i]['wr_subject']) ?>
+								<?php echo $list[$i]['wr_subject'] ?>
 							</a>
 							<?php if(!$list[$i]['comment'] && $list[$i]['wr_comment']) { ?>
 								<div class="na-info">
