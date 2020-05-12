@@ -676,7 +676,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 						</div>
 					</td>
 					<td class="text-muted">
-						&nbsp;
+						사이트 최대 너비
 					</td>
 					</tr>
 
@@ -780,6 +780,43 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					</td>
 					<td class="text-muted">
 						페이지 상단에 메뉴고정
+					</td>
+					</tr>
+
+					<tr>
+					<td class="text-center">
+						위젯 라인
+					</td>
+					<td class="text-center">
+						<?php if($mode == 'site') { //사이트 설정용 ?>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" name="pc[line]" value="1"<?php echo get_checked('1', $pc['line'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+								<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"></label>
+							</div>
+						<?php } else { ?>
+							<select name="pc[line]" class="custom-select">
+								<option value="">선택해 주세요.</option>
+								<option value="0"<?php echo get_selected('0', $pc['line']) ?>>사용안함</option>
+								<option value="1"<?php echo get_selected('1', $pc['line']) ?>>사용함</option>
+							</select>
+						<?php } ?>
+					</td>
+					<td class="text-center">
+						<?php if($mode == 'site') { //사이트 설정용 ?>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" name="mo[line]" value="1"<?php echo get_checked('1', $mo['line'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+								<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"></label>
+							</div>
+						<?php } else { ?>
+							<select name="mo[line]" class="custom-select">
+								<option value="">선택해 주세요.</option>
+								<option value="0"<?php echo get_selected('0', $mo['line']) ?>>사용안함</option>
+								<option value="1"<?php echo get_selected('1', $mo['line']) ?>>사용함</option>
+							</select>
+						<?php } ?>
+					</td>
+					<td class="text-muted">
+						리스트형 위젯에서 게시물간 구분선 출력
 					</td>
 					</tr>
 

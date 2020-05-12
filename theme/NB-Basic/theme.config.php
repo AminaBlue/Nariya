@@ -8,8 +8,9 @@ define('G5_THEME_DEVICE', '');
 
 $theme_config = array();
 
+/*
 $theme_config = array(
-    'set_default_skin'          => true,   // 기본환경설정의 최근게시물 등의 기본스킨 변경여부 true, false
+    'set_default_skin'          => false,   // 기본환경설정의 최근게시물 등의 기본스킨 변경여부 true, false
     'preview_board_skin'        => 'NB-Basic', // 테마 미리보기 때 적용될 기본 게시판 스킨
     'preview_mobile_board_skin' => 'basic', // 테마 미리보기 때 적용될 기본 모바일 게시판 스킨
     'cf_member_skin'            => 'NB-Basic', // 회원 스킨
@@ -31,6 +32,7 @@ $theme_config = array(
     'qa_skin'                   => 'NB-Basic', // 1:1문의 스킨
     'qa_mobile_skin'            => 'NB-Basic'  // 1:1문의 모바일 스킨
 );
+*/
 
 // 데모 사이트
 if(is_dir(G5_PATH.'/DEMO') && !defined('G5_IS_ADMIN')) {

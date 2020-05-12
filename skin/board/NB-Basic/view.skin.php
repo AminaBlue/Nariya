@@ -468,7 +468,7 @@ $(function() {
 <?php if($board['bo_use_sns']) { ?>
 <!-- SNS 공유창 시작 { -->
 <div class="modal fade" id="bo_snsModal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<ul class="list-group">
 			<li class="list-group-item bg-primary text-white border-0 rounded-0">
@@ -478,7 +478,7 @@ $(function() {
 				<h5><i class="fa fa-share-alt" aria-hidden="true"></i> SNS 공유</h5>
 			</li>
 			<li class="list-group-item border-0 rounded-0">
-				<div id="bo_v_sns_icon">
+				<div id="bo_v_sns_icon" class="m-auto">
 					<?php echo na_sns_share_icon('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], $view_subject, $view['seo_img']); ?>
 				</div>
 			</li>

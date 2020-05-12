@@ -181,6 +181,30 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					</td>
 					<td class="text-muted">기본값 : 225 - 0 또는 미 설정시 기본값 적용</td>
 					</tr>
+					<tr>
+					<td class="text-center">PC 간격</td>
+					<td class="text-center">
+						<div class="input-group">
+							<input type="text" name="wset[margin]" value="<?php echo $wset['margin'] ?>" class="form-control">
+							<div class="input-group-append">
+								<span class="input-group-text">px</span>
+							</div>
+						</div>
+					</td>
+					<td class="text-muted">기본값 : 12</td>
+					</tr>
+					<tr>
+					<td class="text-center">모바일 간격</td>
+					<td class="text-center">
+						<div class="input-group">
+							<input type="text" name="mo[margin]" value="<?php echo $mo['margin'] ?>" class="form-control">
+							<div class="input-group-append">
+								<span class="input-group-text">px</span>
+							</div>
+						</div>
+					</td>
+					<td class="text-muted">기본값 : 16</td>
+					</tr>
 					</tbody>
 					</table>
 				</div>

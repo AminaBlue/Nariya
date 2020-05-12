@@ -84,9 +84,9 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 				</div>
 
 				<div class="collapse" id="mymenu_sidebar">
-					<div class="clearfix px-3 py-2">
+					<div class="clearfix px-3 pt-3 mb-2">
 
-						<div class="d-flex align-items-center my-1">
+						<div class="d-flex align-items-center mb-1">
 							<div class="flex-grow-1">
 								<?php echo str_replace('sv_member', 'sv_member font-weight-bold', $member['sideview']); ?>
 							</div>
@@ -115,7 +115,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 							</div>
 						<?php } ?>
 
-						<ul class="row mx-n2">
+						<ul class="row mx-n1">
 							<?php if($config['cf_use_point']) { ?>
 								<li class="col-12 px-1">
 									<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point f-sm mb-2">
@@ -177,6 +177,31 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 						정보찾기
 					</a>
 				</div>
+			</div>
+		<?php } ?>
+
+		<?php if ($is_admin == 'super' || $member['is_auth'] || IS_DEMO) { ?>
+			<div class="d-md-none border-top px-3 py-2">
+				<div class="btn-group w-100">
+					<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+						<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="btn btn-basic btn-sm f-sm" role="button">
+							관리자
+						</a>
+					<?php } ?>
+					<?php if($is_admin == 'super' || IS_DEMO) { ?>
+						<a href="javascript:;" class="btn btn-basic btn-sm f-sm" title="테마 설정" data-toggle="modal" data-target="#theme_menu" role="button">
+							테마
+						</a>
+						<a href="javascript:;" class="btn btn-basic btn-sm f-sm widget-setup sidebar-close" title="위젯 설정" role="button">
+							위젯
+						</a>
+						<?php if(!$is_index) { // 인덱스가 아닌 경우 ?>
+							<a href="<?php echo NA_THEME_ADMIN_URL ?>/page_setup.php?pid=<?php echo urlencode($pset['pid']) ?>" class="btn btn-basic btn-sm btn-setup f-sm" title="페이지 설정" role="button">
+								페이지
+							</a>
+						<?php } ?>
+					<?php } ?>
+				</div>	
 			</div>
 		<?php } ?>
 

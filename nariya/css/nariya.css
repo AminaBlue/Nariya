@@ -694,7 +694,6 @@ img.light-circle {
 }
 .sly-tab .d-flex {
 	border-left:1px solid #e5e5e5;
-	z-index:2;
 }
 .sly-tab li a {
 	display:block;

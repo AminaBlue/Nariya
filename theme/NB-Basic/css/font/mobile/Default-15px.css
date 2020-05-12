@@ -59,3 +59,10 @@ body {
 	font-weight:bold;
 	margin-bottom:0.25rem !important;
 }
+
+/* 위젯 목록 라인 */
+.is-line .na-list li {
+	padding-bottom:0.25rem;
+	margin-bottom:0.25rem;
+	border-bottom:1px solid #efefef;
+}

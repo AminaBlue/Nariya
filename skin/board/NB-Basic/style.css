@@ -43,21 +43,12 @@
 
 /* 게시판 읽기 : SNS 공유 */
 #bo_v_sns_icon { 
-	margin:5px auto -5px; 
-	text-align:center; 
+	margin:-5px auto; 
 }
 #bo_v_sns_icon img { 
-	width:50px; 
+	width:40px; 
 	border-radius:50%; 
-}
-#bo_v_sns_icon a { 
-	display:inline-block; 
-	margin:0 4px 10px; 
-}
-@media all and (max-width:575px) {
-	.responsive #bo_v_sns_icon img { 
-		margin:0 10px 10px; 
-	}
+	margin:5px;
 }
 
 /* 게시판 댓글 : 목록 */

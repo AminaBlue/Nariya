@@ -81,3 +81,10 @@ body {
 .custom-switch .custom-control-label::after {
 	margin-top:2px;
 }
+
+/* 위젯 목록 라인 */
+.is-line .na-list li {
+	padding-bottom:0.25rem;
+	margin-bottom:0.25rem;
+	border-bottom:1px solid #efefef;
+}

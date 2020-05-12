@@ -78,7 +78,7 @@ if($nt_wing_path)
 				</a>
 			</h3>
 			<hr class="hr"/>
-			<div class="px-3 px-sm-0 mt-3 mb-4">
+			<div class="px-3 px-sm-0 my-3">
 				<?php echo na_widget('basic-wr-gallery', 'gallery-1', 'bo_list=video ca_list=게임 rows=8'); ?>
 			</div>
 			<!-- } 위젯 끝-->

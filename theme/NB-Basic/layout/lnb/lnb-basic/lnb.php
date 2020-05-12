@@ -35,7 +35,7 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 						</div>
 						<?php 
 						// 멤버쉽 플러그인	
-						if(!IS_NA_XP) { 
+						if(IS_NA_XP) { 
 							$per = (int)(($member['as_exp'] / $member['as_max']) * 100);
 						?>
 							<div class="clearfix">
@@ -53,7 +53,7 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 							</div>
 						<?php } ?>
 
-						<ul class="row mx-n2">
+						<ul class="row mx-n1">
 							<?php if($config['cf_use_point']) { ?>
 								<li class="col-12 px-1">
 									<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point f-sm mb-2">
@@ -99,6 +99,13 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 					</div>
 				</div>
 			</li>
+			<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+				<li>
+					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">
+						관리자
+					</a>
+				</li>
+			<?php } ?>
 			<?php if(IS_NA_NOTI && isset($member['as_noti']) && $member['as_noti']) { // 알림 ?>
 				<li><a href="<?php echo G5_BBS_URL ?>/noti.php">
 					알림 <b class="orangered"><?php echo number_format($member['as_noti']) ?></b>

@@ -12,19 +12,18 @@ add_stylesheet('<link rel="stylesheet" href="'.$widget_url.'/widget.css">', 0);
 $wset['thumb_w'] = ($wset['thumb_w'] == "") ? 400 : (int)$wset['thumb_w'];
 $wset['thumb_h'] = ($wset['thumb_h'] == "") ? 225 : (int)$wset['thumb_h'];
 
+// 간격
+if($wset['margin'] == "") {
+	$wset['margin'] = (G5_IS_MOBILE) ? 16 : 12;
+}
+
 // 높이
-$height = ($wset['thumb_w'] && $wset['thumb_h']) ? ($wset['thumb_h'] / $wset['thumb_w']) * 100 : '56.25';
+$img_height = ($wset['thumb_w'] && $wset['thumb_h']) ? ($wset['thumb_h'] / $wset['thumb_w']) * 100 : '56.25';
 
 // 랜덤아이디
 $id = 'banner_'.na_rid(); 
 
 ?>
-<style>
-	#<?php echo $id;?> .img-wrap { 
-		padding-bottom:<?php echo $height; ?>%;
-	}
-</style>
-
 <ul id="<?php echo $id;?>" class="owl-carousel basic-banner">
 	<?php
 	$list = array();
@@ -66,7 +65,7 @@ $id = 'banner_'.na_rid();
 	for ($i=0; $i < $list_cnt; $i++) { 
 	?>
 		<li class="item">
-			<div class="img-wrap">
+			<div class="img-wrap" style="padding-bottom:<?php echo $img_height; ?>%;">
 				<div class="img-item">
 					<a href="<?php echo ($list[$i]['link']) ? $list[$i]['link'] : 'javascript:;';?>" target="<?php echo $list[$i]['target'] ?>">
 						<img src="<?php echo $list[$i]['img'] ?>" alt="<?php echo $list[$i]['alt'] ?>" class="na-round">
@@ -96,7 +95,7 @@ $(document).ready(function(){
 		autoplayHoverPause:true,
 		loop:true,
 		item:<?php echo ($wset['xl']) ? $wset['xl'] : 4; ?>,
-		margin:<?php echo (G5_IS_MOBILE) ? 16 : 12; ?>,
+		margin:<?php echo $wset['margin'] ?>,
 		nav:<?php echo ($wset['nav']) ? 'false' : 'true'; ?>,
 		dots:false,
 		navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],

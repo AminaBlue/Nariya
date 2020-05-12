@@ -20,10 +20,15 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 				<img src="<?php echo na_member_photo($member['mb_id']) ?>" class="rounded-circle">
 			</div>
 			<div class="flex-grow-1 pt-2">
-				<h5 class="hide-photo mb-2 en">
+				<h5 class="hide-photo mb-2">
 					<b style="letter-spacing:-1px;"><?php echo str_replace('sv_member', 'sv_member en', $member['sideview']); ?></b>
 				</h5>
 				<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
+				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
+					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>" class="bar-left">
+						관리자
+					</a>
+				<?php } ?>
 			</div>
 		</div>
 
@@ -47,7 +52,7 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 		</div>
 
 		<div class="collapse" id="mymenu_outlogin">
-			<div class="clearfix bg-light border px-3 py-2">
+			<div class="clearfix bg-light border px-3 pt-3 pb-1">
 				<?php 
 				// 멤버쉽 플러그인	
 				if(IS_NA_XP) { 
@@ -68,7 +73,7 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 					</div>
 				<?php } ?>
 
-				<ul class="row mx-n2">
+				<ul class="row mx-n1">
 					<?php if($config['cf_use_point']) { ?>
 						<li class="col-12 px-1">
 							<a href="<?php echo G5_BBS_URL ?>/point.php" target="_blank" class="btn btn-block btn-basic win_point f-sm mb-2">

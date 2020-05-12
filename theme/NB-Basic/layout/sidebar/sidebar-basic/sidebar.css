@@ -9,7 +9,7 @@
 	top: 0; 
 	width: 280px; 
 	position: fixed; 
-	z-index:99998;
+	z-index:500;
 	box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 
 	-webkit-box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 
 	-moz-box-shadow: 0 0 5px 5px rgba(50, 60, 70, 0.15); 	
@@ -94,7 +94,7 @@
 #nt_sidebar_mask { 
 	display:none; 
 	position:fixed; 
-	z-index:99997; 
+	z-index:499; 
 	background:rgba(0,0,0,0.75); 
 	left:0; 
 	top:0; 

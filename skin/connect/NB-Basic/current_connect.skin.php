@@ -29,7 +29,7 @@ if($wset['head_skin']) {
 				<?php if($is_admin == 'super' ||IS_DEMO) { ?>
 					<?php if(is_file($connect_skin_path.'/setup.skin.php')) { ?>
 						<a class="btn_b01 btn-setup float-right mr-3" href="<?php echo na_setup_href('connect') ?>" title="스킨설정">
-							<i class="fa fa-cogs" aria-hidden="true"></i>
+							<i class="fa fa-magic" aria-hidden="true"></i>
 							<span class="sound_only">스킨설정</span>
 						</a>
 					<?php } ?>

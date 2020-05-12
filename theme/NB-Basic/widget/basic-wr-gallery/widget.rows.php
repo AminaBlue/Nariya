@@ -1,6 +1,16 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; //개별 페이지 접근 불가
 
+// 이미지 영역 및 썸네일 크기 설정
+$wset['thumb_w'] = ($wset['thumb_w'] == "") ? 400 : (int)$wset['thumb_w'];
+$wset['thumb_h'] = ($wset['thumb_h'] == "") ? 225 : (int)$wset['thumb_h'];
+
+if($wset['thumb_w'] && $wset['thumb_h']) {
+	$img_height = ($wset['thumb_h'] / $wset['thumb_w']) * 100;
+} else {
+	$img_height = ($wset['thumb_d']) ? $wset['thumb_d'] : '56.25';
+}
+
 // 추출하기
 $wset['sideview'] = 1; // 이름 레이어 출력
 
@@ -53,8 +63,8 @@ for ($i=0; $i < $list_cnt; $i++) {
 	$thumb = ($wset['thumb_w']) ? na_thumb($img, $wset['thumb_w'], $wset['thumb_h']) : $img;
 
 ?>
-	<li class="float-left pr-3 pb-4">
-		<div class="img-wrap bg-light mb-2">
+	<li class="col px-2 pb-4">
+		<div class="img-wrap bg-light mb-2" style="padding-bottom:<?php echo $img_height ?>%;">
 			<div class="img-item">
 				<a href="<?php echo $list[$i]['href'] ?>">
 					<?php echo $wr_tack ?>
@@ -97,7 +107,7 @@ for ($i=0; $i < $list_cnt; $i++) {
 <?php } ?>
 
 <?php if(!$list_cnt) { ?>
-	<li class="f-sm text-muted text-center px-2 py-5">
+	<li class="w-100 f-sm text-muted text-center px-2 py-5">
 		글이 없습니다.
 	</li>
 <?php } ?>

@@ -11,12 +11,19 @@ $boset['thumb_w'] = ($boset['thumb_w'] == "") ? 400 : (int)$boset['thumb_w'];
 $boset['thumb_h'] = ($boset['thumb_h'] == "") ? 225 : (int)$boset['thumb_h'];
 
 if($boset['thumb_w'] && $boset['thumb_h']) {
-	$height = ($boset['thumb_w'] / $boset['thumb_h']) * 100;
+	$img_height = ($boset['thumb_h'] / $boset['thumb_w']) * 100;
 } else {
-	$height = ($boset['thumb_d']) ? $boset['thumb_d'] : '56.25';
+	$img_height = ($boset['thumb_d']) ? $boset['thumb_d'] : '56.25';
 }
 
 $head_color = ($boset['head_color']) ? $boset['head_color'] : 'primary';
+
+// 반응구간
+$xs = ($wset['xs']) ? $wset['xs'] : 2;
+$sm = ($wset['sm']) ? $wset['sm'] : 3;
+$md = ($wset['md']) ? $wset['md'] : 4;
+$lg = ($wset['lg']) ? $wset['lg'] : 4;
+$xl = ($wset['xl']) ? $wset['xl'] : 4;
 
 // 글 이동
 $is_list_link = false;
@@ -31,28 +38,6 @@ switch($wset['target']) {
 $list_cnt = count($list);
 
 ?>
-
-<style>
-	#bo_gallery > ul > li {<?php echo na_width($boset['xl'], 4) ?>}
-	#bo_gallery .img-wrap { padding-bottom:<?php echo $height ?>; }
-	@media (min-width:1200px) { 
-		#bo_gallery .img-wrap { max-width:<?php echo ($boset['thumb_w']) ? $boset['thumb_w'] : '400'; ?>px; }
-	}
-	<?php if(_RESPONSIVE_) { // 반응형일 때만 작동 ?>
-	@media (max-width:1199px) { 
-		.responsive #bo_gallery li {<?php echo na_width($boset['lg'], 4) ?>}
-	}
-	@media (max-width:991px) { 
-		.responsive #bo_gallery li {<?php echo na_width($boset['md'], 4) ?>}
-	}
-	@media (max-width:767px) { 
-		.responsive #bo_gallery li {<?php echo na_width($boset['sm'], 3) ?>}
-	}
-	@media (max-width:575px) { 
-		.responsive #bo_gallery li {<?php echo na_width($boset['xs'], 2) ?>}
-	}
-	<?php } ?>
-</style>
 
 <section id="bo_list" class="mb-4">
 
@@ -115,23 +100,23 @@ $list_cnt = count($list);
 								echo '<span class="na-ticon na-file"></span>'.PHP_EOL;
 						?>
 						<?php if($list[$i]['wr_comment']) { ?>
-							<div class="na-info">
+							<div class="na-info mr-3">
 								<span class="sr-only">댓글</span>
 								<span class="count-plus orangered">
-									<?php echo $list[$i]['wr_comment']; ?>
+									<?php echo $list[$i]['wr_comment'] ?>
 								</span>
 							</div>
 						<?php } ?>
 					</div>
 				</div>
 			</div>
-			<div class="float-right float-md-none d-md-table-cell nw-8 nw-md-auto text-left f-sm font-weight-normal py-md-2 pr-md-1">
+			<div class="float-right float-md-none d-md-table-cell nw-10 nw-md-auto text-left f-sm font-weight-normal pl-2 py-md-2 pr-md-1">
 				<span class="sr-only">등록자</span>
-				<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
+				<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
 			</div>
 			<div class="float-left float-md-none d-md-table-cell nw-6 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
 				<span class="sr-only">등록일</span>
-				<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'Y.m.d'); ?>
+				<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'Y.m.d') ?>
 			</div>
 			<div class="float-left float-md-none d-md-table-cell nw-4 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
 				<i class="fa fa-eye d-md-none" aria-hidden="true"></i>
@@ -146,7 +131,7 @@ $list_cnt = count($list);
 	</ul>
 
 	<div id="bo_gallery" class="px-3 px-sm-0 border-bottom mb-4">
-		<ul class="clearfix mr-n3">
+		<ul class="row row-cols-<?php echo $xs ?> row-cols-sm-<?php echo $sm ?> row-cols-md-<?php echo $md ?> row-cols-lg-<?php echo $lg ?> row-cols-xl-<?php echo $xl ?> mx-n2">
 		<?php
 		// 리스트
 		$n = 0;
@@ -195,8 +180,8 @@ $list_cnt = count($list);
 			$thumb = ($boset['thumb_w']) ? na_thumb($img, $boset['thumb_w'], $boset['thumb_h']) : $img;
 
 		?>
-			<li class="float-left pr-3 pb-4">
-				<div class="img-wrap bg-light mb-2">
+			<li class="col px-2 pb-4">
+				<div class="img-wrap bg-light mb-2" style="padding-bottom:<?php echo $img_height ?>%;">
 					<div class="img-item">
 						<?php if ($is_checkbox) { ?>
 							<span class="chk-box">
@@ -223,7 +208,7 @@ $list_cnt = count($list);
 							<div class="na-info">
 								<span class="sr-only">댓글</span>
 								<span class="count-plus orangered">
-									<?php echo $list[$i]['wr_comment']; ?>
+									<?php echo $list[$i]['wr_comment'] ?>
 								</span>
 							</div>
 						<?php } ?>
@@ -233,11 +218,11 @@ $list_cnt = count($list);
 				<div class="clearfix font-weight-normal f-small">
 					<div class="float-right ml-2">
 						<span class="sr-only">등록자</span>
-						<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
+						<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
 					</div>
 					<div class="float-left text-muted">
 						<span class="sr-only">등록일</span>
-						<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d'); ?>
+						<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'm.d') ?>
 					</div>
 				</div>
 			</li>

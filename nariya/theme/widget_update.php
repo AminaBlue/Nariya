@@ -4,13 +4,13 @@ include_once('./_common.php');
 check_demo();
 
 if ($is_admin != 'super')
-    alert_close('접근권한이 없습니다.');
+    alert('접근권한이 없습니다.');
 
 $wname = na_fid($wname);
 $wid = na_fid($wid);
 
 if(!$wname || !$wid)
-    alert_close('값이 제대로 넘어오지 않았습니다.');
+    alert('값이 제대로 넘어오지 않았습니다.');
 
 // 설정값아이디
 $id = $wname.'-'.$wid;

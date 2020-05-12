@@ -41,6 +41,7 @@ if(!G5_IS_MOBILE && $tset['no_res']) {
 
 // 스타일
 $body_class .= ($tset['style']) ? ' is-square' : ' is-round';
+$body_class .= ($tset['line']) ? ' is-line' : '';
 
 // 폰트셋
 if(G5_IS_MOBILE) {

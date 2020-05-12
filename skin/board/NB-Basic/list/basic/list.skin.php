@@ -45,7 +45,7 @@ $list_cnt = count($list);
 				<?php } ?>
 				제목
 			</div>
-			<div class="d-md-table-cell nw-8 pr-md-1">이름</div>
+			<div class="d-md-table-cell nw-10 pl-2 pr-md-1">이름</div>
 			<div class="d-md-table-cell nw-6 pr-md-1"><?php echo subject_sort_link('wr_datetime', $qstr2, 1) ?>날짜</a></div>
 			<div class="d-md-table-cell nw-4 pr-md-1"><?php echo subject_sort_link('wr_hit', $qstr2, 1) ?>조회</a></div>
 			<?php if($is_good) { ?>
@@ -99,7 +99,7 @@ $list_cnt = count($list);
 	?>
 		<li class="d-md-table-row px-3 py-2 p-md-0 text-md-center text-muted border-bottom<?php echo $li_css;?>">
 			<div class="d-none d-md-table-cell nw-5 f-sm font-weight-normal py-md-2 px-md-1">
-				<?php echo $list[$i]['num']; ?>
+				<?php echo $list[$i]['num'] ?>
 			</div>
 			<div class="d-md-table-cell text-left py-md-2 pr-md-1">
 				<div class="na-title float-md-left">
@@ -127,20 +127,20 @@ $list_cnt = count($list);
 							<div class="na-info">
 								<span class="sr-only">댓글</span>
 								<span class="count-plus orangered">
-									<?php echo $list[$i]['wr_comment']; ?>
+									<?php echo $list[$i]['wr_comment'] ?>
 								</span>
 							</div>
 						<?php } ?>
 					</div>
 				</div>
 			</div>
-			<div class="float-right float-md-none d-md-table-cell nw-8 nw-md-auto text-left f-sm font-weight-normal py-md-2 pr-md-1">
+			<div class="float-right float-md-none d-md-table-cell nw-10 nw-md-auto text-left f-sm font-weight-normal pl-2 py-md-2 pr-md-1">
 				<span class="sr-only">등록자</span>
-				<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
+				<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
 			</div>
 			<div class="float-left float-md-none d-md-table-cell nw-6 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
 				<span class="sr-only">등록일</span>
-				<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'Y.m.d'); ?>
+				<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'Y.m.d') ?>
 			</div>
 			<div class="float-left float-md-none d-md-table-cell nw-4 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
 				<i class="fa fa-eye d-md-none" aria-hidden="true"></i>
