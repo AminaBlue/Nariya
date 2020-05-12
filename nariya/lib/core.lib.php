@@ -442,6 +442,12 @@ function na_script($id){
 			add_javascript('<script src="'.NA_URL.'/app/custom-file-input/bs-custom-file-input.min.js"></script>', 0);
 			echo '<script>$(document).ready(function () { bsCustomFileInput.init(); });</script>'.PHP_EOL;
 		}
+	} else if($id == 'slick') {
+		if(!defined('NA_SLICK')) {
+			define('NA_SLICK', true);
+			add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/app/slick/slick.css">', -1);
+			add_javascript('<script src="'.NA_URL.'/app/slick/slick.min.js"></script>', 0);
+		}
 	} else if($id == 'mask') {
 		if(!defined('NA_MASK')) {
 			define('NA_MASK', true);

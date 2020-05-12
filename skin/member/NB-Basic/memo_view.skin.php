@@ -17,53 +17,85 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 ?>
 
-<div id="memo_view" class="win-cont">
-    <h2 class="win-title">
-		<button type="button" onclick="javascript:window.close();" class="btn btn_b01 pull-right" title="창닫기">
-			<i class="fa fa-times" aria-hidden="true"></i>
-			<span class="sound_only">창닫기</span>
-		</button>
+<div id="memo_view" class="mb-4">
 
-		<img src="<?php echo na_member_photo($member['mb_id']) ?>" alt="">
-		<?php echo $g5['title'] ?>
-	</h2>
-
-	<style>
-		#memo_view .btn-group .btn { border-radius:0 !important; }
-	</style>
-	<div class="btn-group btn-group-justified">
-		<a href="./memo.php?kind=recv" class="btn btn-sm btn-primary<?php echo ($kind == "recv") ? ' active' : '';?>">받은쪽지</a>
-		<a href="./memo.php?kind=send" class="btn btn-sm btn-primary<?php echo ($kind == "send") ? ' active' : '';?>">보낸쪽지</a>
-		<a href="./memo_form.php" class="btn btn-sm btn-primary<?php echo ($kind == "") ? ' active' : '';?>">쪽지쓰기</a>
+	<div id="topNav" class="bg-primary text-white">
+		<div class="p-3">
+			<button type="button" class="close" aria-label="Close" onclick="window.close();">
+				<span aria-hidden="true" class="text-white">&times;</span>
+			</button>
+			<h5><?php echo $g5['title'] ?></h5>
+		</div>
 	</div>
-	<ul class="list-group">
-		<li class="list-group-item clearfix bg-light f-small">
-		    <span class="pull-left">
+
+	<div id="topHeight"></div>
+
+	<nav id="memo_cate" class="sly-tab font-weight-normal mt-3">
+		<div id="noti_cate_list" class="sly-wrap px-3">
+			<ul id="noti_cate_ul" class="clearfix sly-list text-nowrap border-left">
+				<li class="float-left<?php echo ($kind == "recv") ? ' active' : '';?>"><a href="./memo.php?kind=recv" class="py-2 px-3">받은쪽지</a></li>
+				<li class="float-left<?php echo ($kind == "send") ? ' active' : '';?>"><a href="./memo.php?kind=send" class="py-2 px-3">보낸쪽지</a></li>
+				<li class="float-left<?php echo ($kind == "") ? ' active' : '';?>"><a href="./memo_form.php" class="py-2 px-3">쪽지쓰기</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<div class="w-100 mb-0 bg-primary" style="height:4px;"></div>
+
+	<div class="clearfix f-sm px-3 py-2 bg-light border-bottom">
+		<ul class="d-flex align-items-center">
+			<li class="pr-3">
 				<?php echo $nick ?>
-			</span>
-			<span class="pull-right text-muted">
-				<i class="fa fa-clock-o" aria-hidden="true"></i>
+			</li>
+			<li id="bo_v_btn" class="flex-grow-1 text-right text-black-50">
+				<span class="sr-only">답변일</span>
 				<?php echo $memo['me_send_datetime'] ?>
-			</span>
-		</li>
-		<li class="list-group-item">
-			<?php echo na_content(conv_content($memo['me_memo'], 0)) ?>
-		</li>
-	</ul>
-
-	<div class="text-center">
-		<?php if($prev_link) {  ?>
-			<a href="<?php echo $prev_link ?>" class="btn btn-primary btn-sm">이전</a>
-		<?php }  ?>
-		<?php if($next_link) {  ?>
-		<a href="<?php echo $next_link ?>" class="btn btn-primary btn-sm">다음</a>
-		<?php }  ?>
-		<?php if ($kind == 'recv') {  ?>
-			<a href="./memo_form.php?me_recv_mb_id=<?php echo $mb['mb_id'] ?>&amp;me_id=<?php echo $memo['me_id'] ?>"  class="btn btn-primary btn-sm">답장</a>
-		<?php }  ?>
-		<a href="./memo.php?kind=<?php echo $kind ?><?php echo $qstr;?>" class="btn btn-primary btn-sm">목록</a>
-		<button type="button" onclick="window.close();" class="btn btn-white btn-sm">닫기</button>
+			</li>
+		</ul>
 	</div>
 
-	<div class="h30"></div>
+	<div class="clearfix px-3 py-4">
+		<?php echo na_content(conv_content($memo['me_memo'], 0)) ?>
+	</div>
+
+	<div class="px-3 pt-4 border-top">
+		<div class="na-table d-table w-100">
+			<div class="d-table-row">
+				<div class="d-table-cell nw-3 text-left">
+					<?php if($prev_link) {  ?>
+						<a href="<?php echo $prev_link ?>" class="btn btn_b01 nofocus" title="이전 쪽지">
+							<i class="fa fa-chevron-left fa-md" aria-hidden="true"></i>
+							<span class="sr-only">이전 쪽지</span>
+						</a>
+					<?php } ?>
+				</div>
+				<div class="d-table-cell text-center">
+					<div class="btn-group">
+						<a href="<?php echo $del_link; ?>" onclick="del(this.href); return false;" class="btn btn-primary memo_del" title="삭제" role="button">
+							<i class="fa fa-trash-o fa-md" aria-hidden="true"></i>
+							<span class="sr-only">삭제</span>
+						</a>
+						<?php if ($kind == 'recv') {  ?>
+							<a href="./memo_form.php?me_recv_mb_id=<?php echo $mb['mb_id'] ?>&amp;me_id=<?php echo $memo['me_id'] ?>" class="btn btn-primary" role="button">
+								답장하기
+							</a>  
+						<?php } ?>
+						<a href="./memo.php?kind=<?php echo $kind ?><?php echo $qstr;?>" class="btn btn-primary" title="목록" role="button">
+							<i class="fa fa-list fa-md" aria-hidden="true"></i>
+							<span class="sr-only">목록</span>
+						</a>
+					</div>
+				</div>
+				<div class="d-table-cell nw-3 text-right">
+					<?php if ($next_link) { ?>
+						<a href="<?php echo $next_link ?>" class="btn btn_b01 nofocus float-right" title="다음 쪽지">
+							<i class="fa fa-chevron-right fa-md" aria-hidden="true"></i>
+							<span class="sr-only">다음 쪽지</span>
+						</a>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

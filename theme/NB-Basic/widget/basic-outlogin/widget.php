@@ -11,7 +11,7 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 
 ?>
 
-<div class="f-sm font-weight-normal">
+<div class="f-de font-weight-normal">
 
 	<?php if($is_member) { //Login ?>
 
@@ -25,7 +25,7 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 				</h5>
 				<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
 				<?php if ($is_admin == 'super' || $member['is_auth']) { ?>
-					<span class="bar-left"></span>
+					<span class="na-bar"></span>
 					<a href="<?php echo correct_goto_url(G5_ADMIN_URL); ?>">
 						관리자
 					</a>
@@ -59,7 +59,7 @@ global $config, $member, $is_member, $urlencode, $is_admin;
 				if(IS_NA_XP) { 
 					$per = (int)(($member['as_exp'] / $member['as_max']) * 100);
 				?>
-					<div class="clearfix f-sm">
+					<div class="clearfix">
 						<span class="float-left">레벨 <?php echo $member['as_level'] ?></span>
 						<span class="float-right">
 							<a href="<?php echo G5_BBS_URL ?>/exp.php" target="_blank" class="win_point">

@@ -658,8 +658,8 @@ function na_stats_cache($cache_file, $cache) {
 	$row = sql_fetch(" select count(*) as cnt from {$g5['member_table']} ", false); 
 	$stats['join_total'] = $row['cnt'];
 
-	// 총 글수
-	$row = sql_fetch(" select sum(bo_count_write) as w_cnt, sum(bo_count_comment) as c_cnt from {$g5['board_table']} ", false); 
+	// 총 글수 : 검색가능 게시판에 대해서만 집계
+	$row = sql_fetch(" select sum(bo_count_write) as w_cnt, sum(bo_count_comment) as c_cnt from {$g5['board_table']} where bo_use_search = 1 ", false); 
 	$stats['total_write'] = $row['w_cnt'];
 	$stats['total_comment'] = $row['c_cnt'];
 
@@ -1020,10 +1020,9 @@ function na_sql_sort($type, $sort) {
 	$orderby = '';
 	if($type == 'new') {
 		switch($sort) { 
-			case 'asc'			: $orderby = 'bn_id'; break;
-			case 'date'			: $orderby = 'bn_datetime desc'; break;
-			case 'rdm'			: $orderby = 'rand()'; break;
-			default				: $orderby = 'bn_id desc'; break;
+			case 'asc'			: $orderby = 'a.bn_id'; break;
+			case 'date'			: $orderby = 'a.bn_datetime desc'; break;
+			default				: $orderby = 'a.bn_id desc'; break;
 		}
 	} else if($type == 'bo') {
 		switch($sort) { 
@@ -1035,7 +1034,6 @@ function na_sql_sort($type, $sort) {
 			case 'nogood'		: $orderby = 'wr_nogood desc'; break;
 			case 'like'			: $orderby = '(wr_good - wr_nogood) desc'; break;
 			case 'link'			: $orderby = '(wr_link1_hit + wr_link2_hit) desc'; break;
-			case 'rdm'			: $orderby = 'rand()'; break;
 			default				: $orderby = 'wr_id desc'; break;
 		}
 	}
@@ -1044,23 +1042,13 @@ function na_sql_sort($type, $sort) {
 }
 
 // 게시판 정리
-function na_sql_find($type, $str, $ex) {
+function na_sql_find($field, $str, $ex) {
 
-	if(!$str)
+	if(!$field || !$str)
 		return;
 
-	switch($type) {
-		case 'bo'	: $field = 'bo_table'; break;
-		case 'mb'	: $field = 'mb_id'; break;
-		case 'ca'	: $field = 'ca_name'; break;
-		default		: $field = ''; break;
-	}
-
-	$sql = '';
-	if($field) {
-		$ex = ($ex) ? '=0' : '';
-		$sql = "and find_in_set(".$field.", '".$str."')".$ex;
-	}
+	$ex = ($ex) ? '=0' : '';
+	$sql = "and find_in_set(".$field.", '".$str."')".$ex;
 
 	return $sql;
 }
@@ -1226,12 +1214,8 @@ function na_board_rows($wset) {
 
 	$bo_table = $wset['bo_list'];
 	$term = ($wset['term'] == 'day' && (int)$wset['dayterm'] > 0) ? $wset['dayterm'] : $wset['term'];
-	$sql_main = ($wset['main']) ? "and as_type = '".(int)$wset['main']."'" : "";
 	$sql_where = ($wset['where']) ? 'and '.$wset['where'] : '';
 	$sql_orderby = ($wset['orderby']) ? $wset['orderby'].',' : '';
-
-	// 회원글
-	$sql_mb = na_sql_find('mb', $wset['mb_list'], $wset['mb_except']);
 
 	$list = array();
 
@@ -1239,30 +1223,36 @@ function na_board_rows($wset) {
 	$board_cnt = array_map('trim', explode(",", $bo_table));
 	if(!$bo_table || count($board_cnt) > 1 || $wset['bo_except']) {
 
+		// 메인글
+		$sql_main = (IS_NA_BBS && $wset['main']) ? "and a.as_type = '".(int)$wset['main']."'" : "";
+
+		// 회원글
+		$sql_mb = na_sql_find('a.mb_id', $wset['mb_list'], $wset['mb_except']);
+
 		// 정렬
 		$orderby = na_sql_sort('new', $wset['sort']);
-		$orderby = ($orderby) ? $orderby : 'bn_id desc';
+		$orderby = ($orderby) ? $orderby : 'a.bn_id desc';
 
 		// 추출게시판 정리
 		list($plus, $minus) = na_bo_list($wset['gr_list'], $wset['gr_except'], $wset['bo_list'], $wset['bo_except']);
-		$sql_plus = na_sql_find('bo', $plus, 0);
-		$sql_minus = na_sql_find('bo', $minus, 1);
+		$sql_plus = na_sql_find('a.bo_table', $plus, 0);
+		$sql_minus = na_sql_find('a.bo_table', $minus, 1);
 
 		//글, 댓글
-		$sql_wr = ($wset['comment']) ? "and wr_parent <> wr_id" : "and wr_parent = wr_id";
+		$sql_wr = ($wset['comment']) ? "and a.wr_parent <> a.wr_id" : "and a.wr_parent = a.wr_id";
 
 		// 기간(일수,today,yesterday,month,prev)
-		$sql_term = na_sql_term($term, 'bn_datetime');
+		$sql_term = na_sql_term($term, 'a.bn_datetime');
 		
 		// 공통쿼리
-		$sql_common = "from {$g5['board_new_table']} where (1) $sql_plus $sql_minus $sql_wr $sql_term $sql_mb $sql_main $sql_where";
+		$sql_common = " from {$g5['board_new_table']} a, {$g5['board_table']} b where a.bo_table = b.bo_table and b.bo_use_search = 1 $sql_plus $sql_minus $sql_wr $sql_term $sql_mb $sql_main $sql_where ";
 		if($page > 1) {
 			$total = sql_fetch("select count(*) as cnt $sql_common ", false);
 			$total_count = $total['cnt'];
 			$total_page  = ceil($total_count / $rows);  // 전체 페이지 계산
 			$start_rows = ($page - 1) * $rows; // 시작 열을 구함
 		}
-		$result = sql_query(" select bo_table, wr_id $sql_common order by $sql_orderby $orderby limit $start_rows, $rows ", false);
+		$result = sql_query(" select a.bo_table, a.wr_id, b.bo_subject $sql_common order by $sql_orderby $orderby limit $start_rows, $rows ", false);
 		for ($i=0; $row=sql_fetch_array($result); $i++) {
 
 			$tmp_write_table = $g5['write_prefix'] . $row['bo_table']; 
@@ -1270,10 +1260,17 @@ function na_board_rows($wset) {
 			$wr = sql_fetch(" select * from $tmp_write_table where wr_id = '{$row['wr_id']}' ", false);
 			
 			$wr['bo_table'] = $row['bo_table'];
+			$wr['bo_subject'] = $row['bo_subject'];
 
 			$list[$i] = na_wr_row($wr, $wset);
 		}
 	} else { //단수
+
+		// 메인글
+		$sql_main = (IS_NA_BBS && $wset['main']) ? "and as_type = '".(int)$wset['main']."'" : "";
+
+		// 회원글
+		$sql_mb = na_sql_find('mb_id', $wset['mb_list'], $wset['mb_except']);
 
 		// 정렬
 		$orderby = na_sql_sort('bo', $wset['sort']);
@@ -1283,7 +1280,7 @@ function na_board_rows($wset) {
 		$sql_term = na_sql_term($term, 'wr_datetime');
 
 		// 분류
-		$sql_ca = na_sql_find('ca', $wset['ca_list'], $wset['ca_except']);
+		$sql_ca = na_sql_find('ca_name', $wset['ca_list'], $wset['ca_except']);
 
 		//글, 댓글
 		$sql_wr = ($wset['comment']) ? 1 : 0;
@@ -1370,12 +1367,12 @@ function na_tag_post_rows($wset) {
 	$term = ($wset['term'] == 'day' && (int)$wset['dayterm'] > 0) ? $wset['dayterm'] : $wset['term'];
 
 	// 회원글
-	$sql_mb = na_sql_find('mb', $wset['mb_list'], $wset['mb_except']);
+	$sql_mb = na_sql_find('mb_id', $wset['mb_list'], $wset['mb_except']);
 
 	// 추출게시판 정리
 	list($plus, $minus) = na_bo_list($wset['gr_list'], $wset['gr_except'], $wset['bo_list'], $wset['bo_except']);
-	$sql_plus = na_sql_find('bo', $plus, 0);
-	$sql_minus = na_sql_find('bo', $minus, 1);
+	$sql_plus = na_sql_find('bo_table', $plus, 0);
+	$sql_minus = na_sql_find('bo_table', $minus, 1);
 
 	// 기간(일수,today,yesterday,month,prev)
 	$sql_term = na_sql_term($term, 'lastdate');

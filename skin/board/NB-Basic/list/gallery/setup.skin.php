@@ -64,7 +64,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">썸네일 너비</td>
 					<td>
 						<div class="input-group">
-							<input type="text" name="wset[thumb_w]" value="<?php echo $wset['thumb_w'] ?>" class="form-control">
+							<input type="text" name="boset[thumb_w]" value="<?php echo $boset['thumb_w'] ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">px</span>
 							</div>
@@ -76,7 +76,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">썸네일 높이</td>
 					<td class="text-center">
 						<div class="input-group">
-							<input type="text" name="wset[thumb_h]" value="<?php echo $wset['thumb_h'] ?>" class="form-control">
+							<input type="text" name="boset[thumb_h]" value="<?php echo $boset['thumb_h'] ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">px</span>
 							</div>
@@ -88,7 +88,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">기본 높이</td>
 					<td>
 						<div class="input-group">
-							<input type="text" name="wset[thumb_d]" value="<?php echo $wset['thumb_d'] ?>" class="form-control">
+							<input type="text" name="boset[thumb_d]" value="<?php echo $boset['thumb_d'] ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">%</span>
 							</div>
@@ -119,7 +119,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">기본 배치</td>
 					<td>
 						<div class="input-group">
-							<input name="wset[xl]" value="<?php echo ($wset['xl']) ? $wset['xl'] : '4'; ?>" class="form-control">
+							<input name="boset[xl]" value="<?php echo ($boset['xl']) ? $boset['xl'] : '4'; ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">개</span>
 							</div>
@@ -131,7 +131,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">1200px 미만</td>
 					<td>
 						<div class="input-group">
-							<input name="wset[lg]" value="<?php echo ($wset['lg']) ? $wset['lg'] : '4'; ?>" class="form-control">
+							<input name="boset[lg]" value="<?php echo ($boset['lg']) ? $boset['lg'] : '4'; ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">개</span>
 							</div>
@@ -143,7 +143,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">992px 미만</td>
 					<td>
 						<div class="input-group">
-							<input name="wset[md]" value="<?php echo ($wset['md']) ? $wset['md'] : '4'; ?>" class="form-control">
+							<input name="boset[md]" value="<?php echo ($boset['md']) ? $boset['md'] : '4'; ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">개</span>
 							</div>
@@ -155,7 +155,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">768px 미만</td>
 					<td>
 						<div class="input-group">
-							<input name="wset[sm]" value="<?php echo ($wset['sm']) ? $wset['sm'] : '3'; ?>" class="form-control">
+							<input name="boset[sm]" value="<?php echo ($boset['sm']) ? $boset['sm'] : '3'; ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">개</span>
 							</div>
@@ -167,7 +167,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					<td class="text-center">576px 미만</td>
 					<td>
 						<div class="input-group">
-							<input name="wset[xs]" value="<?php echo ($wset['xs']) ? $wset['xs'] : '2'; ?>" class="form-control">
+							<input name="boset[xs]" value="<?php echo ($boset['xs']) ? $boset['xs'] : '2'; ?>" class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">개</span>
 							</div>

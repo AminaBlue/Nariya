@@ -58,7 +58,7 @@ include_once(NA_PATH.'/theme/loader.php');
 
 <div id="topHeight"></div>
 
-<ul class="list-group f-sm">
+<ul class="list-group f-de">
 	<li class="list-group-item bg-light">
 		<b>동영상 공유주소 입력</b>
 	</li>
@@ -66,7 +66,7 @@ include_once(NA_PATH.'/theme/loader.php');
 		<div class="input-group">
 			<input type="text" id="txtCode" class="form-control" placeholder="http://...">
 			<div class="input-group-append">
-				<button type="button" class="btn btn-primary btn-block clip-txt">
+				<button type="button" class="btn btn-primary clip-txt">
 					<i class="fa fa-code" aria-hidden="true"></i>
 					코드 생성
 				</button>

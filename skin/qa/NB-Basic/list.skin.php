@@ -129,7 +129,7 @@ if ($category_option) {
     <input type="hidden" name="page" value="<?php echo $page; ?>">
 
 	<!-- 게시판 페이지 정보 및 버튼 시작 { -->
-	<div id="bo_btn_top" class="clearfix f-sm font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
+	<div id="bo_btn_top" class="clearfix f-de font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
 		<div class="d-flex align-items-center">
 			<div id="bo_list_total" class="flex-grow-1">
 				Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page
@@ -239,7 +239,7 @@ if ($category_option) {
 	</ul>
 
 	<?php if (!$list_cnt) { ?>
-		<div class="f-sm font-weight-normal px-3 py-5 text-muted text-center border-bottom">게시물이 없습니다.</div>
+		<div class="f-de font-weight-normal px-3 py-5 text-muted text-center border-bottom">게시물이 없습니다.</div>
 	<?php } ?>
 
 	<!-- 페이지 -->

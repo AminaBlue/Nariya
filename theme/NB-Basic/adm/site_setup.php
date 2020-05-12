@@ -40,7 +40,7 @@ $action_url = './site_update.php';
 		padding-right:0;
 	}
 </style>
-<form id="fsetup" name="fsetup" method="post" action="<?php echo $action_url ?>" class="f-sm font-weight-normal">
+<form id="fsetup" name="fsetup" method="post" action="<?php echo $action_url ?>" class="f-de font-weight-normal">
 <?php include_once(NA_THEME_ADMIN_PATH.'/setup_form.php'); ?>
 </form>
 <?php

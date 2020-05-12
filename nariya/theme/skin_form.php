@@ -103,7 +103,7 @@ include_once(NA_PATH.'/theme/loader.php');
 <input type="hidden" name="both" value="">
 <input type="hidden" name="freset" value="">
 
-<div class="f-sm font-weight-normal">
+<div class="f-de font-weight-normal">
 	<?php 
 		@include_once($skin_path.'/setup.skin.php');
 		if($skin == 'board') {

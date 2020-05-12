@@ -32,14 +32,14 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 }
 </style>
 
-<ul class="list-group">
+<ul class="list-group f-de">
 
 	<?php if($mode == 'site') { //사이트 설정용 ?>
 	<li class="list-group-item pt-0 border-top-0<?php echo $px_css ?>">
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">필독사항</label>
 			<div class="col-sm-10">
-				<p class="form-control-plaintext">
+				<p class="form-control-plaintext f-de">
 					<a data-toggle="collapse" href="#pre_work" aria-expanded="false" aria-controls="pre_work">
 						<i class="fa fa-caret-right" aria-hidden="true"></i>
 						테마/스킨 등 설정방법 안내
@@ -147,7 +147,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">주의사항</label>
 			<div class="col-sm-10">
-				<p class="form-control-plaintext">
+				<p class="form-control-plaintext f-de">
 					<i class="fa fa-caret-right" aria-hidden="true"></i>
 					<strong>기본 설정과 다른 것만 설정해 주세요.</strong> 같은데 또 설정하면 기본 설정 변경시 페이지 설정도 다 변경해야 합니다.
 				</p>
@@ -173,7 +173,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 						SEO 사용
 					</td>
 					<td>
-						<div class="custom-control custom-checkbox custom-control-inline">
+						<div class="custom-control custom-checkbox">
 							<input type="checkbox" name="co[seo]" value="1"<?php echo get_checked('1', $pc['seo'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
 							<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"><span>게시판, 페이지별 자동 SEO 사용</span></label>
 						</div>
@@ -194,7 +194,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					</td>
 					<td>
 						<textarea name="co[seo_keys]" rows="3" class="form-control" placeholder="콤마(,)로 키워드 구분"><?php echo $pc['seo_keys'] ?></textarea>		
-						<p class="form-control-plaintext text-muted pb-0 mb-0">
+						<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
 							미 설정시 내용에서 3글자 이상인 한글로 최대 20개까지 키워드 자동생성
 						</p>
 					</td>
@@ -211,7 +211,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 								</a>
 							</div>
 						</div>
-						<p class="form-control-plaintext text-muted pb-0 mb-0">
+						<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
 							글내용 또는 페이지에 이미지가 있으면 자동 생성
 						</p>
 					</td>
@@ -219,7 +219,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					</tbody>
 					</table>
 				</div>
-				<p class="form-text text-muted mb-0 pb-0">
+				<p class="form-text f-de text-muted mb-0 pb-0">
 					SEO 출력 항목 수정 : /nariya/theme/seo.php 파일
 				</p>
 			</div>
@@ -268,7 +268,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					</tbody>
 					</table>
 				</div>
-				<p class="form-text text-muted mb-0">
+				<p class="form-text f-de text-muted mb-0">
 					타이틀 스킨에서 사용되며, 출력하지 않을 경우 아래 타이틀 스킨을 none 으로 설정해 주세요.
 				</p>
 			</div>
@@ -343,7 +343,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 						</div>
 					</td>
 					<td class="text-muted">
-						미 설정시 방문자 통계만 출력됨
+						미 설정시 방문자 통계만 출력되며, 검색 가능한 게시판에 대해서만 체크함
 					</td>
 					</tr>
 					</tbody>
@@ -549,7 +549,7 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					</tbody>
 					</table>
 				</div>				
-				<p class="form-text text-muted mb-0 pb-0">
+				<p class="form-text f-de text-muted mb-0 pb-0">
 					인덱스(메인)에 사이드 영역 적용 여부는 인덱스 파일 구조에 따라 달라집니다.
 				</p>
 

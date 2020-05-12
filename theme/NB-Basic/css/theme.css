@@ -342,41 +342,27 @@ hr.hr::after {
 	font-size:1.0rem !important;
 }
 
-/* 체크박스 재지정 */
+/* 체크박스, 라디오버튼 재지정 */
 .custom-checkbox .custom-control-label::before,
-.custom-checkbox .custom-control-label::after {
-	top:0.25rem !important;
+.custom-checkbox .custom-control-label::after,
+.custom-radio .custom-control-label::before,
+.custom-radio .custom-control-label::after {
+	top:0.15rem !important;
 	width:1.4rem !important;	
 	height:1.4rem !important;
 }
 
-/* 체크박스와 글자간 간격 */
-.custom-checkbox .custom-control-label span {
-	display:inline-block;
+/* 체크박스, 라디오버튼과 글자간 간격 */
+.custom-checkbox .custom-control-label span,
+.custom-radio .custom-control-label span {
 	cursor: pointer;
-	margin-top:1px;
-	padding-left:6px;
+	padding-left:0.5rem !important;
 }
 
 /* 스위치 버튼 재지정 */
 .custom-switch .custom-control-label::before,
 .custom-switch .custom-control-label::after {
 	margin-top:2px;
-}
-
-/* 라디오버튼 재지정 */
-.custom-radio .custom-control-label::before,
-.custom-radio .custom-control-label::after {
-	top:0.25rem !important;
-	width:1.4rem !important;	
-	height:1.4rem !important;
-}
-
-/* 라디오버튼과 글자간 간격 */
-.custom-radio .custom-control-label span {
-	display:inline-block;
-	cursor: pointer;
-	padding-left:6px;
 }
 
 /* Button */

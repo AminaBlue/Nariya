@@ -7,7 +7,7 @@ add_javascript('<script src="'.$nt_lnb_url.'/lnb.js"></script>', 0);
 $tweek = array("일", "월", "화", "수", "목", "금", "토");
 ?>
 
-<aside id="nt_lnb" class="d-none d-md-block f-sm font-weight-normal">
+<aside id="nt_lnb" class="d-none d-md-block f-de font-weight-normal">
 	<h3 class="sr-only">상단 네비</h3>
 	<div class="nt-container clearfix pt-3 px-3 px-sm-4 px-xl-0">
 		<!-- LNB Left -->
@@ -23,13 +23,13 @@ $tweek = array("일", "월", "화", "수", "목", "금", "토");
 				<a href="javascript:;" class="dropdown-toggle" id="mymenu_lnb" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
 					마이메뉴
 				</a>
-				<div class="dropdown-menu bg-light f-sm" aria-labelledby="mymenu_lnb" style="width:240px;">
+				<div class="dropdown-menu bg-light f-de" aria-labelledby="mymenu_lnb" style="width:240px;">
 					<div class="clearfix px-3">
 						<div class="d-flex align-items-center my-1">
 							<div class="flex-grow-1">
 								<?php echo str_replace('sv_member', 'sv_member font-weight-bold', $member['sideview']); ?>
 							</div>
-							<div class="pl-2 f-sm">
+							<div class="pl-2">
 								<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
 							</div>
 						</div>

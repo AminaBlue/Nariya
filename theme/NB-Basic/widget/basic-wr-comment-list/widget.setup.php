@@ -62,6 +62,20 @@ na_script('iconpicker');
 						랭크 표시 설정시 작동 안 함
 					</td>
 					</tr>
+					<tr>
+					<td class="text-center">보드/분류명</td>
+					<td>
+						<div class="input-group">
+							<input type="text" name="wset[bo_name]" value="<?php echo $wset['bo_name'] ?>" class="form-control">
+							<div class="input-group-append">
+								<span class="input-group-text">자</span>
+							</div>
+						</div>
+					</td>
+					<td class="text-muted">
+						복수 추출시 보드명, 단일 게시판 출력시 분류명 출력 (0 설정시 자르지 않음, 미설정시 출력안함)
+					</td>
+					</tr>
 					</tbody>
 					</table>
 				</div>
@@ -75,7 +89,7 @@ na_script('iconpicker');
 			<div class="col-sm-10">
 				<p class="form-control-plaintext">
 					<i class="fa fa-caret-right" aria-hidden="true"></i>
-					콤마(,)로 구분해서 복수 등록 가능하며, 글 분류는 단일 게시판 추출에서만 작동됨
+					콤마(,)로 구분해서 복수 등록 가능하며, 그룹 또는 복수 게시판 추출시 검색 가능한 게시판만 추출됨
 				</p>
 				<div class="table-responsive">
 					<table class="table table-bordered mb-0">
@@ -119,7 +133,7 @@ na_script('iconpicker');
 						</div>
 					</td>
 					<td>
-						<input type="text" name="wset[ca_list]" value="<?php echo $wset['ca_list'] ?>" class="form-control" placeholder="분류명(ca_name)">
+						<input type="text" name="wset[ca_list]" value="<?php echo $wset['ca_list'] ?>" class="form-control" placeholder="분류명(ca_name) - 단일게시판 추출시에만 작동함">
 					</td>
 					</tr>
 					<tr>

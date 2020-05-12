@@ -79,7 +79,7 @@ $id = 'banner_'.na_rid();
 		<li class="item">
 			<div class="img-wrap bg-primary">
 				<div class="img-item">
-					<div class="position-absolute text-white text-center mt-n3 w-100 f-small" style="top:50%; left:0;">
+					<div class="position-absolute text-white text-center mt-n3 w-100 f-de" style="top:50%; left:0;">
 						위젯설정에서 배너 등록				
 					</div>
 				</div>

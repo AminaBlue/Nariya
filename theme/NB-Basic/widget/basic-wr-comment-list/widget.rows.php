@@ -9,6 +9,10 @@ $list_cnt = count($list);
 // 아이콘
 $icon = ($wset['icon']) ? '<i class="fa '.$wset['icon'].'" aria-hidden="true"></i>' : '';
 
+// 보드명, 분류명
+$is_bo_name = ($wset['bo_name'] == '') ? false : true;
+$bo_name = ((int)$wset['bo_name'] > 0) ? $wset['bo_name'] : 0;
+
 // 리스트
 for ($i=0; $i < $list_cnt; $i++) { 
 
@@ -20,6 +24,20 @@ for ($i=0; $i < $list_cnt; $i++) {
 		$wr_icon = '<span class="na-icon na-new"></span>';
 	} else {
 		$wr_icon = $icon;
+	}
+
+	// 보드명, 분류명
+	if($is_bo_name) {
+		$ca_name = '';
+		if(isset($list[$i]['bo_subject']) && $list[$i]['bo_subject']) {
+			$ca_name = ($bo_name) ? cut_str($list[$i]['bo_subject'], $bo_name, '') : $list[$i]['bo_subject'];
+		} else if($list[$i]['ca_name']) {
+			$ca_name = ($bo_name) ? cut_str($list[$i]['ca_name'], $bo_name, '') : $list[$i]['ca_name'];
+		}
+
+		if($ca_name) {
+			$list[$i]['subject'] = $ca_name.' <span class="na-bar"></span> '.$list[$i]['subject'];
+		}
 	}
 
 ?>
@@ -43,7 +61,7 @@ for ($i=0; $i < $list_cnt; $i++) {
 <?php } ?>
 
 <?php if(!$list_cnt) { ?>
-	<li class="f-sm px-4 py-5 text-muted text-center">
+	<li class="f-de px-4 py-5 text-muted text-center">
 		댓글이 없습니다.
 	</li>
 <?php } ?>

@@ -61,7 +61,7 @@ include_once(NA_PATH.'/theme/loader.php');
 
 <div id="topHeight"></div>
 
-<ul id="fa_icon" class="list-group f-sm font-weight-normal en">
+<ul id="fa_icon" class="list-group f-de font-weight-normal en">
 	<li class="list-group-item bg-light" id="web-application">
 		<b>Web Application Icons</b>
 	</li>

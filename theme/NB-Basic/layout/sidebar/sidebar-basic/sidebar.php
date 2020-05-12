@@ -10,7 +10,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 <aside id="nt_sidebar" class="h-100 bg-light font-weight-normal">
 
 	<!-- Top Head -->
-	<div class="sidebar-head bg-primary px-3 mb-0">
+	<div class="sidebar-head na-shadow bg-primary px-3 mb-0">
 		<h3 class="clearfix text-center f-mo font-weight-bold en">
 			<a href="<?php echo NT_HOME_URL ?>" class="float-right d-block d-md-none">
 				<i class="fa fa-home text-white" aria-hidden="true"></i>
@@ -31,34 +31,32 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 
 		<!-- Icon -->
 		<div class="px-3">
-			<div class="d-table w-100 f-sm mt-3 mb-2">
-				<ul class="d-table-row">
-					<li class="d-table-cell text-center w-25">
-						<a href="<?php echo G5_BBS_URL;?>/new.php">
-							<i class="fa fa-calendar-check-o circle light-circle normal" aria-hidden="true"></i>
-							<span class="d-block mt-2">새글</span>
-						</a>
-					</li>
-					<li class="d-table-cell text-center w-25">
-						<a href="<?php echo G5_BBS_URL;?>/current_connect.php">
-							<i class="fa fa-users circle light-circle normal" aria-hidden="true"></i>
-							<span class="d-block mt-2">접속자</span>
-						</a>
-					</li>
-					<li class="d-table-cell text-center w-25">
-						<a href="<?php echo G5_BBS_URL;?>/faq.php">
-							<i class="fa fa-exclamation circle light-circle normal" aria-hidden="true"></i>
-							<span class="d-block mt-2">FAQ</span>
-						</a>
-					</li>
-					<li class="d-table-cell text-center w-25">
-						<a href="<?php echo G5_BBS_URL;?>/qalist.php">
-							<i class="fa fa-comments-o circle light-circle normal" aria-hidden="true"></i>
-							<span class="d-block mt-2">1:1 문의</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+			<ul class="d-flex justify-content-between text-center f-de mt-3 mb-2">
+				<li>
+					<a href="<?php echo G5_BBS_URL;?>/new.php">
+						<i class="fa fa-calendar-check-o circle light-circle normal" aria-hidden="true"></i>
+						<span class="d-block mt-2">새글</span>
+					</a>			
+				</li>
+				<li>
+					<a href="<?php echo G5_BBS_URL;?>/current_connect.php">
+						<i class="fa fa-users circle light-circle normal" aria-hidden="true"></i>
+						<span class="d-block mt-2">접속자</span>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo G5_BBS_URL;?>/faq.php">
+						<i class="fa fa-exclamation circle light-circle normal" aria-hidden="true"></i>
+						<span class="d-block mt-2">FAQ</span>
+					</a>
+				</li>				
+				<li>
+					<a href="<?php echo G5_BBS_URL;?>/qalist.php">
+						<i class="fa fa-comments-o circle light-circle normal" aria-hidden="true"></i>
+						<span class="d-block mt-2">1:1 문의</span>
+					</a>
+				</li>
+			</ul>
 		</div>
 
 		<!-- Login -->
@@ -84,13 +82,13 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 				</div>
 
 				<div class="collapse" id="mymenu_sidebar">
-					<div class="clearfix px-3 pt-3 mb-2">
+					<div class="clearfix f-de px-3 pt-3 mb-2">
 
 						<div class="d-flex align-items-center mb-1">
 							<div class="flex-grow-1">
 								<?php echo str_replace('sv_member', 'sv_member font-weight-bold', $member['sideview']); ?>
 							</div>
-							<div class="pl-2 f-sm">
+							<div class="pl-2">
 								<?php echo ($member['mb_grade']) ? $member['mb_grade'] : $member['mb_level'].'등급'; ?>
 							</div>
 						</div>
@@ -100,7 +98,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 						if(IS_NA_XP) { 
 							$per = (int)(($member['as_exp'] / $member['as_max']) * 100);
 						?>
-							<div class="clearfix f-sm">
+							<div class="clearfix">
 								<span class="float-left">레벨 <?php echo $member['as_level'] ?></span>
 								<span class="float-right">
 									<a href="<?php echo G5_BBS_URL ?>/exp.php" target="_blank" class="win_point">
@@ -162,7 +160,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 				</div>
 			</div>
 		<?php } else { ?>
-			<div class="clearfix d-md-none px-3 py-2 f-sm border-top">
+			<div class="clearfix d-md-none px-3 py-2 f-de border-top">
 				<div class="float-left">
 					<a href="<?php echo G5_BBS_URL ?>/login.php?url=<?php echo $urlencode ?>">
 						<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -272,7 +270,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 		</div>
 
 		<div class="p-3 mb-5 border-top" style="margin-top:-1px">
-			<ul class="f-sm font-weight-normal">
+			<ul class="f-de font-weight-normal">
 				<?php if($stats['now_total']) { ?>
 				<li class="clearfix">
 					<a href="<?php echo G5_BBS_URL ?>/current_connect.php">

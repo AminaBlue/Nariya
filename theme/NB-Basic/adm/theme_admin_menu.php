@@ -29,12 +29,12 @@ include_once (NA_PATH.'/theme/setup.php');
 <div id="theme_menu" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myThemeAdminMenu" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
 	<div class="modal-content">
-		<ul class="list-group">
+		<ul class="list-group f-de">
 			<li class="list-group-item bg-primary text-white border-left-0 border-right-0">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true" class="text-white">&times;</span>
 				</button>
-				<b>테마 설정</b>
+				<h5><b>테마 설정</b></h5>
 			</li>
 			<li class="list-group-item  border-left-0 border-right-0 ">
 				<a href="<?php echo NA_THEME_ADMIN_URL;?>/site_setup.php">

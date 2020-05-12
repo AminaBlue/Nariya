@@ -23,6 +23,10 @@ $rank = na_rank_start($wset['rows'], $wset['page']);
 // 새글
 $cap_new = ($wset['new']) ? $wset['new'] : 'primary';
 
+// 보드명, 분류명
+$is_bo_name = ($wset['bo_name'] == '') ? false : true;
+$bo_name = ((int)$wset['bo_name'] > 0) ? $wset['bo_name'] : 0;
+
 // 글 이동
 $is_link = false;
 switch($wset['target']) {
@@ -49,6 +53,20 @@ for ($i=0; $i < $list_cnt; $i++) {
 
 	if($list[$i]['icon_new']) {
 		$wr_cap = '<span class="label-cap en bg-'.$cap_new.'">New</span>';
+	}
+
+	// 보드명, 분류명
+	if($is_bo_name) {
+		$ca_name = '';
+		if(isset($list[$i]['bo_subject']) && $list[$i]['bo_subject']) {
+			$ca_name = ($bo_name) ? cut_str($list[$i]['bo_subject'], $bo_name, '') : $list[$i]['bo_subject'];
+		} else if($list[$i]['ca_name']) {
+			$ca_name = ($bo_name) ? cut_str($list[$i]['ca_name'], $bo_name, '') : $list[$i]['ca_name'];
+		}
+
+		if($ca_name) {
+			$list[$i]['subject'] = $ca_name.' <span class="na-bar"></span> '.$list[$i]['subject'];
+		}
 	}
 
 	// 링크 이동
@@ -107,7 +125,7 @@ for ($i=0; $i < $list_cnt; $i++) {
 <?php } ?>
 
 <?php if(!$list_cnt) { ?>
-	<li class="w-100 f-sm text-muted text-center px-2 py-5">
+	<li class="w-100 f-de text-muted text-center px-2 py-5">
 		글이 없습니다.
 	</li>
 <?php } ?>

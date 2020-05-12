@@ -15,6 +15,12 @@ body {
 	line-height:1.6;
 }
 
+/* 일반 기본 폰트 : 15px */
+.f-de {
+	font-size:1.0rem !important;
+	line-height:1.7 !important;
+}
+
 /* 주석 등 : 13px */
 .f-xs {
 	font-size:0.87rem !important;;

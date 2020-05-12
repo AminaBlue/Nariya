@@ -173,14 +173,14 @@ if ($stx) {
 		});
 	</script>
 </nav>
-<section id="sch_res_ov" class="clearfix f-sm font-weight-normal mb-2 px-3 px-sm-0">
+<section id="sch_res_ov" class="clearfix f-de font-weight-normal mb-2 px-3 px-sm-0">
 	<strong>"<?php echo $stx ?>"</strong> 검색 결과 : 게시판 <b><?php echo $board_count ?></b>개 / 게시물 <b><?php echo number_format($total_count) ?></b>건 / <?php echo number_format($total_page) ?> 페이지
 </section>
 
 <?php
 	} else {
  ?>
-<div class="px-3 pt-4 pb-5 text-muted text-center border-bottom mb-4">
+<div class="f-de px-3 pt-4 pb-5 text-muted text-center border-bottom mb-4">
 	검색된 자료가 하나도 없습니다.
 </div>
 <?php } }  ?>

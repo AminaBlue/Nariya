@@ -138,21 +138,21 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 		<div class="d-table-row">
 			<div class="d-table-cell nw-3 text-left">
 				<?php if ($prev_href) { ?>
-					<a href="<?php echo $prev_href ?>" class="btn btn_b01 nofocus float-left" title="이전 문의">
+					<a href="<?php echo $prev_href ?>" class="btn btn_b01 nofocus" title="이전 문의">
 						<i class="fa fa-chevron-left fa-md" aria-hidden="true"></i>
 						<span class="sr-only">이전 문의</span>
 					</a>
 				<?php } ?>
 			</div>
 			<div class="d-table-cell text-center">
-				<a href="<?php echo $list_href ?>" class="btn btn_b01 nofocus py-1" role="button" title="목록">
+				<a href="<?php echo $list_href ?>" class="btn btn_b01 nofocus" role="button"  title="목록">
 					<i class="fa fa-list fa-md" aria-hidden="true"></i>
 					<span class="sr-only">목록</span>
 				</a>  
 			</div>
 			<div class="d-table-cell nw-3 text-right">
 				<?php if ($next_href) { ?>
-					<a href="<?php echo $next_href ?>" class="btn btn_b01 nofocus float-right" title="다음 문의">
+					<a href="<?php echo $next_href ?>" class="btn btn_b01 nofocus" title="다음 문의">
 						<i class="fa fa-chevron-right fa-md" aria-hidden="true"></i>
 						<span class="sr-only">다음 문의</span>
 					</a>

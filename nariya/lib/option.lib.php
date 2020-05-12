@@ -61,7 +61,6 @@ function na_sort_options($value) {
 	$opt[] = array('good', '추천순');
 	$opt[] = array('nogood', '비추천순');
 	$opt[] = array('like', '추천-비추천순');
-	$opt[] = array('rdm', '무작위(랜덤)');
 
 	return na_options($opt, $value);
 }

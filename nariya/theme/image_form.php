@@ -57,7 +57,7 @@ add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/css/modal.css">', 0);
 include_once(NA_PATH.'/theme/loader.php');
 ?>
 
-<div id="topNav" class="p-0 f-sm font-weight-normal">
+<div id="topNav" class="p-0 f-de font-weight-normal">
 	<form id="fsetup" name="fsetup" action="./image_update.php" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="mode" value="<?php echo $mode ?>">
 		<input type="hidden" name="fid" value="<?php echo $fid ?>">
@@ -92,7 +92,7 @@ include_once(NA_PATH.'/theme/loader.php');
 
 <div id="topHeight"></div>
 
-<div id="img_list" class="<?php echo (isset($win) && $win) ? 'img_list_win' : 'img_list'; ?>">
+<div id="img_list" class="clearfix f-de mb-5 <?php echo (isset($win) && $win) ? 'img_list_win' : 'img_list'; ?>">
 	<?php for($i=0; $i < count($list); $i++) { 
 		$img_href = G5_THEME_URL."/storage/image/".$list[$i];
 		$img_title = str_replace(G5_THEME_URL, "..", $img_href);
@@ -116,8 +116,6 @@ include_once(NA_PATH.'/theme/loader.php');
 		</div>
 	<?php } ?>
 </div>
-
-<div class="h30 clearfix"></div>
 
 <script>
 	$(document).ready(function() {

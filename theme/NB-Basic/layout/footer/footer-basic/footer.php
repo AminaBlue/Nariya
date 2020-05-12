@@ -4,7 +4,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 add_stylesheet('<link rel="stylesheet" href="'.$nt_footer_url.'/footer.css">', 0);
 ?>
 
-<footer id="nt_footer" class="f-sm font-weight-normal">
+<footer id="nt_footer" class="f-de font-weight-normal">
 	<nav class="nt-links">
 		<div class="nt-container py-2 px-3 px-sm-4 px-xl-0">
 			<h3 class="sr-only">하단 네비</h3>

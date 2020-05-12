@@ -6,41 +6,39 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 ?>
 
-<div id="find_info" class="win-cont">
-	<form class="form" role="form" name="fpasswordlost" action="<?php echo $action_url ?>" onsubmit="return fpasswordlost_submit(this);" method="post" autocomplete="off">
-	
-	<ul class="list-group">
-		<li class="list-group-item bg-primary">
-			<strong><i class="fa fa-search fa-lg"></i> 회원정보찾기</strong>
-		</li>
-		<li class="list-group-item">
-			<p class="help-block">
-				회원가입 시 등록하신 이메일 주소를 입력해 주세요. 해당 이메일로 아이디와 비밀번호 정보를 보내드립니다.
-			</p>
+<div id="find_info" class="f-de">
+	<div id="topNav" class="bg-primary text-white">
+		<div class="p-3">
+			<button type="button" class="close" aria-label="Close" onclick="window.close();">
+				<span aria-hidden="true" class="text-white">&times;</span>
+			</button>
+			<h5><?php echo $g5['title'] ?></h5>
+		</div>
+	</div>
 
-			<div class="form-group">
-				<label class="sound_only" for="mb_email">이메일<strong class="sound_only">필수</strong></label>
-				<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-					<input type="text" name="mb_email" id="mb_email" required class="form-control required email" maxlength="100">
+	<div id="topHeight"></div>
+
+	<form name="fpasswordlost" action="<?php echo $action_url ?>" onsubmit="return fpasswordlost_submit(this);" method="post" autocomplete="off">
+		<div class="p-3">
+
+			회원가입 시 등록하신 이메일 주소를 입력해 주세요. 해당 이메일로 아이디와 비밀번호 정보를 보내드립니다.
+
+			<label class="sr-only" for="mb_email">이메일<strong class="sr-only"> 필수</strong></label>
+			<div class="input-group my-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+				</div>
+				<input type="text" name="mb_email" id="mb_email" required class="form-control required email" maxlength="100">
+				<div class="input-group-append">
+					<button type="submit" id="btn_sumbit" class="btn btn-primary">확인하기</button>
 				</div>
 			</div>
-
 			<div class="text-center">
 				<?php echo captcha_html(); ?>
 			</div>
-		</li>
-	</ul>
-
-	<div class="text-center">
-		<button type="submit" class="btn btn-primary btn-sm">확인하기</button>
-        <button type="button" class="btn btn-white btn-sm" onclick="window.close();">창닫기</button>
-	</div>
-
+		</div>
 	</form>
 </div>
-
-<div class="h20"></div>
 
 <script>
 function fpasswordlost_submit(f) {
@@ -58,5 +56,13 @@ $(function() {
     var left = sw / 2 - cw / 2;
     moveTo(left, top);
 });
+
+$(document).ready(function() {
+
+	$("#topHeight").height($("#topNav").height());
+
+	$("#topNav").addClass('fixed-top');
+});
+
 </script>
 <!-- } 회원정보 찾기 끝 -->

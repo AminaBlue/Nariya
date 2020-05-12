@@ -53,7 +53,7 @@ $id = 'popular_'.na_rid();
 <!-- 인기검색어 시작 { -->
 <section id="<?php echo $id ?>" class="basic-keyword">
     <h3 class="sound_only">인기검색어</h3>
-    <div class="popular_inner f-sm font-weight-normal">
+    <div class="popular_inner f-de font-weight-normal">
 	    <ul>
 		<?php for ($i=0; $i < $list_cnt; $i++) { ?>
 			<li class="item">

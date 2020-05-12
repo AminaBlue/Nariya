@@ -96,7 +96,7 @@ include_once(NA_PATH.'/theme/loader.php');
 		<button type="button" class="close clip-close" aria-label="Close">
 			<span aria-hidden="true" class="text-white">&times;</span>
 		</button>
-		<h5><i class="fa fa-smile-o" aria-hidden="true"></i> EMOTICON
+		<h5><i class="fa fa-smile-o" aria-hidden="true"></i> EMOTICON</h5>
 	</div>
 </div>
 

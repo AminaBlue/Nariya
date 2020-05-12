@@ -65,12 +65,12 @@ include_once(NA_PATH.'/theme/loader.php');
 <input type="hidden" name="opt" value="<?php echo urlencode($opt) ?>">
 <input type="hidden" name="freset" value="">
 
-<ul class="list-group f-sm font-weight-normal">
+<ul class="list-group f-de font-weight-normal">
 	<li class="list-group-item border-bottom-0">
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">위젯 경로</label>
 			<div class="col-sm-10">
-				<p class="form-control-plaintext">
+				<p class="form-control-plaintext f-de">
 					<?php echo str_replace(G5_PATH, "", $widget_path) ?> 
 				</p>
 			</div>
@@ -78,7 +78,7 @@ include_once(NA_PATH.'/theme/loader.php');
 	</li>
 </ul>
 
-<div class="f-sm font-weight-normal">
+<div class="f-de font-weight-normal">
 	<?php @include_once($widget_path.'/widget.setup.php'); ?>
 </div>
 

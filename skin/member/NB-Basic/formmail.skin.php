@@ -4,14 +4,30 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 0);
 
+// 첨부파일
+na_script('fileinput');
+
 ?>
-<style>
-#fmail .form-group {
-	margin-bottom:0;
-}
-</style>
-<div id="fmail" class="win-cont">
-	<form class="form-horizontal" role="form" name="fformmail" action="./formmail_send.php" onsubmit="return fformmail_submit(this);" method="post" enctype="multipart/form-data">
+<div id="fmail" class="mb-4">
+
+	<div id="topNav" class="bg-primary text-white">
+		<div class="p-3">
+			<button type="button" class="close" aria-label="Close" onclick="window.close();">
+				<span aria-hidden="true" class="text-white">&times;</span>
+			</button>
+			<h5>
+			<?php if($name) { ?>
+				<?php echo $name ?> 님께 메일보내기
+			<?php } else { ?>
+				메일보내기
+			<?php } ?>			
+			</h5>
+		</div>
+	</div>
+
+	<div id="topHeight"></div>
+
+	<form name="fformmail" action="./formmail_send.php" onsubmit="return fformmail_submit(this);" method="post" enctype="multipart/form-data">
     <input type="hidden" name="to" value="<?php echo $email ?>">
     <input type="hidden" name="attach" value="2">
 	<?php if ($is_member) { // 회원이면  ?>
@@ -19,88 +35,99 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<input type="hidden" name="fmail" value="<?php echo $member['mb_email'] ?>">
 	<?php }  ?>
 
-	<ul class="list-group">
-		<li class="list-group-item bg-primary">
-			<b>
-			<?php if($name) { ?>
-				<?php echo $name ?> 님께 메일보내기
-			<?php } else { ?>
-				메일보내기
-			<?php } ?>
-			</b>
-		</li>
+	<ul class="list-group f-de mb-4">
 		<?php if (!$is_member) {  ?>
-			<li class="list-group-item">
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="fnick">이름<strong class="sound_only">필수</strong></label>
-					<div class="col-sm-10">
+			<li class="list-group-item border-left-0 border-right-0">
+				<div class="form-group row mb-0 mx-n2">
+					<label class="col-sm-2 col-form-label px-2" for="fnick">이름<strong class="sr-only">필수</strong></label>
+					<div class="col-sm-10 px-2">
 						<input type="text" name="fnick" id="fnick" required class="form-control required">
 					</div>
 				</div>
 			</li>
-			<li class="list-group-item">
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="fmail">E-mail<strong class="sound_only">필수</strong></label>
-					<div class="col-sm-10">
+			<li class="list-group-item border-left-0 border-right-0">
+				<div class="form-group row mb-0 mx-n2">
+					<label class="col-sm-2 col-form-label px-2" for="fmail">E-mail<strong class="sr-only">필수</strong></label>
+					<div class="col-sm-10 px-2">
 						<input type="text" name="fmail" id="fmain" required class="form-control required">
 					</div>
 				</div>
 			</li>
 		<?php }  ?>
-		<li class="list-group-item">
-			<div class="form-group">
-				<label class="col-sm-2 control-label" for="subject">제목<strong class="sound_only">필수</strong></label>
+		<li class="list-group-item border-left-0 border-right-0">
+			<div class="form-group row mb-0">
+				<label class="col-sm-2 col-form-label" for="subject">제목<strong class="sr-only">필수</strong></label>
 				<div class="col-sm-10">
 					<input type="text" name="subject" id="subject" required class="form-control required">
 				</div>
 			</div>
 		</li>
-		<li class="list-group-item">
-			<div class="form-group">
-				<label class="col-sm-2 control-label" for="content">내용<strong class="sound_only">필수</strong></label>
-				<div class="col-sm-10">
-					<textarea name="content" id="content" rows="8" required class="form-control required"></textarea>
+		<li class="list-group-item border-left-0 border-right-0">
+			<div class="form-group row mb-0 mx-n2">
+				<label class="col-sm-2 col-form-label px-2" for="content">내용<strong class="sr-only">필수</strong></label>
+				<div class="col-sm-10 px-2">
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="type_text" name="type" value="0" checked class="custom-control-input">
+						<label class="custom-control-label" for="type_text"><span>TEXT</span></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="type_html" name="type" value="1" class="custom-control-input">
+						<label class="custom-control-label" for="type_html"><span>HTML</span></label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="type_both" name="type" value="2" class="custom-control-input">
+						<label class="custom-control-label" for="type_both"><span>TEXT+HTML</span></label>
+					</div>
 
-					<p>
-						<label class="radio-inline"><input type="radio" name="type" value="0" id="type_text" checked> TEXT</label>
-						<label class="radio-inline"><input type="radio" name="type" value="1" id="type_html"> HTML</label>
-						<label class="radio-inline"><input type="radio" name="type" value="2" id="type_both"> TEXT+HTML</label>
+					<textarea name="content" id="content" rows="6" required class="form-control required mt-2"></textarea>
+				</div>
+			</div>
+		</li>
+		<li class="list-group-item border-left-0 border-right-0">
+			<div class="form-group row mb-0 mx-n2">
+				<label class="col-sm-2 col-form-label px-2">첨부파일</label>
+				<div class="col-sm-10 px-2">
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="file1">파일 1</label>
+						</div>
+						<div class="custom-file">
+							<input type="file" name="file1" class="custom-file-input" id="file1">
+							<label class="custom-file-label" for="file1" data-browse="선택"></label>
+						</div>
+					</div>
+					
+					<div class="input-group mb-2">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="file2">파일 2</label>
+						</div>
+						<div class="custom-file">
+							<input type="file" name="file2" class="custom-file-input" id="file2">
+							<label class="custom-file-label" for="file2" data-browse="선택"></label>
+						</div>
+					</div>
+					<p class="form-text f-de text-muted pb-0 mb-0">
+						첨부파일은 누락될 수 있으므로 발송 후 반드시 첨부 여부를 확인해 주세요.
 					</p>
 				</div>
 			</div>
 		</li>
-		<li class="list-group-item">
-			<div class="form-group">
-				<label class="col-sm-2 control-label">첨부파일</label>
-				<div class="col-sm-10">
-					<div class="row">
-						<div class="col-xs-6">
-							<input type="file" name="file1"  id="file1">
-						</div>
-						<div class="col-xs-6">
-							<input type="file" name="file2"  id="file2">
-						</div>
-					</div>
+		<li class="list-group-item border-left-0 border-right-0">
+			<div class="form-group row mb-0 mx-n2">
+				<label class="col-sm-2 col-form-label px-2">자동등록방지</label>
+				<div class="col-sm-10 px-2">
+					<?php echo captcha_html(); ?>
 				</div>
 			</div>
-			<p class="help-block f-small" style="margin-bottom:0">
-				첨부파일은 누락될 수 있으므로 메일을 보낸 후 파일이 첨부 되었는지 반드시 확인해 주세요.
-			</p>
-		</li>
-		<li class="list-group-item text-center">
-			<?php echo captcha_html(); ?>
 		</li>
 	</ul>	
 
 	<p class="text-center">
-		<button type="button" onclick="window.close();" class="btn btn-sm btn-white">창닫기</button>
-		<button type="submit" id="btn_submit" class="btn btn-sm btn-primary">메일발송</button>
+		<button type="submit" id="btn_submit" class="btn btn-primary">메일발송</button>
 	</p>
 
 	</form>
 </div>
-
-<div class="h20"></div>
 
 <script>
 with (document.fformmail) {
@@ -125,5 +152,9 @@ function fformmail_submit(f) {
     return true;
 }
 
+$(document).ready(function() {
+	$("#topHeight").height($("#topNav").height());
+	$("#topNav").addClass('fixed-top');
+});
 </script>
 <!-- } 폼메일 끝 -->

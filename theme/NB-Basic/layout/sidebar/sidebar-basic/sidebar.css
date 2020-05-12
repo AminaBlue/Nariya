@@ -21,13 +21,6 @@
 	-webkit-overflow-scrolling:touch; 
 }
 
-/* Top Head */
-#nt_sidebar .sidebar-head {
-	box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
-	-webkit-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
-	-moz-box-shadow: 0px 5px 5px -2px rgba(50, 60, 70, 0.15); 
-}
-
 /* Menu */
 #nt_sidebar_menu ul.off {
 	display:none;
@@ -37,7 +30,7 @@
 }
 #nt_sidebar_menu a { 
 	display:block; 
-	padding:0.5rem 0;
+	padding:0.75rem 0;
 	padding-left:2.5rem;
 	border-bottom:1px solid #eee;
 	overflow:hidden;
@@ -48,12 +41,20 @@
 	top:0.3rem;
 	left:0; 
 	width:2.5rem; 
-	padding:0.5rem 0;
+	padding:0.75rem 0;
 	margin-top:0.15rem;
 	text-align:center; 
 	cursor:pointer; 
 	color:#aaa;
 }
+
+/* PC에서 메뉴 간격 */
+.is-pc #nt_sidebar_menu a,
+.is-pc #nt_sidebar_menu .tree-toggle { 
+	padding-top:0.50rem !important;
+	padding-bottom:0.50rem !important;
+}
+
 #nt_sidebar_menu .me-ul { 
 	background:#fff; 
 }

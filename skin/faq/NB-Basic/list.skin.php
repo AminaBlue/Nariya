@@ -115,7 +115,7 @@ echo '<div id="faq_hhtml">'.conv_content($fm['fm_head_html'], 1).'</div>';
 <!-- } FAQ 분류 끝 -->
 
 <!-- 페이지 정보 및 버튼 시작 { -->
-<div id="faq_btn_top" class="clearfix f-sm font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
+<div id="faq_btn_top" class="clearfix f-de font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
 	<div class="d-flex align-items-center">
 		<div id="faq_list_total" class="flex-grow-1">
 			Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page
@@ -187,11 +187,11 @@ echo '<div id="faq_hhtml">'.conv_content($fm['fm_head_html'], 1).'</div>';
 
     } else {
         if($stx){
-            echo '<div class="border-bottom px-3 py-5 text-muted text-center">등록된 FAQ가 없습니다.">검색된 게시물이 없습니다.</div>';
+            echo '<div class="f-de border-bottom px-3 py-5 text-muted text-center">등록된 FAQ가 없습니다.">검색된 게시물이 없습니다.</div>';
         } else {
-            echo '<div class="border-bottom px-3 py-5 text-muted text-center">등록된 FAQ가 없습니다.';
+            echo '<div class="f-de border-bottom px-3 py-5 text-muted text-center">등록된 FAQ가 없습니다.';
             if($is_admin)
-                echo '<p class="mt-2"><a href="'.G5_ADMIN_URL.'/faqmasterlist.php">FAQ를 새로 등록하시려면 FAQ관리</a> 메뉴를 이용하십시오.</p>';
+                echo '<p class="f-de mt-2"><a href="'.G5_ADMIN_URL.'/faqmasterlist.php">FAQ를 새로 등록하시려면 FAQ관리</a> 메뉴를 이용하십시오.</p>';
             echo '</div>';
         }
     }

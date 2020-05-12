@@ -11,9 +11,6 @@ $keys = $tset['seo_key'];
 // 게시물
 if(isset($view['wr_id']) && $view['wr_id']) {
 
-	if(isset($view['wr_seo_title']) && $view['wr_seo_title']) {
-		$g5_head_title = $view['wr_seo_title'];
-	}
 	$author = get_text($view['wr_name']);
 	$desc = $view['wr_content'];
 
@@ -25,9 +22,6 @@ if(isset($view['wr_id']) && $view['wr_id']) {
 
 // 내용관리
 } else if(isset($co['co_id']) && $co['co_id']) {
-	if(isset($co['co_seo_title']) && $co['co_seo_title']) {
-		$g5_head_title = $co['co_seo_title'];
-	}
 
 	$author = get_text($config['cf_title']);
 

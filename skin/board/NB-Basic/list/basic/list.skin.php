@@ -17,7 +17,7 @@ if($boset['head_skin']) {
 
 // 글 이동
 $is_list_link = false;
-switch($wset['target']) {
+switch($boset['target']) {
 	case '1' : $target = ' target="_blank"'; break;
 	case '2' : $is_list_link = true; break;
 	case '3' : $target = ' target="_blank"'; $is_list_link = true; break;
@@ -166,6 +166,6 @@ $list_cnt = count($list);
 	<?php } ?>
 	</ul>
 	<?php if (!$list_cnt) { ?>
-		<div class="f-sm font-weight-normal px-3 py-5 text-muted text-center border-bottom">게시물이 없습니다.</div>
+		<div class="f-de font-weight-normal px-3 py-5 text-muted text-center border-bottom">게시물이 없습니다.</div>
 	<?php } ?>
 </section>

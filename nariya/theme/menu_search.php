@@ -18,7 +18,7 @@ include_once(NA_PATH.'/theme/loader.php');
 ?>
 
 <form name="fmenuform" id="fmenuform">
-	<ul class="list-group f-sm font-weight-normal">
+	<ul class="list-group f-de font-weight-normal">
 		<li class="list-group-item bg-primary text-white border-left-0 border-right-0">
 			<button type="button" class="close close-setup" aria-label="Close">
 				<span aria-hidden="true" class="text-white">&times;</span>

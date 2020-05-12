@@ -204,12 +204,12 @@ div#crosshair {
 
 <div id="topHeight"></div>
 
-<table class="table f-sm mb-0">
+<table class="table f-de mb-0">
 <tbody>
 <tr>
 	<th class="nw-4 text-center">위치</th>
 	<td>
-		<p class="form-control-plaintext pt-0">
+		<p class="form-control-plaintext f-de pt-0">
 			<span id="formatedAddress">서울특별시청</span>
 			(<span id="lat"></span>, <span id="lng"></span>, Zoom <span id="zoom_level"><?php echo $zoom; ?></span>)
 		</p>
@@ -223,7 +223,7 @@ div#crosshair {
 		<div class="input-group-append">
 			<button type="button" class="btn btn-primary" onclick="geocode()">
 				<i class="fa fa-search"></i>
-				<span class="sound_only">검색하기</span>
+				<span class="sr-only">검색하기</span>
 			</button>
 		</div>
 	</div>
@@ -238,7 +238,7 @@ div#crosshair {
 		<div class="input-group">
 			<input type="text" id="map_marker" class="form-control" value="<?php echo $marker; ?>">
 			<div class="input-group-append">
-				<button type="button" class="btn btn-primary btn-block" onclick="map_submit()">
+				<button type="button" class="btn btn-primary" onclick="map_submit()">
 					<i class="fa fa-code" aria-hidden="true"></i>
 					코드 생성
 				</button>

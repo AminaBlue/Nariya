@@ -6,87 +6,94 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 ?>
 
 <!-- 쪽지 목록 시작 { -->
-<div id="memo_list" class="win-cont">
-    <h2 class="win-title">
-		<button type="button" onclick="javascript:window.close();" class="btn btn_b01 pull-right" title="창닫기">
-			<i class="fa fa-times" aria-hidden="true"></i>
-			<span class="sound_only">창닫기</span>
-		</button>
+<div id="memo_list" class="mb-4">
 
-		<img src="<?php echo na_member_photo($member['mb_id']) ?>" alt="">
-		<?php echo $g5['title'] ?>
-	</h2>
-
-	<style>
-		#memo_list .btn-group .btn { border-radius:0 !important; }
-	</style>
-	<div class="btn-group btn-group-justified">
-		<a href="./memo.php?kind=recv" class="btn btn-sm btn-primary<?php echo ($kind == "recv") ? ' active' : '';?>">받은쪽지</a>
-		<a href="./memo.php?kind=send" class="btn btn-sm btn-primary<?php echo ($kind == "send") ? ' active' : '';?>">보낸쪽지</a>
-		<a href="./memo_form.php" class="btn btn-sm btn-primary<?php echo ($kind == "") ? ' active' : '';?>">쪽지쓰기</a>
+	<div id="topNav" class="bg-primary text-white">
+		<div class="p-3">
+			<button type="button" class="close" aria-label="Close" onclick="window.close();">
+				<span aria-hidden="true" class="text-white">&times;</span>
+			</button>
+			<h5><?php echo $g5['title'] ?></h5>
+		</div>
 	</div>
-	<div class="memo_list">
-		<ul class="list-group f-small no-margin">
-			<li class="list-group-item">
-				전체 <?php echo $kind_title ?>쪽지 <b><?php echo $total_count ?></b>통 / <?php echo $page ?>페이지
-			</li>
-			<?php
-			for ($i=0; $i<count($list); $i++) {
-			$readed = (substr($list[$i]['me_read_datetime'],0,1) == 0) ? '' : 'read';
-			$memo_preview = utf8_strcut(strip_tags($list[$i]['me_memo']), 30, '..');
-			?>
-			<li class="tr list-group-item">
-				<div class="td icon">
-					<a href="<?php echo $list[$i]['view_href']; ?>" class="bg-<?php echo ($readed) ? 'readed' : NT_COLOR ?>">
-						<?php if($readed) { ?>
-							<i class="fa fa-envelope-open-o" aria-hidden="true"></i>
-							<span class="sound_only">읽은 쪽지</span>
-						<?php } else { ?>
-							<i class="fa fa-envelope-o" aria-hidden="true"></i>
-							<span class="sound_only">안 읽은 쪽지</span>
-						<?php } ?>
-					</a>
-				</div>
-				<div class="td memo_cont">
-					<a href="<?php echo $list[$i]['del_href']; ?>" onclick="del(this.href); return false;" class="pull-right win-del" title="삭제">
-						<i class="fa fa-trash-o" aria-hidden="true"></i>
-						<span class="sound_only">삭제</span>
-					</a>
 
-					<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
+	<div id="topHeight"></div>
 
-					<span class="text-muted">
-						&nbsp;
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
-						<?php echo $list[$i]['send_datetime']; ?>
-					</span>
+	<nav id="memo_cate" class="sly-tab font-weight-normal mt-3 mb-2">
+		<div id="noti_cate_list" class="sly-wrap px-3">
+			<ul id="noti_cate_ul" class="clearfix sly-list text-nowrap border-left">
+				<li class="float-left<?php echo ($kind == "recv") ? ' active' : '';?>"><a href="./memo.php?kind=recv" class="py-2 px-3">받은쪽지</a></li>
+				<li class="float-left<?php echo ($kind == "send") ? ' active' : '';?>"><a href="./memo.php?kind=send" class="py-2 px-3">보낸쪽지</a></li>
+				<li class="float-left<?php echo ($kind == "") ? ' active' : '';?>"><a href="./memo_form.php" class="py-2 px-3">쪽지쓰기</a></li>
+			</ul>
+		</div>
+		<hr/>
+	</nav>
 
-					<p class="ellipsis">
-						<a href="<?php echo $list[$i]['view_href']; ?>">
-							<span class="text-muted"><?php echo $memo_preview; ?></span>
-						</a>
-					</p>
-				</div>	
-			</li>
-			<?php } ?>
-			<?php if ($i==0) { echo '<li class="empty_list">자료가 없습니다.</li>'; }  ?>
-			<li class="list-group-item bg-light text-center">
+	<div id="memo_info" class="f-de font-weight-normal mb-2 px-3">
+		전체 <?php echo $kind_title ?>쪽지 <b><?php echo $total_count ?></b>통 / <?php echo $page ?>페이지
+	</div>
+
+	<div class="w-100 mb-0 bg-primary" style="height:4px;"></div>
+
+	<?php if($config['cf_memo_del']){ ?>	
+		<div class="na-table border-bottom">
+			<div class="f-de px-3 py-2 py-md-2 bg-light">
 				쪽지 보관일수는 최장 <strong><?php echo $config['cf_memo_del'] ?></strong>일 입니다.
-			</li>
-		</ul>
-	</div>
+			</div>
+		</div>
+	<?php } ?>
 
-	<div class="text-center na-page pg-primary">
-		<ul class="pagination pagination-sm en">
+	<ul class="na-table d-table w-100 f-de">
+	<?php
+	$list_cnt = count($list);
+	for ($i=0; $i < $list_cnt; $i++) {
+		$readed = (substr($list[$i]['me_read_datetime'],0,1) == 0) ? '' : 'read';
+		$memo_preview = utf8_strcut(strip_tags($list[$i]['me_memo']), 30, '..');
+	?>
+		<li class="d-table-row border-bottom">
+			<div class="d-table-cell text-center nw-6 py-2 py-md-2">
+				<?php echo ($readed) ? '<span class="text-muted">읽음</span>' : '<span class="orangered">읽기 전</span>';?>
+			</div>
+			<div class="d-table-cell py-2 py-md-2">
+				<a href="<?php echo $list[$i]['view_href']; ?>" class="ellipsis">
+					<?php echo $memo_preview; ?>
+				</a>
+				<div class="clearfix f-sm text-black-50">
+					<div class="float-left">
+						<?php echo $list[$i]['send_datetime']; ?>
+					</div>
+					<div class="float-right">
+						<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>
+					</div>
+				</div>
+			</div>
+			<div class="d-table-cell text-center nw-4 py-2 py-md-2">
+				<a href="<?php echo $list[$i]['del_href'] ?>" onclick="del(this.href); return false;" class="win-del" title="삭제">
+					<i class="fa fa-trash-o text-muted fa-lg" aria-hidden="true"></i>
+					<span class="sound_only">삭제</span>
+				</a>
+			</div>
+		</li>
+    <?php } ?>
+	</ul>
+	<?php if ($i == 0) { ?>
+		<div class="f-de px-3 py-5 text-center text-muted border-bottom">
+			자료가 없습니다.
+		</div>
+	<?php } ?>
+
+	<div class="font-weight-normal px-3 mt-4">
+		<ul class="pagination justify-content-center en mb-0">
 			<?php echo na_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "./memo.php?kind=$kind".$qstr."&amp;page=") ?>
 		</ul>
 	</div>
 
-	<p class="text-center">
-		<button type="button" onclick="window.close();" class="btn btn-sm btn-white">창닫기</button>
-	</p>
-
-	<div class="h30"></div>
-
 </div>
+<script>
+$(document).ready(function() {
+	$("#topHeight").height($("#topNav").height());
+	$("#topNav").addClass('fixed-top');
+});
+</script>
 <!-- } 쪽지 목록 끝 -->

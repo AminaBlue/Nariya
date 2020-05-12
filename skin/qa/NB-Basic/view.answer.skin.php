@@ -30,7 +30,7 @@ for ($i=1; $i<=2; $i++) {
 		<b><?php echo get_text($answer['qa_subject']); ?></b>
 	</div>
 	<?php if($answer['download_count']) { ?>
-		<div class="clearfix border-bottom text-muted px-3 py-2">
+		<div class="clearfix f-de border-bottom text-muted px-3 py-2">
 			<?php for ($i=0; $i<$answer['download_count']; $i++) { // 가변 파일 ?>
 				<i class="fa fa-download fa-fw" aria-hidden="true"></i>	
 				<a href="<?php echo $answer['download_href'][$i] ?>" class="view_file_download mr-3">
@@ -89,7 +89,7 @@ for ($i=1; $i<=2; $i++) {
 		<div class="d-table-row">
 			<div class="d-table-cell nw-3 text-left">
 				<?php if ($prev_href) { ?>
-					<a href="<?php echo $prev_href ?>" class="btn btn_b01 nofocus float-left" title="이전 문의">
+					<a href="<?php echo $prev_href ?>" class="btn btn_b01 nofocus" title="이전 문의">
 						<i class="fa fa-chevron-left fa-md" aria-hidden="true"></i>
 						<span class="sr-only">이전 문의</span>
 					</a>
@@ -100,7 +100,7 @@ for ($i=1; $i<=2; $i++) {
 					<a href="<?php echo $rewrite_href; ?>" class="btn btn-primary" role="button">
 						추가 문의
 					</a>  
-					<a href="<?php echo $list_href ?>" class="btn btn-primary" title="목록" role="button">
+					<a href="<?php echo $list_href ?>" class="btn btn-primary" role="button" title="목록">
 						<i class="fa fa-list fa-md" aria-hidden="true"></i>
 						<span class="sr-only">목록</span>
 					</a>
@@ -108,7 +108,7 @@ for ($i=1; $i<=2; $i++) {
 			</div>
 			<div class="d-table-cell nw-3 text-right">
 				<?php if ($next_href) { ?>
-					<a href="<?php echo $next_href ?>" class="btn btn_b01 nofocus float-right" title="다음 문의">
+					<a href="<?php echo $next_href ?>" class="btn btn_b01 nofocus" title="다음 문의">
 						<i class="fa fa-chevron-right fa-md" aria-hidden="true"></i>
 						<span class="sr-only">다음 문의</span>
 					</a>

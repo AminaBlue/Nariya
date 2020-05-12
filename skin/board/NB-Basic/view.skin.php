@@ -247,7 +247,7 @@ $view_subject = get_text($view['wr_subject']);
 
     <section id="bo_v_data">
 		<h3 class="sr-only">관련자료</h3>
-		<ul class="na-table d-sm-table w-100 border-bottom text-muted f-sm font-weight-normal">
+		<ul class="na-table d-sm-table w-100 border-bottom text-muted f-de font-weight-normal">
 		<?php if ($is_signature && $signature) { ?>
 	    <!-- 회원서명 시작 { -->
 		<li class="d-sm-table-row border-top">

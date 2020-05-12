@@ -34,7 +34,7 @@ $menu_json = ($menu_json) ? stripslashes($menu_json) : '""';
 
 ?>
 
-<section class="f-sm font-weight-normal">
+<section class="f-de font-weight-normal">
 	<div class="row">
 		<div class="col-sm-6">
 			<ul class="list-group">
@@ -82,7 +82,7 @@ $menu_json = ($menu_json) ? stripslashes($menu_json) : '""';
 							<label for="href" class="col-sm-2 col-form-label">링크</label>
 							<div class="col-sm-10">
 								<input type="text" id="me_href" name="href" class="form-control item-menu" placeholder="http://...">
-								<p class="form-text text-muted" style="margin:10px 0 0 0;">
+								<p class="form-text f-de text-muted mt-3">
 									./로 시작하는 주소는 자동전환됨 ex) ./bbs/board.php?bo_table=
 								</p>
 							</div>
@@ -154,13 +154,13 @@ $menu_json = ($menu_json) ? stripslashes($menu_json) : '""';
 				</form>
 				<div class="text-center pt-3">
 					<button type="button" id="btnUpdate" class="btn btn-success en" disabled>
-						<i class="fa fa-refresh"></i> Update
+						<i class="fa fa-refresh" arial-hidden="true"></i> Update
 					</button>
 					<a id="btnSearch" href="<?php echo na_theme_href('menu') ?>" class="btn btn-info btn-setup en" role="button">
-						<i class="fa fa-search"></i> Search
+						<i class="fa fa-search" arial-hidden="true"></i> Search
 					</a>
 					<button type="button" id="btnAdd" class="btn btn-danger en">
-						<i class="fa fa-plus"></i> Add
+						<i class="fa fa-plus" arial-hidden="true"></i> Add
 					</button>
 				</div>
 			</div>

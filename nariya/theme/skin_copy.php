@@ -40,12 +40,12 @@ include_once(NA_PATH.'/theme/loader.php');
 <form id="fsetup" name="fsetup" action="./skin_copy_update.php" method="post" onsubmit="return fsetup_submit(this);">
 <input type="hidden" name="bo_table" value="<?php echo urlencode($bo_table) ?>">
 
-<ul class="list-group f-sm font-weight-normal">
+<ul class="list-group f-de font-weight-normal">
 	<li class="list-group-item">
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">복사 옵션</label>
 			<div class="col-sm-10">
-				<p class="form-control-plaintext pt-1 pb-0 float-left">
+				<p class="form-control-plaintext f-de pt-1 pb-0 float-left">
 					<div class="custom-control custom-checkbox custom-control-inline">
 						<input type="checkbox" name="freset" value="1" class="custom-control-input" id="fbothCheck">
 						<label class="custom-control-label" for="fbothCheck"><span>PC/모바일 설정값 모두 복사해 주기</span></label>

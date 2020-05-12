@@ -55,7 +55,7 @@ include_once(NA_PATH.'/theme/loader.php');
 		<div class="form-group row mb-0">
 			<label class="col-sm-2 col-form-label">초기화</label>
 			<div class="col-sm-10">
-				<p class="form-control-plaintext pt-1 pb-0 float-left">
+				<p class="form-control-plaintext f-de pt-1 pb-0 float-left">
 					<div class="custom-control custom-checkbox custom-control-inline">
 						<input type="checkbox" name="freset" value="1" class="custom-control-input" id="fresetCheck">
 						<label class="custom-control-label only-label" for="fresetCheck"><span>페이지 설정값을 초기화(삭제) 합니다.</span></label>

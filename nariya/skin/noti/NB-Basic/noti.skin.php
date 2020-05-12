@@ -29,7 +29,7 @@ $head_color = ($wset['head_color']) ? $wset['head_color'] : 'primary';
 <input type="hidden" name="pressed" value="">
 <input type="hidden" name="p_type"	value="" id="p_type">
 	<!-- 페이지 정보 및 버튼 시작 { -->
-	<div id="noti_btn_top" class="clearfix f-sm font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
+	<div id="noti_btn_top" class="clearfix f-de font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
 		<div class="d-flex align-items-center">
 			<div id="faq_list_total" class="flex-grow-1">
 				Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page
@@ -76,12 +76,12 @@ $head_color = ($wset['head_color']) ? $wset['head_color'] : 'primary';
 	<div class="w-100 mb-0 bg-<?php echo $head_color ?>" style="height:4px;"></div>
 	<?php if($nariya['noti_days']){ ?>	
 		<div class="na-table border-bottom">
-			<div class="px-3 py-2 py-md-2 bg-light">
-				알림 내역은 <b><?php echo $nariya['noti_days']; ?></b>일 동안만 보관 됩니다.
+			<div class="f-de px-3 py-2 py-md-2 bg-light">
+				알림 내역은 <b><?php echo $nariya['noti_days'] ?></b>일 동안만 보관 됩니다.
 			</div>
 		</div>
 	<?php } ?>
-	<ul class="na-table d-table w-100 f-sm">
+	<ul class="na-table d-table w-100 f-de">
 	<?php for($i=0; $i < $list_cnt; $i++) { ?>
 		<li class="d-table-row border-bottom">
 			<div class="d-table-cell text-center nw-6 py-2 py-md-2">
@@ -110,7 +110,7 @@ $head_color = ($wset['head_color']) ? $wset['head_color'] : 'primary';
     <?php } ?>
 	</ul>
 	<?php if ($i == 0) { ?>
-		<div class="px-3 py-5 text-center text-muted border-bottom mb-4">
+		<div class="f-de px-3 py-5 text-center text-muted border-bottom mb-4">
 			알림이 없습니다.
 		</div>
 	<?php } ?>

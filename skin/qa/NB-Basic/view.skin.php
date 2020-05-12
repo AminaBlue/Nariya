@@ -36,7 +36,7 @@ $wset = na_skin_config('qa');
 		</div>
 
 		<?php if($view['email'] || $view['hp']) { ?>
-			<div class="clearfix border-bottom text-muted px-3 py-2">
+			<div class="clearfix f-de border-bottom text-muted px-3 py-2">
 				<?php if ($view['email']) { ?>
 					<span class="mr-4">
 						<span class="sr-only">이메일</span>
@@ -52,7 +52,7 @@ $wset = na_skin_config('qa');
 			</div>
 		<?php } ?>
 		<?php if ($view['download_count']) { ?>
-			<div class="clearfix border-bottom text-muted px-3 py-2">
+			<div class="clearfix f-de border-bottom text-muted px-3 py-2">
 				<?php for ($i=0; $i<$view['download_count']; $i++) { // 가변 파일 ?>
 					<i class="fa fa-download fa-fw" aria-hidden="true"></i>	
 					<a href="<?php echo $view['download_href'][$i] ?>" class="view_file_download mr-3">
@@ -145,13 +145,13 @@ $wset = na_skin_config('qa');
     ?>
 
     <?php if($view['rel_count']) { ?>
-		<section id="bo_v_rel" class="na-table mb-4">
+		<section id="bo_v_rel" class="na-table f-de mb-4">
 			<div class="bg-light px-3 py-2 py-md-2 border-top border-bottom">
 				<b>연관질문</b>
 			</div>
 			<ul>
 			<?php for($i=0; $i<$view['rel_count']; $i++) { ?>
-				<li class="px-3 py-2 py-md-2 border-bottom f-sm">
+				<li class="px-3 py-2 py-md-2 border-bottom">
 					<a href="<?php echo $rel_list[$i]['view_href']; ?>" class="ellipsis">
 						<span class="float-right text-muted ml-2">
 							<?php echo $rel_list[$i]['date']; ?>
@@ -159,7 +159,7 @@ $wset = na_skin_config('qa');
 						<span class="text-muted">
 							<?php echo ($rel_list[$i]['qa_status']) ? '<span class="orangered">완료</span>' : '대기'; ?>
 						</span>
-						<span class="bar-left"></span>
+						<span class="na-bar"></span>
 						<?php echo $rel_list[$i]['subject']; ?>
 					</a>
 				</li>

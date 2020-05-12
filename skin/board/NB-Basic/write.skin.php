@@ -12,7 +12,7 @@ if ($is_member)
 	na_script('autosave');
 ?>
 
-<section id="bo_w" class="font-weight-normal mb-4">
+<section id="bo_w" class="f-de font-weight-normal mb-4">
     <h2 class="sr-only"><?php echo $g5['title'] ?></h2>
 
 	<!-- 게시물 작성/수정 시작 { -->
@@ -260,7 +260,7 @@ if ($is_member)
 								$file_script .= '<div class="'.$file_col.' mt-2 px-2"><input type="text" name="bf_content[]" value="'.addslashes(get_text($file[$i]['bf_content'])).'" class="form-control" placeholder="파일 내용 입력"></div>';
 							}
 
-							$file_script .= '<div class="col-12 mt-2 px-2 f-small"><div class="custom-control custom-checkbox">';
+							$file_script .= '<div class="col-12 mt-2 px-2 f-de"><div class="custom-control custom-checkbox">';
 							$file_script .= '<input type="checkbox" name="bf_file_del['.$i.']" value="1" id="bf_file_del'.$i.'" class="custom-control-input">';
 							$file_script .= '<label class="custom-control-label" for="bf_file_del'.$i.'"><span>'.$file[$i]['source'].'('.$file[$i]['size'].') 파일 삭제 - <a href="'.$file[$i]['href'].'">열기</a></span></label>';
 							$file_script .= '</div></div>';
@@ -368,7 +368,7 @@ if ($is_member)
 								<label class="custom-control-label" for="as_img2"><span>본문 삽입</span></label>
 							</div>
 						</p>
-						<p class="form-control-plaintext f-sm text-muted pb-0">
+						<p class="form-control-plaintext f-de text-muted pb-0">
 							본문 삽입시 {이미지:0}, {이미지:1} 형태로 글내용에 입력시 지정 첨부사진이 출력됩니다.
 						</p>
 					</div>

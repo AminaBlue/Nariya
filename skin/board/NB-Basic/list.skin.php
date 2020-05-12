@@ -77,7 +77,7 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 		<input type="hidden" name="sw" value="">
 
 		<!-- 게시판 페이지 정보 및 버튼 시작 { -->
-		<div id="bo_btn_top" class="clearfix f-sm font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
+		<div id="bo_btn_top" class="clearfix f-de font-weight-normal mb-2 pl-3 pr-2 px-sm-0">
 			<div class="d-flex align-items-center">
 				<div id="bo_list_total" class="flex-grow-1">
 					Total <b><?php echo number_format($total_count) ?></b> / <?php echo $page ?> Page

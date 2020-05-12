@@ -51,14 +51,6 @@
 	margin:5px;
 }
 
-/* 게시판 댓글 : 목록 */
-.cmt-head {
-	font-weight:normal;
-	font-size:20px;
-	font-family:tahoma;
-	letter-spacing:-1;
-}
-
 /* 게시판 댓글 : 내용 */
 .cmt-reply {
 	top:0;

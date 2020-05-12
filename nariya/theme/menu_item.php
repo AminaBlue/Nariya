@@ -96,7 +96,7 @@ if($is_sql) {
 	}
 ?>
 
-    <table class="table table-hover f-sm font-weight-normal">
+    <table class="table table-hover f-de font-weight-normal">
     <tbody>
     <tr class="bg-light">
         <th scope="col" class="border-top-0 pl-4"><?php echo $bbs_subject_title; ?></th>
@@ -145,7 +145,7 @@ if($is_sql) {
         <td class="pr-4 text-right">
             <input type="hidden" name="subject[]" value="<?php echo preg_replace('/[\'\"]/', '', $row['subject']); ?>">
             <input type="hidden" name="link[]" value="<?php echo $link; ?>">
-            <button type="button" class="add_select btn btn-sm btn-success f-small"><span class="sound_only"><?php echo $row['subject']; ?> </span>선택</button>
+            <button type="button" class="add_select btn btn-sm btn-success f-sm"><span class="sr-only"><?php echo $row['subject']; ?> </span>선택</button>
         </td>
     </tr>
 
@@ -156,7 +156,7 @@ if($is_sql) {
 
 <?php } else { ?>
 
-	<ul class="list-group f-sm font-weight-normal">
+	<ul class="list-group f-de font-weight-normal">
 		<li class="list-group-item border-left-0 border-right-0 border-top-0">
 			<div class="form-group row mb-0">
 				<label class="col-2 col-form-label" for="me_name">메뉴<strong class="sr-only"> 필수</strong></label>
@@ -170,7 +170,7 @@ if($is_sql) {
 				<label class="col-2 col-form-label" for="me_link">링크<strong class="sr-only"> 필수</strong></label>
 				<div class="col-10">
 					<input type="text" name="me_link" id="me_link" required class="form-control required" placeholder="http://...">
-					<p class="form-text text-muted">
+					<p class="form-text f-de text-muted">
 						그누 루트(./)와 테마 루트(../)는 자동으로 연결됩니다.
 					</p>
 				</div>

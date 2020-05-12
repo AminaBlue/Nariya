@@ -12,7 +12,7 @@ $wset = na_skin_config('qa');
 
 ?>
 
-<section id="bo_w" class="font-weight-normal mb-4">
+<section id="bo_w" class="f-de font-weight-normal mb-4">
 
 	<h2 class="sr-only"><?php echo ($w == "u") ? '글수정' : '글작성'; ?></h2>
 

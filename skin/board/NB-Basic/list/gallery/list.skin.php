@@ -19,15 +19,15 @@ if($boset['thumb_w'] && $boset['thumb_h']) {
 $head_color = ($boset['head_color']) ? $boset['head_color'] : 'primary';
 
 // 반응구간
-$xs = ($wset['xs']) ? $wset['xs'] : 2;
-$sm = ($wset['sm']) ? $wset['sm'] : 3;
-$md = ($wset['md']) ? $wset['md'] : 4;
-$lg = ($wset['lg']) ? $wset['lg'] : 4;
-$xl = ($wset['xl']) ? $wset['xl'] : 4;
+$xs = ($boset['xs']) ? $boset['xs'] : 2;
+$sm = ($boset['sm']) ? $boset['sm'] : 3;
+$md = ($boset['md']) ? $boset['md'] : 4;
+$lg = ($boset['lg']) ? $boset['lg'] : 4;
+$xl = ($boset['xl']) ? $boset['xl'] : 4;
 
 // 글 이동
 $is_list_link = false;
-switch($wset['target']) {
+switch($boset['target']) {
 	case '1' : $target = ' target="_blank"'; break;
 	case '2' : $is_list_link = true; break;
 	case '3' : $target = ' target="_blank"'; $is_list_link = true; break;
@@ -224,7 +224,7 @@ $list_cnt = count($list);
 		<?php } ?>
 		</ul>
 		<?php if(!$n) { ?>
-			<div class="f-sm px-3 py-5 text-muted text-center border-bottom">
+			<div class="f-de px-3 py-5 text-muted text-center border-bottom">
 				게시물이 없습니다.
 			</div>
 		<?php } ?>
