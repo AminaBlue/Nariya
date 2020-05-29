@@ -126,7 +126,8 @@ img.light-circle {
 	top: 0; 
 	z-index: 1; 
 	position: absolute;
-	font-weight:normal; 	
+	font-weight:normal;
+	color:#fff;
 }
 .label-band { 
 	z-index:2; 
@@ -137,6 +138,7 @@ img.light-circle {
 	padding: 5px; 
 	right: -32px; 
 	font-size: 11px; 
+	color:#fff;
 	position: absolute; 
 	text-align: center; 
 	font-weight:normal; 
@@ -154,7 +156,8 @@ img.light-circle {
 	width: 140px; 
 	padding: 20px 0 3px; 
 	right: -60px; 
-	font-size: 11px; 
+	font-size: 11px;
+	color:#fff;
 	position: absolute; 
 	text-align: center; 
 	font-weight:normal; 
@@ -176,6 +179,7 @@ img.light-circle {
 	margin-right:2px; 
 	min-width:22px; 
 	text-align:center;
+	color:#fff;
 }
 .tack-icon { 
 	display:inline-block; 
@@ -184,6 +188,7 @@ img.light-circle {
 	letter-spacing:-1px; 
 	line-height:11px;
 	font-weight:normal; 
+	color:#fff;
 }
 .social-icon a {
     margin: 0;
@@ -635,6 +640,7 @@ img.light-circle {
 	display: inline-block; 
 	padding: 0; 
 	margin: 0;
+	color:#fff;
 	vertical-align: middle;
 	background-repeat: no-repeat; 
 	background-position: left top;
@@ -650,7 +656,8 @@ img.light-circle {
 	top:-1px;
 	display:inline-block; 
 	padding:0; 
-	margin:0; 
+	margin:0;
+	color:#fff;
 	overflow:hidden; 
 	vertical-align:middle; 
 	background-repeat: no-repeat; 

@@ -27,7 +27,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 		<div id="nt_side_menu" class="font-weight-normal mb-4">
 			<div class="bg-primary text-white text-center p-4 py-sm-5 en">
 				<h4>
-					<i class="<?php echo $mes['icon'] ?>" aria-hidden="true"></i>
+					<i class="fa <?php echo $mes['icon'] ?>" aria-hidden="true"></i>
 					<?php echo $mes['text'];?>
 				</h4>
 			</div>
@@ -41,7 +41,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<i class="fa fa-caret-down tree-toggle me-i"></i>
 					<?php } ?>
 					<a class="me-a" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
-						<i class="<?php echo $me['icon'] ?> fa-fw" aria-hidden="true"></i>
+						<i class="fa <?php echo $me['icon'] ?> fa-fw" aria-hidden="true"></i>
 						<?php echo $me['text'];?>
 					</a>
 
@@ -56,7 +56,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 							<li class="me-li1<?php echo ($me1['on']) ? ' active' : ''; ?>">
 								<a class="me-a1" href="<?php echo $me1['href'];?>" target="<?php echo $me1['target'];?>">
-									<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
+									<i class="fa <?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 									<?php echo $me1['text'];?>
 								</a>
 							</li>
@@ -81,7 +81,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 <!-- 위젯 시작 -->
 <h3 class="h3 f-lg en">
 	<a href="<?php echo get_pretty_url('video'); ?>">
-		<span class="pull-right more-plus"></span>
+		<span class="float-right more-plus"></span>
 		공지글
 	</a>
 </h3>
@@ -105,7 +105,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 <!-- 위젯 시작 -->
 <h3 class="h3 f-lg en mb-1">
 	<a href="<?php echo G5_BBS_URL ?>/new.php?view=w">
-		<span class="pull-right more-plus"></span>
+		<span class="float-right more-plus"></span>
 		최근글
 	</a>
 </h3>
@@ -118,7 +118,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 <!-- 위젯 시작 -->
 <h3 class="h3 f-lg en mb-1">
 	<a href="<?php echo G5_BBS_URL ?>/new.php?view=c">
-		<span class="pull-right more-plus"></span>
+		<span class="float-right more-plus"></span>
 		새댓글
 	</a>
 </h3>

@@ -205,6 +205,18 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 					</td>
 					<td class="text-muted">기본값 : 16</td>
 					</tr>
+					<tr>
+					<td class="text-center">좌우 여백</td>
+					<td class="text-center">
+						<div class="input-group">
+							<input type="text" name="wset[padding]" value="<?php echo $wset['padding'] ?>" class="form-control">
+							<div class="input-group-append">
+								<span class="input-group-text">px</span>
+							</div>
+						</div>
+					</td>
+					<td class="text-muted">스테이지 전체 좌우 패딩, 기본값 : 0</td>
+					</tr>
 					</tbody>
 					</table>
 				</div>

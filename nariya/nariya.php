@@ -2,7 +2,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 // 버전
-define('NA_VERSION', '1.0.2');
+define('NA_VERSION', '1.0.3');
 
 // DB 테이블
 $g5['na_cache'] = G5_TABLE_PREFIX.'na_cache';

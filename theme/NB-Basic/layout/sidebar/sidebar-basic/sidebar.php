@@ -214,7 +214,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 					<i class="fa fa-caret-down tree-toggle me-i"></i>
 				<?php } ?>
 				<a class="me-a" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
-					<i class="<?php echo $me['icon'] ?> fa-fw" aria-hidden="true"></i>
+					<i class="fa <?php echo $me['icon'] ?> fa-fw" aria-hidden="true"></i>
 					<?php echo $me['text'];?>
 				</a>
 
@@ -234,7 +234,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 							<?php } ?>
 
 							<a class="me-a1" href="<?php echo $me1['href'];?>" target="<?php echo $me1['target'];?>">
-								<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
+								<i class="fa <?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 								<?php echo $me1['text'];?>
 							</a>
 							<?php if(isset($me1['s'])) { // Is Sub Menu ?>
@@ -248,7 +248,7 @@ add_javascript('<script src="'.$nt_sidebar_url.'/sidebar.js"></script>', 0);
 									<?php } ?>
 									<li class="me-li2<?php echo ($me2['on']) ? ' active' : ''; ?>">
 										<a class="me-a2" href="<?php echo $me2['href'] ?>" target="<?php echo $me2['target'] ?>">
-											<i class="<?php echo $me2['icon'] ?> fa-fw" aria-hidden="true"></i>
+											<i class="fa <?php echo $me2['icon'] ?> fa-fw" aria-hidden="true"></i>
 											<?php echo $me2['text'];?>
 										</a>
 									</li>

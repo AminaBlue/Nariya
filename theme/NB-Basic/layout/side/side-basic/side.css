@@ -54,7 +54,7 @@
 }
 
 @media all and (max-width:575px) {
-	/* �޴� �׵θ� */
+	/* 메뉴 테두리 */
 	.responsive #nt_side_menu .me-ul.border {
 		border-left:0 !important;
 		border-right:0 !important;

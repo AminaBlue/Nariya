@@ -162,9 +162,9 @@ $list_cnt = count($list);
 			if ($wr_id == $list[$i]['wr_id']) {
 				$list[$i]['subject'] = '<b class="text-primary">'.$list[$i]['subject'].'</b>';
 				$wr_now = '<div class="wr-now"></div>';
-				$wr_cap = '<span class="label-cap en bg-orangered text-white">Now</span>';
+				$wr_cap = '<span class="label-cap en bg-orangered">Now</span>';
 			} else if($list[$i]['icon_new']) {
-				$wr_cap = '<span class="label-cap en bg-'.$cap_new.' text-white">New</span>';
+				$wr_cap = '<span class="label-cap en bg-'.$cap_new.'">New</span>';
 			}
 
 			// 이미지 추출

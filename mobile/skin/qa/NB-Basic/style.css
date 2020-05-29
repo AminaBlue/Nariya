@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* ¸ğ¹ÙÀÏ ¸ñ·Ï */
+/* ëª¨ë°”ì¼ ëª©ë¡ */
 @media all and (max-width:767px) {
 	.responsive #bo_list .float-left.float-md-none {
 		margin-right:1.0rem;
@@ -10,7 +10,7 @@
 	}
 }
 
-/* °Ô½ÃÆÇ ÀĞ±â */
+/* ê²Œì‹œíŒ ì½ê¸° */
 #bo_v_title {
 	font-size:23px;
 	font-weight:bold;
@@ -51,7 +51,7 @@
 	margin-bottom:1.0rem;
 }
 
-/* °Ô½ÃÆÇ ¾²±â */
+/* ê²Œì‹œíŒ ì“°ê¸° */
 #bo_w .list-group-item {
 	padding-left:0;
 	padding-right:0;

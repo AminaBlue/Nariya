@@ -25,7 +25,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -41,7 +41,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -57,7 +57,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -73,7 +73,7 @@ if($nt_wing_path)
 			<!-- 위젯 시작 { -->
 			<h3 class="h3 f-lg en">
 				<a href="<?php echo get_pretty_url('video'); ?>">
-					<span class="pull-right more-plus"></span>
+					<span class="float-right more-plus"></span>
 					갤러리
 				</a>
 			</h3>
@@ -90,7 +90,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -106,7 +106,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -122,7 +122,7 @@ if($nt_wing_path)
 					<!-- 위젯 시작 { -->
 					<h3 class="h3 f-lg en">
 						<a href="<?php echo get_pretty_url('video'); ?>">
-							<span class="pull-right more-plus"></span>
+							<span class="float-right more-plus"></span>
 							게시판
 						</a>
 					</h3>
@@ -138,7 +138,7 @@ if($nt_wing_path)
 			<!-- 위젯 시작 { -->
 			<h3 class="h3 f-lg en">
 				<a href="<?php echo get_pretty_url('video'); ?>">
-					<span class="pull-right more-plus"></span>
+					<span class="float-right more-plus"></span>
 					배너
 				</a>
 			</h3>

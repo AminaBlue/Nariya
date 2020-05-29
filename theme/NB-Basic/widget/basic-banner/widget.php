@@ -96,6 +96,7 @@ $(document).ready(function(){
 		loop:true,
 		item:<?php echo ($wset['xl']) ? $wset['xl'] : 4; ?>,
 		margin:<?php echo $wset['margin'] ?>,
+		stagePadding: <?php echo ($wset['padding'] == "") ? 0 : $wset['padding']; ?>,
 		nav:<?php echo ($wset['nav']) ? 'false' : 'true'; ?>,
 		dots:false,
 		navText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],

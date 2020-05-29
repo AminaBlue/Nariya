@@ -65,7 +65,7 @@ $is_col_all = 6;
 					?>
 						<li class="col p-0 me-li<?php echo ($me['on']) ? ' on' : ''; ?>">
 							<a class="me-a f-md en" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
-								<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
+								<i class="fa <?php echo $me['icon'] ?>" aria-hidden="true"></i>
 								<?php echo $me['text'];?>
 							</a>
 							<?php if(isset($me['s'])) { //Is Sub Menu ?>
@@ -80,7 +80,7 @@ $is_col_all = 6;
 
 										<li class="sub-1dli<?php echo ($me1['on']) ? ' on' : ''; ?>">
 											<a href="<?php echo $me1['href'];?>" class="me-sh sub-1da<?php echo (isset($me1['s'])) ? ' sub-icon' : '';?>" target="<?php echo $me1['target'];?>">
-												<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
+												<i class="fa <?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 												<?php echo $me1['text'];?>
 											</a>
 											<?php if(isset($me1['s'])) { // Is Sub Menu ?>
@@ -102,7 +102,7 @@ $is_col_all = 6;
 
 														<li class="sub-2dli<?php echo ($me2['on']) ? ' on' : ''; ?>">
 															<a href="<?php echo $me2['href'] ?>" class="me-sh sub-2da" target="<?php echo $me2['target'] ?>">
-																<i class="<?php echo $me2['icon'] ?> fa-fw" aria-hidden="true"></i>
+																<i class="fa <?php echo $me2['icon'] ?> fa-fw" aria-hidden="true"></i>
 																<?php echo $me2['text'];?>
 															</a>
 														</li>
@@ -160,7 +160,7 @@ $is_col_all = 6;
 					<div class="col">
 						<a class="d-block py-2 text-center border-bottom border-primary<?php echo ($me['on']) ? ' text-primary' : '';?>" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
 							<h5>
-								<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
+								<i class="fa <?php echo $me['icon'] ?>" aria-hidden="true"></i>
 								<strong><?php echo $me['text'];?></strong>
 							</h5>
 						</a>
@@ -176,7 +176,7 @@ $is_col_all = 6;
 
 								<li class="pb-1 sub-li">
 									<a href="<?php echo $me1['href'];?>" class="sub-a<?php echo ($me1['on']) ? ' on text-primary' : '';?>" target="<?php echo $me1['target'];?>">
-										<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
+										<i class="fa <?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 										<?php echo $me1['text'];?>
 									</a>
 								</li>
