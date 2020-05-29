@@ -2,7 +2,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 // 버전
-define('NA_VERSION', '1.0.0');
+define('NA_VERSION', '1.0.1');
 
 // DB 테이블
 $g5['na_cache'] = G5_TABLE_PREFIX.'na_cache';
@@ -80,9 +80,5 @@ $boset = array();
 
 // 공통 후크
 include_once(NA_PATH.'/hooks.php');
-
-// 게시판 개별 후크
-if(isset($board['bo_table']) && $board['bo_table'])
-	@include_once($board_skin_path.'/_hooks.php');
 
 ?>

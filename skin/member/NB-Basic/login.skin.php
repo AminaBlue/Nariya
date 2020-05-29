@@ -36,8 +36,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 			</div>
 		</div>
 		<div class="form-group">	
+			<label for="login_pw" class="sr-only">비밀번호<strong class="sr-only"> 필수</strong></label>
 			<div class="input-group">
-				<label for="login_pw" class="sr-only">비밀번호<strong class="sr-only"> 필수</strong></label>
 				<div class="input-group-prepend">
 					<span class="input-group-text"><i class="fa fa-lock text-muted"></i></span>
 				</div>

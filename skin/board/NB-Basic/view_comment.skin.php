@@ -21,7 +21,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 <div id="viewcomment">
 	<div class="f-de px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
 		댓글 <b class="orangered"><?php echo $write['wr_comment'] ?></b>개
-		<?php if($is_paging) { ?>
+		<?php if($is_paging && $page) { ?>
 			/ <?php echo $page ?>페이지
 		<?php } ?>
 	</div>

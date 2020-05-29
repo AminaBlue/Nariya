@@ -29,9 +29,6 @@ class G5_NARIYA {
 
 	public function add_hooks() {
 
-		// 공통
-		add_event('common_header', array($this, 'common_header'), 10, 0);
-
 		// 글등록
 		add_event('write_update_after', array($this, 'write_insert'), 10, 5);
 
@@ -70,52 +67,6 @@ class G5_NARIYA {
 			}
 		}
 	}
-
-	// 공통
-	public function common_header() {
-		global $config, $board, $nariya, $boset;
-		global $board_skin_path, $board_skin_url;
-		global $member_skin_path, $member_skin_url;
-		global $new_skin_path, $new_skin_url;
-		global $search_skin_path, $search_skin_url;
-		global $connect_skin_path, $connect_skin_url;
-		global $faq_skin_path, $faq_skin_url;
-
-		// 게시판 스킨 설정
-		if(isset($board['bo_table']) && $board['bo_table']) {
-			global $is_admin, $is_member;
-
-			$boset = na_skin_config('board', $board['bo_table']);
-			if($is_member && !$is_admin && isset($boset['bo_admin']) && $boset['bo_admin'])
-				na_admin($boset['bo_admin'], 1);
-		}
-
-		// 모바일 스킨 경로 변경
-		if(G5_IS_MOBILE && (!isset($nariya['mobile_skin']) || !$nariya['mobile_skin'])) {
-			$board_skin_path    = na_skin_path('board', $board['bo_skin']);
-			$board_skin_url     = na_skin_url('board', $board['bo_skin']);
-			$member_skin_path   = na_skin_path('member', $config['cf_member_skin']);
-			$member_skin_url    = na_skin_url('member', $config['cf_member_skin']);
-			$new_skin_path      = na_skin_path('new', $config['cf_new_skin']);
-			$new_skin_url       = na_skin_url('new', $config['cf_new_skin']);
-			$search_skin_path   = na_skin_path('search', $config['cf_search_skin']);
-			$search_skin_url    = na_skin_url('search', $config['cf_search_skin']);
-			$connect_skin_path  = na_skin_path('connect', $config['cf_connect_skin']);
-			$connect_skin_url   = na_skin_url('connect', $config['cf_connect_skin']);
-			$faq_skin_path      = na_skin_path('faq', $config['cf_faq_skin']);
-			$faq_skin_url       = na_skin_url('faq', $config['cf_faq_skin']);
-		}
-
-		// 로그인 경험치
-		if(IS_NA_XP && isset($nariya['xp_login']) && $nariya['xp_login']) {
-			global $member;
-
-			if(substr($member['mb_today_login'], 0, 10) != G5_TIME_YMD) {
-				na_insert_xp($member['mb_id'], $nariya['xp_login'], G5_TIME_YMD.' 로그인', '@login', $member['mb_id'], G5_TIME_YMD);
-	        }
-		}
-
-	}   // end function
 
 	// 1:1 문의
 	public function qawrite_update($qa_id=0, $write=array(), $w='', $qaconfig){

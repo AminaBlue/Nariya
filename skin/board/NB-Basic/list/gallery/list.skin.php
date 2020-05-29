@@ -158,7 +158,6 @@ $list_cnt = count($list);
 			}
 
 			// 새 글, 현재 글 스타일
-			$wr_alt = $list[$i]['subject'];
 			$wr_now = '';
 			if ($wr_id == $list[$i]['wr_id']) {
 				$list[$i]['subject'] = '<b class="text-primary">'.$list[$i]['subject'].'</b>';
@@ -188,7 +187,7 @@ $list_cnt = count($list);
 							<?php echo $wr_tack ?>
 							<?php echo $wr_cap ?>
 							<?php if($thumb) { ?>
-								<img src="<?php echo $thumb ?>" alt="<?php echo $wr_alt ?>" class="na-round">
+								<img src="<?php echo $thumb ?>" alt="Image <?php echo $list[$i]['wr_id'] ?>" class="na-round">
 							<?php } ?>
 						</a>
 					</div>

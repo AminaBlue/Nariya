@@ -88,7 +88,7 @@ for ($i=0; $i < $list_cnt; $i++) {
 					<?php echo $wr_tack ?>
 					<?php echo $wr_cap ?>
 					<?php if($thumb) { ?>
-						<img src="<?php echo $thumb ?>" alt="<?php echo $list[$i]['subject'] ?>" class="na-round">
+						<img src="<?php echo $thumb ?>" alt="Image <?php echo $list[$i]['wr_id'] ?>" class="na-round">
 					<?php } ?>
 				</a>
 			</div>

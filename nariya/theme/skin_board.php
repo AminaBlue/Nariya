@@ -6,7 +6,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 ?>
 <ul class="list-group">
 	<li class="list-group-item bg-light border-top-0">
-		<b>부가 기능</b>
+		<b>기능 설정</b>
 	</li>
 	<li class="list-group-item">
 		<div class="form-group row mb-0">
@@ -264,7 +264,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 	<?php if(IS_NA_BBS) { // 게시판 플러그인 ?>
 		<li class="list-group-item">
 			<div class="form-group row mb-0">
-				<label class="col-sm-2 col-form-label">기타 기능</label>
+				<label class="col-sm-2 col-form-label">부가 기능</label>
 				<div class="col-sm-10">
 					<div class="table-responsive">
 						<table class="table table-bordered mb-0">
@@ -273,6 +273,39 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<th class="text-center nw-c1">구분</th>
 						<th class="text-center nw-c2">설정</th>
 						<th class="text-center">비고</th>
+						</tr>
+						<tr>
+						<td class="text-center">PC 에디터</td>
+						<td class="text-center">
+							<select name="boset[editor]" class="custom-select">
+							<option value="">기본 설정</option>
+							<?php
+								$skinlist = na_dir_list(G5_EDITOR_PATH);
+								for ($k=0; $k<count($skinlist); $k++) {
+									echo '<option value="'.$skinlist[$k].'"'.get_selected($skinlist[$k], $boset['editor']).'>'.$skinlist[$k].'</option>'.PHP_EOL;
+								} 
+							?>
+							</select>
+						</td>
+						<td class="text-muted">
+							PC 기기에서 사용할 에디터
+						</td>
+						</tr>
+						<tr>
+						<td class="text-center">모바일 에디터</td>
+						<td class="text-center">
+							<select name="boset[editor_mo]" class="custom-select">
+							<option value="">기본 설정</option>
+							<?php
+								for ($k=0; $k<count($skinlist); $k++) {
+									echo '<option value="'.$skinlist[$k].'"'.get_selected($skinlist[$k], $boset['editor_mo']).'>'.$skinlist[$k].'</option>'.PHP_EOL;
+								} 
+							?>
+							</select>
+						</td>
+						<td class="text-muted">
+							모바일 기기에서 사용할 에디터
+						</td>
 						</tr>
 						<tr>
 						<td class="text-center">신고 기능</td>
