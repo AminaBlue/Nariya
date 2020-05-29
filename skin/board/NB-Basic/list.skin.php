@@ -158,6 +158,9 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 												<i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 
 												전체선택						
 											</label>
+											<div class="sr-only">
+												<input type="checkbox" id="allCheck" onclick="if (this.checked) all_checked(true); else all_checked(false);">
+											</div>
 										</a>
 										<button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value" class="btn btn-primary py-2">
 											<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> 
@@ -210,9 +213,6 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 </div>
 
 <?php if ($is_checkbox) { ?>
-<div class="sr-only">
-	<input type="checkbox" id="allCheck" onclick="if (this.checked) all_checked(true); else all_checked(false);">
-</div>
 <noscript>
 <p align="center">자바스크립트를 사용하지 않는 경우 별도의 확인 절차 없이 바로 선택삭제 처리하므로 주의하시기 바랍니다.</p>
 </noscript>

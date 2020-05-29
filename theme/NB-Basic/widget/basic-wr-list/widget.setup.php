@@ -257,6 +257,7 @@ na_script('iconpicker');
 						복수 게시판 추출시 날짜 정렬만 작동함
 					</td>
 					</tr>
+					<tr>
 					<td class="text-center">기간 설정</td>
 					<td>
 						<select name="wset[term]" class="custom-select">
@@ -267,6 +268,7 @@ na_script('iconpicker');
 						&nbsp;
 					</td>
 					</tr>
+					<tr>
 					<td class="text-center">일자 지정</td>
 					<td>
 						<div class="input-group">

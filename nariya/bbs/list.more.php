@@ -44,8 +44,8 @@ if($is_opt && $opt) {
 }
 
 // 초기값
-$page = (int)$page;
-$wset['page'] = ($page > 0) ? $page : '';
+$qstr = '';
+$wset['page'] = $page;
+$wset['rows'] = ($wset['rows'] == "") ? 7 : $wset['rows'];
 $wset['bo_new'] = ($wset['bo_new'] == "") ? 24 : $wset['bo_new'];
-
 ?>

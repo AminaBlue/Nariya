@@ -36,7 +36,6 @@ $theme_config = array(
 
 // 데모 사이트
 if(is_dir(G5_PATH.'/DEMO') && !defined('G5_IS_ADMIN')) {
-	$board['bo_skin'] = 'NB-Basic'; //게시판 스킨
 	$config['cf_member_skin'] = 'NB-Basic'; //회원 스킨
 	$config['cf_new_skin'] = 'NB-Basic'; //새글 스킨
 	$config['cf_search_skin'] = 'NB-Basic'; //검색 스킨

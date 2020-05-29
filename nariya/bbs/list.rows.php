@@ -48,11 +48,14 @@ if ($config['cf_cert_use'] && !$is_admin) {
 	}
 }
 
-if ($member['mb_level'] >= $board['bo_list_level'] && $board['bo_use_list_view']) {
+if (($member['mb_level'] >= $board['bo_list_level'] && $board['bo_use_list_view']) || empty($wr_id)) {
 	;
 } else {
 	exit;
 }
+
+// 기능 확장
+@include_once($board_skin_path.'/_extend.php');
 
 // 분류 사용
 $is_category = false;
@@ -140,10 +143,56 @@ $page = ($page > 1) ? $page : 2;
 if($page > $total_page)
 	exit;
 
-if($qstr) 
-	$qstr .= '&amp;page='.$page;
+$i = 0;
+$notice_count = 0;
+$notice_array = array();
+
+// 공지 처리
+if (!$is_search_bbs) {
+    $arr_notice = explode(',', trim($board['bo_notice']));
+    $from_notice_idx = ($page - 1) * $page_rows;
+    if($from_notice_idx < 0)
+        $from_notice_idx = 0;
+    $board_notice_count = count($arr_notice);
+
+    for ($k=0; $k<$board_notice_count; $k++) {
+        if (trim($arr_notice[$k]) == '') continue;
+
+        $row = sql_fetch(" select * from {$write_table} where wr_id = '{$arr_notice[$k]}' ");
+
+        if (!$row['wr_id']) continue;
+
+        $notice_array[] = $row['wr_id'];
+
+        if($k < $from_notice_idx) continue;
+
+        $list[$i] = get_list($row, $board, $board_skin_url, G5_IS_MOBILE ? $board['bo_mobile_subject_len'] : $board['bo_subject_len']);
+        $list[$i]['is_notice'] = true;
+
+        $i++;
+        $notice_count++;
+
+        if(!IS_NA_BBS && $notice_count >= $list_page_rows)
+            break;
+    }
+}
 
 $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
+
+// 공지글이 있으면 변수에 반영
+if(!empty($notice_array)) {
+	if(!IS_NA_BBS)
+	    $from_record -= count($notice_array);
+
+    if($from_record < 0)
+        $from_record = 0;
+
+    if(!IS_NA_BBS && $notice_count > 0)
+        $page_rows -= $notice_count;
+
+    if($page_rows < 0)
+        $page_rows = $list_page_rows;
+}
 
 // 관리자라면 CheckBox 보임
 $is_checkbox = false;
@@ -189,26 +238,43 @@ if ($sst) {
 if ($is_search_bbs) {
     $sql = " select distinct wr_parent from {$write_table} where {$sql_search} {$sql_order} limit {$from_record}, $page_rows ";
 } else {
-    $sql = " select * from {$write_table} where wr_is_comment = 0 {$na_sql_where} {$sql_order} limit {$from_record}, $page_rows ";
+    $sql = " select * from {$write_table} where wr_is_comment = 0 {$na_sql_where} ";
+    if(!empty($notice_array))
+        $sql .= " and wr_id not in (".implode(', ', $notice_array).") ";
+    $sql .= " {$sql_order} limit {$from_record}, $page_rows ";
 }
 
-$k = 0;
-$result = sql_query($sql);
-while ($row = sql_fetch_array($result)) {
-	// 검색일 경우 wr_id만 얻었으므로 다시 한행을 얻는다
-	if ($is_search_bbs)
-		$row = sql_fetch(" select * from {$write_table} where wr_id = '{$row['wr_parent']}' ");
+// 페이지의 공지개수가 목록수 보다 작을 때만 실행
+if($page_rows > 0) {
+	if(IS_NA_BBS)
+		$notice_count = 0;
 
-	$list[$i] = get_list($row, $board, $board_skin_url, G5_IS_MOBILE ? $board['bo_mobile_subject_len'] : $board['bo_subject_len']);
-	if (strstr($sfl, 'subject')) {
-		$list[$i]['subject'] = search_font($stx, $list[$i]['subject']);
-	}
-	$list[$i]['is_notice'] = false;
-	$list_num = $total_count - ($page - 1) * $list_page_rows;
-	$list[$i]['num'] = $list_num - $k;
+    $result = sql_query($sql);
 
-	$i++;
-	$k++;
-}
+    $k = 0;
+
+    while ($row = sql_fetch_array($result))
+    {
+        // 검색일 경우 wr_id만 얻었으므로 다시 한행을 얻는다
+        if ($is_search_bbs)
+            $row = sql_fetch(" select * from {$write_table} where wr_id = '{$row['wr_parent']}' ");
+
+        $list[$i] = get_list($row, $board, $board_skin_url, G5_IS_MOBILE ? $board['bo_mobile_subject_len'] : $board['bo_subject_len']);
+        if (strstr($sfl, 'subject')) {
+            $list[$i]['subject'] = search_font($stx, $list[$i]['subject']);
+        }
+        $list[$i]['is_notice'] = false;
+        $list_num = $total_count - ($page - 1) * $list_page_rows - $notice_count;
+        $list[$i]['num'] = $list_num - $k;
+
+        $i++;
+        $k++;
+    }
+} 
+
+if(!$i)
+	exit;
+
+g5_latest_cache_data($board['bo_table'], $list);
 
 ?>

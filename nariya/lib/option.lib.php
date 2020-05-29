@@ -68,9 +68,10 @@ function na_sort_options($value) {
 function na_member_options($value) {
 
 	$opt = array();
-	$opt[] = array('point', '적립포인트');
-	$opt[] = array('up', '사용포인트');
-	$opt[] = array('np', '보유포인트');
+	$opt[] = array('point', '포인트');
+	if(IS_NA_XP) {
+		$opt[] = array('exp', '경험치');
+	}
 	$opt[] = array('post', '글등록');
 	$opt[] = array('comment', '댓글등록');
 	$opt[] = array('new', '신규가입');

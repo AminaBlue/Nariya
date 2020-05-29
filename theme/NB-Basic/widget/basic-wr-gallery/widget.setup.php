@@ -388,6 +388,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						복수 게시판 추출시 날짜 정렬만 작동함
 					</td>
 					</tr>
+					<tr>
 					<td class="text-center">기간 설정</td>
 					<td>
 						<select name="wset[term]" class="custom-select">
@@ -398,6 +399,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						&nbsp;
 					</td>
 					</tr>
+					<tr>
 					<td class="text-center">일자 지정</td>
 					<td>
 						<div class="input-group">

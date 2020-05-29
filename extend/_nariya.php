@@ -30,13 +30,13 @@ if(IS_NA_XP && isset($nariya['xp_login']) && $nariya['xp_login']) {
 
 // 게시판 설정
 if(isset($board['bo_table']) && $board['bo_table']) {
-
 	$boset = na_skin_config('board', $board['bo_table']);
-
 	if($is_member && !$is_admin && isset($boset['bo_admin']) && $boset['bo_admin'])
 		na_admin($boset['bo_admin'], 1);
 
-	@include_once($board_skin_path.'/_hooks.php');
+	// board.php 에서만 실행
+	if(basename($_SERVER['SCRIPT_FILENAME']) == 'board.php')
+		@include_once($board_skin_path.'/_extend.php');
 }
 
 ?>
