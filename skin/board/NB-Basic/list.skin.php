@@ -105,37 +105,74 @@ $is_skin_setup = (($is_admin == 'super' || IS_DEMO) && is_file($board_skin_path.
 							<span class="sr-only">글쓰기</span>
 						</a>
 					<?php } ?>
-					<?php if ($is_admin == 'super' || $is_auth || IS_DEMO) {  ?>
-						<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시판 리스트 옵션">
-							<span class="sr-only">게시판 리스트 옵션</span>
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-empty dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시물 정렬">
+							<?php
+								switch($sst) {
+									case 'wr_datetime'	: $sst_icon = 'history'; $sst_txt = '날짜순 정렬'; break;
+									case 'wr_hit'		: $sst_icon = 'eye'; $sst_txt = '조회순 정렬'; break;
+									case 'wr_good'		: $sst_icon = 'thumbs-o-up'; $sst_txt = '추천순 정렬'; break;
+									case 'wr_nogood'	: $sst_icon = 'thumbs-o-down'; $sst_txt = '비추천순 정렬'; break;
+									default				: $sst_icon = 'sort-numeric-desc'; $sst_txt = '게시물 정렬'; break;
+								}
+							?>
+							<i class="fa fa-<?php echo $sst_icon ?> fa-md" aria-hidden="true"></i>
+							<span class="sr-only"><?php echo $sst_txt ?></span>
 						</button>
 						<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right">
-							<div class="btn-group-vertical">
-								<?php if($is_skin_setup) { ?>
-									<a href="<?php echo na_setup_href('board', $bo_table) ?>" class="btn btn-primary btn-setup py-2" role="button">
-										<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> 스킨설정
+							<div class="btn-group-vertical bg-white border rounded py-1">
+								<?php echo str_replace('>', ' class="btn px-3 py-1 text-left" role="button">', subject_sort_link('wr_datetime', $qstr2, 1)) ?>
+									날짜순
+								</a>
+								<?php echo str_replace('>', ' class="btn px-3 py-1 text-left" role="button">', subject_sort_link('wr_hit', $qstr2, 1)) ?>
+									조회순
+								</a>
+								<?php if($is_good) { ?>
+									<?php echo str_replace('>', ' class="btn px-3 py-1 text-left" role="button">', subject_sort_link('wr_good', $qstr2, 1)) ?>
+										추천순
 									</a>
 								<?php } ?>
-								<?php if ($is_checkbox) { ?>
-									<a href="javascript:;" class="btn btn-primary py-2" role="button">
-										<label class="p-0 m-0" for="allCheck">
-											<i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 
-											전체선택						
-										</label>
+								<?php if($is_nogood) { ?>
+									<?php echo str_replace('>', ' class="btn px-3 py-1 text-left" role="button">', subject_sort_link('wr_nogood', $qstr2, 1)) ?>
+										비추천순
 									</a>
-									<button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> 
-										선택삭제
-									</button>
-									<button type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-files-o fa-fw" aria-hidden="true"></i> 
-										선택복사
-									</button>
-									<button type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value" class="btn btn-primary py-2">
-										<i class="fa fa-arrows fa-fw" aria-hidden="true"></i>
-										선택이동
-									</button>
 								<?php } ?>
+							</div>
+						</div>
+					</div>
+					<?php if ($is_admin == 'super' || $is_auth || IS_DEMO) {  ?>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn_b01 nofocus dropdown-toggle dropdown-toggle-split py-1" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" title="게시판 리스트 옵션">
+								<span class="sr-only">게시판 리스트 옵션</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right">
+								<div class="btn-group-vertical">
+									<?php if($is_skin_setup) { ?>
+										<a href="<?php echo na_setup_href('board', $bo_table) ?>" class="btn btn-primary btn-setup py-2" role="button">
+											<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> 스킨설정
+										</a>
+									<?php } ?>
+									<?php if ($is_checkbox) { ?>
+										<a href="javascript:;" class="btn btn-primary py-2" role="button">
+											<label class="p-0 m-0" for="allCheck">
+												<i class="fa fa-check-square-o fa-fw" aria-hidden="true"></i> 
+												전체선택						
+											</label>
+										</a>
+										<button type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value" class="btn btn-primary py-2">
+											<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> 
+											선택삭제
+										</button>
+										<button type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value" class="btn btn-primary py-2">
+											<i class="fa fa-files-o fa-fw" aria-hidden="true"></i> 
+											선택복사
+										</button>
+										<button type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value" class="btn btn-primary py-2">
+											<i class="fa fa-arrows fa-fw" aria-hidden="true"></i>
+											선택이동
+										</button>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
 					<?php }  ?>

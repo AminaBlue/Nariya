@@ -16,7 +16,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 				<h5>회원가입약관</h5>
 			</li>
 			<li class="list-group-item py-md-4">
-				<?php if(is_file(G5_THEME_PATH.'/page/provision.php')) { ?>
+				<?php if(is_file(G5_THEME_PATH.'/content/page/provision.php')) { ?>
+					<div class="f-sm" style="overflow:auto; height:12.0rem;">
+						<?php @include_once (G5_THEME_PATH.'/content/page/provision.php'); ?>
+					</div>
+				<?php } else if(is_file(G5_THEME_PATH.'/page/provision.php')) { ?>
 					<div class="f-sm" style="overflow:auto; height:12.0rem;">
 						<?php @include_once (G5_THEME_PATH.'/page/provision.php'); ?>
 					</div>

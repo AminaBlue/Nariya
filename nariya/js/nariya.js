@@ -272,6 +272,12 @@ function na_comment_submit() {
 	return false;
 }
 
+function na_comment_sort(id, url, sort) {
+	var href = url + '&page=0&cob=' + sort;
+
+	na_page(id, href);
+}
+
 function na_comment_onKeyDown(opt) {
 	if(event.keyCode == 13) {
 		if(opt) {

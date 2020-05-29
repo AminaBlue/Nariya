@@ -167,55 +167,92 @@ $is_modalw = ($mode == 'page') ? 1 : '';
 					<th class="text-center nw-c1">구분</th>
 					<th class="text-center">설정</th>
 					</tr>
-					<?php if($mode == 'site') { //사이트 설정용 ?>
-					<tr>
-					<td class="text-center">
-						SEO 사용
-					</td>
-					<td>
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" name="co[seo]" value="1"<?php echo get_checked('1', $pc['seo'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
-							<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"><span>게시판, 페이지별 자동 SEO 사용</span></label>
-						</div>
-					</td>
-					</tr>
-					<?php } ?>
-					<tr>
-					<td class="text-center">
-						설명글
-					</td>
-					<td>
-						<textarea name="co[seo_desc]" rows="3" class="form-control" placeholder="한글 기준 160자 이내 등록"><?php echo $pc['seo_desc'] ?></textarea>		
-					</td>
-					</tr>
-					<tr>
-					<td class="text-center">
-						키워드
-					</td>
-					<td>
-						<textarea name="co[seo_keys]" rows="3" class="form-control" placeholder="콤마(,)로 키워드 구분"><?php echo $pc['seo_keys'] ?></textarea>		
-						<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
-							미 설정시 내용에서 3글자 이상인 한글로 최대 20개까지 키워드 자동생성
-						</p>
-					</td>
-					<tr>
-					<td class="text-center">
-						이미지
-					</td>						
-					<td>
-						<div class="input-group">
-							<input type="text" id="seo-img" class="form-control" name="co[seo_img]" value="<?php echo $pc['seo_img'] ?>" placeholder="http://...">
-							<div class="input-group-append">
-								<a href="<?php echo na_theme_href('image', 'seo', 'seo-img') ?>" class="btn btn-primary btn-setup">
-									<i class="fa fa-search"></i>
-								</a>
+					<?php if($mode == 'page') { // 페이지 설정용 ?>
+						<tr>
+						<td class="text-center">
+							설명글
+						</td>
+						<td>
+							<textarea name="co[seo_desc]" rows="3" class="form-control" placeholder="한글 기준 160자 이내 등록"><?php echo $pc['seo_desc'] ?></textarea>		
+						</td>
+						</tr>
+						<tr>
+						<td class="text-center">
+							키워드
+						</td>
+						<td>
+							<textarea name="co[seo_keys]" rows="3" class="form-control" placeholder="콤마(,)로 키워드 구분"><?php echo $pc['seo_keys'] ?></textarea>		
+							<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
+								미 설정시 내용에서 3글자 이상인 한글로 최대 20개까지 키워드 자동생성
+							</p>
+						</td>
+						<tr>
+						<td class="text-center">
+							이미지
+						</td>						
+						<td>
+							<div class="input-group">
+								<input type="text" id="seo-img" class="form-control" name="co[seo_img]" value="<?php echo $pc['seo_img'] ?>" placeholder="http://...">
+								<div class="input-group-append">
+									<a href="<?php echo na_theme_href('image', 'seo', 'seo-img') ?>" class="btn btn-primary btn-setup">
+										<i class="fa fa-search"></i>
+									</a>
+								</div>
 							</div>
-						</div>
-						<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
-							글내용 또는 페이지에 이미지가 있으면 자동 생성
-						</p>
-					</td>
-					</tr>
+							<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
+								글내용 또는 페이지에 이미지가 있으면 자동 생성
+							</p>
+						</td>
+						</tr>
+					<?php } else { ?>
+						<tr>
+						<td class="text-center">
+							SEO 사용
+						</td>
+						<td>
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" name="co[seo]" value="1"<?php echo get_checked('1', $pc['seo'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+								<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"><span>게시판, 페이지별 자동 SEO 사용</span></label>
+							</div>
+						</td>
+						</tr>
+						<tr>
+						<td class="text-center">
+							설명글
+						</td>
+						<td>
+							<textarea name="co[site_desc]" rows="3" class="form-control" placeholder="한글 기준 160자 이내 등록"><?php echo $pc['site_desc'] ?></textarea>		
+						</td>
+						</tr>
+						<tr>
+						<td class="text-center">
+							키워드
+						</td>
+						<td>
+							<textarea name="co[site_keys]" rows="3" class="form-control" placeholder="콤마(,)로 키워드 구분"><?php echo $pc['site_keys'] ?></textarea>		
+							<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
+								미 설정시 내용에서 3글자 이상인 한글로 최대 20개까지 키워드 자동생성
+							</p>
+						</td>
+						<tr>
+						<td class="text-center">
+							이미지
+						</td>						
+						<td>
+							<div class="input-group">
+								<input type="text" id="seo-img" class="form-control" name="co[site_img]" value="<?php echo $pc['site_img'] ?>" placeholder="http://...">
+								<div class="input-group-append">
+									<a href="<?php echo na_theme_href('image', 'seo', 'seo-img') ?>" class="btn btn-primary btn-setup">
+										<i class="fa fa-search"></i>
+									</a>
+								</div>
+							</div>
+							<p class="form-control-plaintext f-de text-muted pb-0 mb-0">
+								글내용 또는 페이지에 이미지가 있으면 자동 생성
+							</p>
+						</td>
+						</tr>
+					<?php } ?>
 					</tbody>
 					</table>
 				</div>

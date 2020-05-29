@@ -3,43 +3,41 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 global $config, $g5_head_title, $bo_table, $view, $it, $co, $pset, $tset;
 
-// 대표이미지
+// SEO 설정
 $image = na_url($tset['seo_img']);
 $desc = $tset['seo_desc'];
-$keys = $tset['seo_key'];
+$keys = $tset['seo_keys'];
 
-// 게시물
 if(isset($view['wr_id']) && $view['wr_id']) {
-
-	$author = get_text($view['wr_name']);
-	$desc = $view['wr_content'];
-
-	if(isset($view['seo_img'])) {
-		$image = $view['seo_img'];
-	} else {
-		$image = na_wr_img($bo_table, $view);
-	}
-
-// 내용관리
+	// 게시물
+	$author = na_get_text($view['wr_name']);
+	$desc = na_cut_text($view['wr_content'], 150);
+	$wr_image = ($view['seo_img']) ? $view['seo_img'] : na_wr_img($bo_table, $view);
+	$image = ($wr_image) ? $wr_image : $image;
+	$keys = na_get_text($view['as_tag']); //태그 적용
 } else if(isset($co['co_id']) && $co['co_id']) {
-
-	$author = get_text($config['cf_title']);
-
-	if($tset['seo_desc']) {
-		$desc = $tset['seo_desc'];
-	} else if(isset($co['content']) && $co['content']) {
-		$desc = ($co['co_content']) ? $co['co_content'] : $co['content'];
-	} else {
-		$desc = $co['co_content'];
-	}
-
-	$keys = $tset['seo_keys'];
-
-// 상품
-} else if(IS_YC && isset($it['it_id']) && $it['it_id']) {
+	// 내용관리
 	$author = na_get_text($config['cf_title']);
-	$desc = $it['it_basic'].' '.$it['it_explan'];
+	$content = (isset($co['co_content']) && $co['co_content']) ? $co['co_content'] : $co['content'];
+	$desc = ($desc) ? $desc : na_cut_text($content, 150);
+	if(!$image) {
+	    $imgs = get_editor_image($content);
+		$image = $imgs[1][0];
+	}
+} else if(IS_YC && isset($it['it_id']) && $it['it_id']) {
+	// 상품
+	$author = na_get_text($config['cf_title']);
+	$desc = na_cut_text($it['it_basic'].' '.$it['it_explan'], 150);
+	if($it['it_img1']) {
+		$image = G5_DATA_URL.'/item/'.$it['it_img1'];
+	}
+} else {
+	$desc = ($desc) ? $desc : $tset['site_desc'];
+	$keys = ($keys) ? $keys : $tset['site_keys'];
 }
+
+// 대표 이미지 설정
+$image = ($image) ? $image : na_url($tset['site_img']);
 
 // 내용(description)이 없으면 SEO용 메타태그 생성안함
 if($desc) {
@@ -48,10 +46,15 @@ if($desc) {
 
 		$arr = array();
 
-		preg_match_all("|(?<keys>[가-힣]{3,10}+)|u", $desc, $matchs);
+		$stx = $desc.' '.$g5_head_title; //내용과 제목 합쳐서 생성
+
+		preg_match_all("|(?<keys>[가-힣]{3,10}+)|u", $stx, $matchs1);
+		preg_match_all("|(?<keys>[a-zA-Z]{4,10}+)|u", $stx, $matchs2);
+
+		$matchs = array_merge($matchs1['keys'], $matchs2['keys']);
 
 		// 중복제거
-		$tmps = array_unique($matchs['keys']);
+		$tmps = array_unique($matchs);
 
 		for($i=0; $i < count($tmps); $i++) {
 
@@ -66,9 +69,6 @@ if($desc) {
 
 		$keys = implode(', ', $arr);
 	}
-
-	$desc = na_cut_text($desc, 160);
-
 } else {
 	return;
 }

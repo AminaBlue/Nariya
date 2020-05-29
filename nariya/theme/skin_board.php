@@ -162,6 +162,22 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						댓글 목록을 설정한 목록수로 페이징함
 					</td>
 					</tr>
+					<tr>	
+					<td class="text-center">댓글 목록</td>
+					<td>
+						<div class="input-group">
+							<select name="boset[na_cob]" class="custom-select">
+								<option value="old"<?php echo get_selected('old', $boset['na_cob']) ?>>과거순</option>
+								<option value="new"<?php echo get_selected('new', $boset['na_cob']) ?>>최신순</option>
+								<option value="good"<?php echo get_selected('good', $boset['na_cob']) ?>>추천순</option>
+								<option value="nogood"<?php echo get_selected('nogood', $boset['na_cob']) ?>>비추천순</option>
+							</select>
+						</div>
+					</td>
+					<td class="text-muted">
+						페이징 댓글 사용시에만 적용됨
+					</td>
+					</tr>
 					<tr>
 					<td class="text-center">럭키 점수</td>
 					<td>
@@ -220,7 +236,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			<label class="col-sm-2 col-form-label">추천 취소</label>
 			<div class="col-sm-10">
 				<div class="table-responsive">
-					<table class="table table-sm table-bordered mb-0">
+					<table class="table table-bordered mb-0">
 					<tbody>
 					<tr class="bg-light">
 					<th class="text-center nw-c1">구분</th>

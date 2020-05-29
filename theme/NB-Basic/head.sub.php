@@ -4,12 +4,6 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 $g5_debug['php']['begin_time'] = $begin_time = get_microtime();
 
-//------------------------------------------------------------------------------------
-// 필수 : 게시판 플러그인
-if(IS_NA_BBS && isset($g5['board_title']) && $g5['board_title'])
-	@include_once($board_skin_path.'/_extend.php');
-//------------------------------------------------------------------------------------
-
 // 배열 선언
 $pset = array();
 $tset = array();
@@ -108,7 +102,7 @@ if($config['cf_add_meta'])
     echo $config['cf_add_meta'].PHP_EOL;
 ?>
 <title><?php echo $g5_head_title; ?></title>
-<link rel="stylesheet" href="<?php echo NA_URL ?>/app/bs4/css/bootstrap<?php echo $default_css ?>.css" type="text/css">
+<link rel="stylesheet" href="<?php echo NA_URL ?>/app/bs4/css/bootstrap<?php echo $default_css ?>.min.css" type="text/css">
 <link rel="stylesheet" href="<?php echo G5_JS_URL ?>/font-awesome/css/font-awesome.min.css" type="text/css">
 <script>
 // 자바스크립트에서 사용하는 전역변수 선언
@@ -123,7 +117,7 @@ var g5_editor    = "<?php echo ($config['cf_editor'] && $board['bo_use_dhtml_edi
 var g5_plugin_url = "<?php echo G5_PLUGIN_URL ?>";
 var g5_cookie_domain = "<?php echo G5_COOKIE_DOMAIN ?>";
 </script>
-<script src="<?php echo NA_URL ?>/js/jquery-3.4.1.min.js"></script>
+<script src="<?php echo NA_URL ?>/js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo NA_URL ?>/js/common.js?ver=<?php echo G5_JS_VER; ?>"></script>
 <script src="<?php echo G5_JS_URL ?>/wrest.js?ver=<?php echo G5_JS_VER; ?>"></script>
 <script src="<?php echo G5_JS_URL ?>/placeholders.min.js"></script>

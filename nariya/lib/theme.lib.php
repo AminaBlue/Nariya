@@ -1136,7 +1136,7 @@ function na_wr_row($wr, $wset) {
 				$wr['wr_option'] = $row['wr_option'];
 			} else {
 				// 댓글에서 40자 잘라서 글제목으로
-				$wr['wr_subject'] = na_cut_text($wr['wr_content'], 40);
+				$wr['wr_subject'] = cut_str($wr['wr_content'], 80);
 			}
 		}
 	} else if (strstr($wr['wr_option'], 'secret')){

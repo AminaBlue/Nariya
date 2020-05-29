@@ -91,6 +91,12 @@ if (!defined('_GNUBOARD_')) {
 		}
 	}
 
+	// 새로운 댓글 체크
+	if(isset($cnew) && $cnew) {
+		$msg = ((int)$write['wr_comment'] === (int)$count) ? '새로운 댓글이 없습니다.' : '';
+		die($msg);
+	}
+
 	// IP
 	$is_ip_view = $board['bo_use_ip_view'];
 	if ($is_admin) {
@@ -124,33 +130,46 @@ if ($member['mb_level'] >= $board['bo_comment_level'])
 // 코멘트 출력
 $sql_common = "from {$write_table} where wr_parent = '{$wr_id}' and wr_is_comment = '1' ";
 
-$sql = " select count(*) as cnt " . $sql_common;
-$row = sql_fetch($sql);
-$total_count = $row['cnt'];
-
-// 새로운 댓글 체크
-if($is_ajax_comment && $cnew && $total_count === $count) {
-	die('새로운 댓글이 없습니다.');
-}
+//$sql = " select count(*) as cnt " . $sql_common;
+//$row = sql_fetch($sql);
+$total_count = (int)$write['wr_comment']; //$row['cnt'];
 
 $crows = (int)$boset['na_crows'];
 $crows = ($crows > 0) ? $crows : 20;
 
 $total_page  = ceil($total_count / $crows);  // 전체 페이지 계산
+
+// 댓글 정렬
+if(!$cob && $boset['na_cob']) {
+	$cob = $boset['na_cob'];
+}
+
+if($cob == 'new') {
+	$start_page = 1;
+	$cmt_orderby = 'wr_comment desc, wr_comment_reply';
+} else if($cob == 'good') {
+	$start_page = 1;
+	$cmt_orderby = 'wr_good desc, wr_comment, wr_comment_reply';
+} else if($cob == 'nogood') {
+	$start_page = 1;
+	$cmt_orderby = 'wr_nogood desc, wr_comment, wr_comment_reply';
+} else {
+	$cob = 'old';
+	$start_page = $total_page;
+	$cmt_orderby = 'wr_comment, wr_comment_reply';
+}
+
 if($page > 0) {
 	;
 } else {
-	$page = $total_page; // 페이지가 없으면 마지막 페이지
+	$page = $start_page; // 페이지가 없으면 마지막 페이지
 }
 
 $from_record = ($page - 1) * $crows; // 시작 열을 구함
 if($from_record < 0)
 	$from_record = 0;
 
-//$sql = " select * from {$write_table} where wr_parent = '{$wr_id}' and wr_is_comment = 1 order by wr_comment desc, wr_comment_reply ";
-//$sql = " select * from $write_table where wr_parent = '$wr_id' and wr_is_comment = 1 order by wr_comment, wr_comment_reply ";
-
-$sql = " select * $sql_common order by wr_comment, wr_comment_reply limit $from_record, $crows ";
+$sql = " select * $sql_common order by $cmt_orderby limit $from_record, $crows ";
 $result = sql_query($sql);
 for ($i=0; $row=sql_fetch_array($result); $i++) {
 
@@ -207,7 +226,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
                 set_session('ss_delete_comment_'.$row['wr_id'].'_token', $token = uniqid(time()));
                 $list[$i]['del_link']  = G5_BBS_URL.'/delete_comment.php?bo_table='.$bo_table.'&amp;comment_id='.$row['wr_id'].'&amp;token='.$token.'&amp;page='.$page.$qstr;
 				$list[$i]['del_href']  = NA_URL.'/bbs/comment_delete.php?bo_table='.$bo_table.'&comment_id='.$row['wr_id'].'&token='.$token;
-                $list[$i]['del_back']  = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&wr_id='.$wr_id.'&page='.$page;
+                $list[$i]['del_back']  = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&wr_id='.$wr_id.'&page='.$page.'&cob='.$cob;
 				$list[$i]['is_edit']   = true;
                 $list[$i]['is_del']    = true;
 
@@ -253,8 +272,8 @@ if(!$is_ajax_comment) {
 	}
 }
 
-$comment_url = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id;
-$comment_page = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'&amp;page=';
+$comment_url = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'&amp;cob='.$cob;
+$comment_page = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'&amp;cob='.$cob.'&amp;page=';
 $comment_action_url = https_url(NA_DIR)."/bbs/comment_write.php";
 $comment_common_url = short_url_clean(G5_BBS_URL.'/board.php?'.clean_query_string($_SERVER['QUERY_STRING']));
 $write_pages = G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'];

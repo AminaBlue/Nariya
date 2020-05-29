@@ -20,10 +20,50 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 <!-- 댓글 시작 { -->
 <div id="viewcomment">
 <?php } ?>
-	<div class="f-de px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
-		댓글 <b class="orangered"><?php echo $write['wr_comment'] ?></b>개
-		<?php if($is_paging && $page) { ?>
-			/ <?php echo $page ?>페이지
+	<div class="clearfix f-de px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
+		<div class="float-left">
+			댓글 <b class="orangered"><?php echo $write['wr_comment'] ?></b>개
+			<?php if($is_paging && $page) { ?>
+				/ <?php echo $page ?>페이지
+			<?php } ?>
+		</div>
+		<?php if($is_paging) { //페이징 
+
+			$cmt_sort_href = NA_URL.'/bbs/comment_view.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id;
+			
+			switch($cob) {
+				case 'new'		: $cmt_sort_txt = '최신순'; break;
+				case 'good'		: $cmt_sort_txt = '추천순'; break;
+				case 'nogood'	: $cmt_sort_txt = '비추천순'; break;
+				default			: $cmt_sort_txt = '과거순'; break;
+			}
+		?>
+			<div class="float-right dropdown">
+				<a href="javascript:;" class="dropdown-toggle dropdown-toggle-empty" id="cmt_sort" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-caret-down text-muted" aria-hidden="true"></i>
+					<?php echo $cmt_sort_txt ?>
+				</a>
+				<div class="dropdown-menu dropdown-menu-right p-0 border-0 bg-transparent text-right f-de" aria-labelledby="cmt_sort">
+					<div class="btn-group-vertical bg-white border py-1 rounded">
+						<button onclick="na_comment_sort('viewcomment', '<?php echo $cmt_sort_href ?>', 'old');" class="btn px-3 py-1 text-left" role="button">
+							과거순
+						</button>
+						<button onclick="na_comment_sort('viewcomment', '<?php echo $cmt_sort_href ?>', 'new');" class="btn px-3 py-1 text-left" role="button">
+							최신순
+						</button>
+						<?php if($is_cgood) { ?>
+							<button onclick="na_comment_sort('viewcomment', '<?php echo $cmt_sort_href ?>', 'good');" class="btn px-3 py-1 text-left" role="button">
+								추천순
+							</button>
+						<?php } ?>
+						<?php if($is_cnogood) { ?>
+							<button onclick="na_comment_sort('viewcomment', '<?php echo $cmt_sort_href ?>', 'nogood');" class="btn px-3 py-1 text-left" role="button">
+								비추천순
+							</button>
+						<?php } ?>
+					</div> 
+				</div>
+			</div>
 		<?php } ?>
 	</div>
 	<section id="bo_vc" class="na-fadein">
@@ -195,6 +235,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 			<input type="hidden" name="comment_id" value="<?php echo $c_id ?>" id="comment_id">
 			<?php if($is_paging) { //페이징 ?>
 				<input type="hidden" name="comment_url" value="" id="comment_url">
+				<input type="hidden" name="cob" value="<?php echo $cob ?>">
 			<?php } ?>
 			<input type="hidden" name="sca" value="<?php echo $sca ?>">
 			<input type="hidden" name="sfl" value="<?php echo $sfl ?>">

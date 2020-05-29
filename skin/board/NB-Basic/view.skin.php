@@ -242,14 +242,14 @@ $view_subject = get_text($view['wr_subject']);
 
     <section id="bo_v_data">
 		<h3 class="sr-only">관련자료</h3>
-		<ul class="na-table d-sm-table w-100 border-bottom text-muted f-de font-weight-normal">
+		<ul class="na-table d-table w-100 text-muted f-de font-weight-normal">
 		<?php if ($is_signature && $signature) { ?>
 	    <!-- 회원서명 시작 { -->
-		<li class="d-sm-table-row border-top">
+		<li class="d-table-row border-top border-bottom">
 			<div class="d-none d-sm-table-cell text-center px-3 py-2 nw-6">
 				서명
 			</div>
-			<div class="d-sm-table-cell px-3 py-2">
+			<div class="d-table-cell px-3 py-2">
 				<div class="d-flex my-1">
 					<div class="px-0">
 						<i class="fa fa-user-o" aria-hidden="true"></i>
@@ -264,11 +264,11 @@ $view_subject = get_text($view['wr_subject']);
 		<?php } ?>
 		<?php if(isset($view['link'][1]) && $view['link'][1]) { ?>
 	    <!-- 관련링크 시작 { -->
-		<li class="d-sm-table-row border-top">
+		<li class="d-table-row border-top border-bottom">
 			<div class="d-none d-sm-table-cell text-center px-3 py-2 nw-6">
 				링크
 			</div>
-			<div class="d-sm-table-cell px-3 py-2">
+			<div class="d-table-cell px-3 py-2">
 				<?php
 				//링크
 				$cnt = 0;
@@ -311,11 +311,11 @@ $view_subject = get_text($view['wr_subject']);
 
 		<?php if($cnt) { ?>
 		<!-- 첨부파일 시작 { -->
-		<li class="d-sm-table-row border-top">
+		<li class="d-table-row border-top border-bottom">
 			<div class="d-none d-sm-table-cell text-center px-3 py-2 nw-6">
 				첨부
 			</div>
-			<div class="d-sm-table-cell px-3 py-2">
+			<div class="d-table-cell px-3 py-2">
 				<?php
 				//가변 파일
 				for ($i=0; $i<count($view['file']); $i++) {
@@ -352,11 +352,11 @@ $view_subject = get_text($view['wr_subject']);
 
 		<?php if ($prev_href) { ?>
 		<!-- 이전글 시작 { -->
-		<li class="d-sm-table-row border-top">
+		<li class="d-table-row border-top border-bottom">
 			<div class="d-none d-sm-table-cell text-center px-3 py-2 nw-6">
 				이전
 			</div>
-			<div class="d-sm-table-cell px-3 py-2">
+			<div class="d-table-cell px-3 py-2">
 				<div class="d-flex my-1">
 					<div class="px-0">
 						<i class="fa fa-chevron-up" aria-hidden="true"></i>	
@@ -378,11 +378,11 @@ $view_subject = get_text($view['wr_subject']);
 
 		<?php if ($next_href) { ?>
 		<!-- 다음글 시작 { -->
-		<li class="d-sm-table-row border-top">
+		<li class="d-table-row border-top border-bottom">
 			<div class="d-none d-sm-table-cell text-center px-3 py-2 nw-6">
 				다음
 			</div>
-			<div class="d-sm-table-cell px-3 py-2">
+			<div class="d-table-cell px-3 py-2">
 				<div class="d-flex my-1">
 					<div class="px-0">
 						<i class="fa fa-chevron-down" aria-hidden="true"></i>	

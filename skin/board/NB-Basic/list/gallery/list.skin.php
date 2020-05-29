@@ -223,7 +223,7 @@ $list_cnt = count($list);
 		<?php } ?>
 		</ul>
 		<?php if(!$n) { ?>
-			<div class="f-de px-3 py-5 text-muted text-center border-bottom">
+			<div class="f-de px-3 py-5 text-muted text-center">
 				게시물이 없습니다.
 			</div>
 		<?php } ?>

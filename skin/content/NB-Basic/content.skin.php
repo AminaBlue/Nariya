@@ -7,12 +7,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$content_skin_url.'/style.css">',
 
 <article id="ctt" class="ctt_<?php echo $co_id; ?>">
     <header>
-        <h1 class="sr-only"><?php echo $g5['title']; ?></h1>
+        <h1 class="sound_only"><?php echo $g5['title']; ?></h1>
     </header>
 
 	<div id="ctt_con">
 		<?php 
-			if(is_file(G5_THEME_PATH.'/page/'.$co_id.'.php')) {
+			if(is_file(G5_THEME_PATH.'/content/page/'.$co_id.'.php')) {
+				$nt_page_path = G5_THEME_PATH.'/content/page';
+				$nt_page_url = G5_THEME_URL.'/content/page';
+				include_once($nt_page_path.'/'.$co_id.'.php');
+			} else if(is_file(G5_THEME_PATH.'/page/'.$co_id.'.php')) {
 				$nt_page_path = G5_THEME_PATH.'/page';
 				$nt_page_url = G5_THEME_URL.'/page';
 				include_once($nt_page_path.'/'.$co_id.'.php');
