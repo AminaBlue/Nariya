@@ -26,7 +26,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="boset[noti_mb]" value="<?php echo $boset['noti_mb'] ?>">
 					<p class="form-text text-muted">
-						새 글 알림을 받을 회원 아이디를 콤마(,)로 구분하여 복수 회원 등록 가능
+						새글 알림을 받을 회원 아이디를 콤마(,)로 구분하여 복수 회원 등록 가능
 					</p>
 				</div>
 			</div>
@@ -114,6 +114,22 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						글 내용의 외부 이미지를 자동으로 서버에 저장
 					</td>
 					</tr>
+					<?php if(IS_NA_NOTI) { ?>
+						<tr>
+						<td class="text-center">
+							알림 사용안함
+						</td>
+						<td class="text-center">
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" name="boset[noti_no]" value="1"<?php echo get_checked('1', $boset['noti_no'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+								<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"></label>
+							</div>
+						</td>
+						<td class="text-muted">
+							답글/댓글/추천 등 알림 기능 끄기
+						</td>
+						</tr>
+					<?php } ?>
 					</tbody>
 					</table>
 				</div>

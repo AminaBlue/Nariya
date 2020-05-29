@@ -233,7 +233,7 @@ for ($idx=$table_index, $k=0; $idx<count($search_table) && $k<$rows; $idx++) {
 			</div>
 
 			<div class="clearfix f-sm text-muted">
-				<div class="float-right">
+				<div class="float-right ml">
 					<?php echo na_name_photo($list[$idx][$i]['mb_id'], $list[$idx][$i]['name']) ?>
 				</div>
 				<div class="float-left">

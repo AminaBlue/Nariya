@@ -26,7 +26,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<input type="hidden" name="page" value="<?php echo $page ?>">
 		<ul class="list-group mb-4">
 			<li class="list-group-item bg-primary border-primary text-white">
-				<h5><?php echo $g5['title'] ?></h5>
+				<h5 class="ellipsis"><?php echo $g5['title'] ?></h5>
 			</li>
 			<li class="list-group-item py-3">
 				<?php if ($w == 'u') { ?>

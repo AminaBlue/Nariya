@@ -16,6 +16,9 @@ if($wset['head_skin']) {
 	$head_class = 'na-table-head border-'.$head_color;
 }
 
+// 번호 체크
+$page_rows = (G5_IS_MOBILE) ? $config['cf_mobile_page_rows'] : $config['cf_new_rows'];
+
 ?>
 
 <!-- 전체게시물 검색 시작 { -->
@@ -200,7 +203,7 @@ if($wset['head_skin']) {
 				</div>
 				<div class="d-md-table-cell nw-10 pl-2 pr-md-1">이름</div>
 				<div class="d-md-table-cell nw-6 pr-md-1">날짜</a></div>
-				<div class="d-md-table-cell nw-10 pr-md-1">게시판</a></div>
+				<div class="d-md-table-cell nw-8 pr-md-1">게시판</a></div>
 			</div>
 		</div>
 
@@ -210,7 +213,7 @@ if($wset['head_skin']) {
 			for ($i=0; $i < $list_cnt; $i++) {
 
 				// 번호
-				$num = $total_count - ($page - 1) * $config['cf_page_rows'] - $i;
+				$num = $total_count - ($page - 1) * $page_rows - $i;
 
 				// 글 구분
 				$list[$i]['wr_subject'] = na_get_text($list[$i]['wr_subject']);
@@ -227,7 +230,7 @@ if($wset['head_skin']) {
 					$wr_icon = '';
 				}
 			?>
-			<li class="d-md-table-row px-3 py-2 p-md-0 text-md-center text-muted border-bottom<?php echo $li_css;?>">
+			<li class="d-md-table-row px-3 py-2 p-md-0 text-md-center text-muted border-bottom">
 				<div class="d-none d-md-table-cell nw-5 f-sm font-weight-normal py-md-2 px-md-1">
 					<span class="sr-only">번호</span>
 					<?php echo $num ?>
@@ -259,11 +262,11 @@ if($wset['head_skin']) {
 					<span class="sr-only">등록자</span>
 					<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']); ?>
 				</div>
-				<div class="float-left float-md-none d-md-table-cell nw-6 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
+				<div class="float-left float-md-none d-md-table-cell nw-6 nw-md-auto f-sm font-weight-normal py-md-2 pr-3 pr-md-1">
 					<span class="sr-only">등록일</span>
-					<?php echo na_date($list[$i]['wr_datetime'], 'orangered', 'H:i', 'm.d', 'Y.m.d'); ?>
+					<?php echo $list[$i]['datetime2'] ?>
 				</div>
-				<div class="float-left float-md-none d-md-table-cell nw-10 nw-md-auto f-sm font-weight-normal pl-3 pl-md-0 py-md-2 pr-md-1">
+				<div class="float-left float-md-none d-md-table-cell nw-8 nw-md-auto f-sm font-weight-normal py-md-2 pr-md-1">
 					<a href="<?php echo get_pretty_url($list[$i]['bo_table']) ?>" class="text-muted"><?php echo na_cut_text($list[$i]['bo_subject'], 20) ?></a>
 				</div>
 				<div class="clearfix d-block d-md-none"></div>

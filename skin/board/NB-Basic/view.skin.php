@@ -172,13 +172,9 @@ $view_subject = get_text($view['wr_subject']);
 					}
 				}
 
-				// 본문삽입 : {이미지:0} 과 같은 코드를 사용할 경우
-				if(isset($view['as_img']) && $view['as_img'] == "2") {
-					$view['content'] = $view['rich_content'];
-				}
 
 				// 글내용 출력
-				echo na_content(get_view_thumbnail($view['content']));
+				echo get_view_thumbnail(na_view($view));
 
 				// 하단 이미지 출력
 				if(isset($view['as_img']) && $view['as_img'] == "1") {
@@ -237,8 +233,7 @@ $view_subject = get_text($view['wr_subject']);
 		<?php } ?>
 
 		<?php if($view['as_tag']) { // 태그 ?>
-			<div class="f-sm px-3">
-				<i class="fa fa-tags text-muted" aria-hidden="true"></i>
+			<div class="f-de p-3">
 				<span class="sr-only">태그</span>
 				<?php echo na_get_tag($view['as_tag']) ?>
 			</div>

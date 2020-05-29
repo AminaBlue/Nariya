@@ -448,12 +448,6 @@ function na_script($id){
 			add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/app/slick/slick.css">', -1);
 			add_javascript('<script src="'.NA_URL.'/app/slick/slick.min.js"></script>', 0);
 		}
-	} else if($id == 'mask') {
-		if(!defined('NA_MASK')) {
-			define('NA_MASK', true);
-			add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/app/mask/mask.css">', -1);
-			include_once(NA_PATH.'/app/mask/mask.php');
-		}
 	}
 
 	return;

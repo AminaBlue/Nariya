@@ -82,7 +82,11 @@ $is_modal_win = true;
 $idn = 1;
 
 // Loader
-include_once(NA_PATH.'/theme/loader.php');
+if(is_file(G5_THEME_PATH.'/_loader.php')) {
+	include_once(G5_THEME_PATH.'/_loader.php');
+} else {
+	include_once(NA_PATH.'/theme/loader.php');
+}
 
 ?>
 
@@ -154,17 +158,12 @@ function fsetup_submit(f) {
 	return true;
 }
 
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+	na_nav('bottomNav', 'bottomHeight', 'fixed-bottom');
+});
+
 $(document).ready(function() {
-
-	var topHeight = $("#topNav").height();
-	var bottomHeight = $("#bottomNav").height();
-
-	$("#topHeight").height(topHeight);
-	$("#bottomHeight").height(bottomHeight);
-
-	$("#topNav").addClass('fixed-top');
-	$("#bottomNav").addClass('fixed-bottom');
-
 	$('.close-setup').click(function() {
 		window.parent.closeSetupModal();
 	});

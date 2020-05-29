@@ -81,8 +81,7 @@ $mb_grade = na_grade($mb['mb_level']);
 
 <script>
 	window.resizeTo(320, 600);
-	$(document).ready(function() {
-		$("#topHeight").height($("#topNav").height());
-		$("#topNav").addClass('fixed-top');
+	$(window).on('load', function () {
+		na_nav('topNav', 'topHeight', 'fixed-top');
 	});
 </script>

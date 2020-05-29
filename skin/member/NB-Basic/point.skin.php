@@ -111,8 +111,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 </div>
 <script>
-$(document).ready(function() {
-	$("#topHeight").height($("#topNav").height());
-	$("#topNav").addClass('fixed-top');
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
 });
 </script>

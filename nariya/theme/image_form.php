@@ -54,7 +54,11 @@ na_script('fileinput');
 add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/css/modal.css">', 0);
 
 // Loader
-include_once(NA_PATH.'/theme/loader.php');
+if(is_file(G5_THEME_PATH.'/_loader.php')) {
+	include_once(G5_THEME_PATH.'/_loader.php');
+} else {
+	include_once(NA_PATH.'/theme/loader.php');
+}
 ?>
 
 <div id="topNav" class="p-0 f-de font-weight-normal">
@@ -118,42 +122,39 @@ include_once(NA_PATH.'/theme/loader.php');
 </div>
 
 <script>
-	$(document).ready(function() {
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+});
 
-		// 상단간격
-		var topHeight = $("#topNav").height();
+$(document).ready(function() {
+	<?php if($list_cnt) { ?>
+	var $container = $('#img_list');
 
-		$("#topHeight").height(topHeight);
-		$("#topNav").addClass('fixed-top');
-
-		<?php if($list_cnt) { ?>
-		var $container = $('#img_list');
-
-		$container.imagesLoaded(function(){
-			$container.masonry({
-				columnWidth : '.item',
-				itemSelector : '.item',
-				isAnimated: true
-			});
-		});
-		<?php } ?>
-		$('.img-del').click(function() {
-			if(confirm("삭제하시겠습니까?")) {
-				return true;
-			}
-			return false;
-		});
-
-		$('.sel-img').click(function() {
-			$("#<?php echo $fid ?>", parent.document).val(this.title);
-			window.parent.closeSetupModal();
-			return false;
-		});
-
-		$('.close-setup').click(function() {
-			window.parent.closeSetupModal();
+	$container.imagesLoaded(function(){
+		$container.masonry({
+			columnWidth : '.item',
+			itemSelector : '.item',
+			isAnimated: true
 		});
 	});
+	<?php } ?>
+	$('.img-del').click(function() {
+		if(confirm("삭제하시겠습니까?")) {
+			return true;
+		}
+		return false;
+	});
+
+	$('.sel-img').click(function() {
+		$("#<?php echo $fid ?>", parent.document).val(this.title);
+		window.parent.closeSetupModal();
+		return false;
+	});
+
+	$('.close-setup').click(function() {
+		window.parent.closeSetupModal();
+	});
+});
 </script>
 <?php 
 include_once(G5_THEME_PATH.'/tail.sub.php');

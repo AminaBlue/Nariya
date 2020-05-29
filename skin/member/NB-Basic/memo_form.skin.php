@@ -82,8 +82,7 @@ function fmemoform_submit(f) {
 
     return true;
 }
-$(document).ready(function() {
-	$("#topHeight").height($("#topNav").height());
-	$("#topNav").addClass('fixed-top');
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
 });
 </script>

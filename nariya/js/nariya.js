@@ -134,6 +134,17 @@ function na_iframe(url) {
 	$('#clipModal').modal('show');
 }
 
+function na_nav(id, target, css) {
+
+	var nav = $("#" + id);
+	var height = nav.height();
+
+	if(height > 25) {
+		$("#" + target).height(height);
+		nav.addClass(css);
+	}
+}
+
 function na_clip(id, clip) {
 
 	var url = g5_url + '/nariya/theme/clip_' + id + '.php';

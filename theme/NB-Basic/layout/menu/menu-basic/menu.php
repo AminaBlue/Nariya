@@ -36,6 +36,7 @@ $is_col_all = 6;
 				</a>
 			</h3>
 		</div>
+
 		<!-- Mobile Search -->
 		<div id="search_mo" class="collapse">
 			<div class="mb-0 p-3 px-sm-4 d-block d-lg-none bg-light border-bottom">
@@ -56,18 +57,13 @@ $is_col_all = 6;
 	<nav id="nt_menu" class="bg-primary d-none d-md-block font-weight-normal">
 		<h3 class="sr-only">메인 메뉴</h3>
 		<div class="nt-container">
-			<div class="me-wrap">
-				<div class="me-cell me-head me-li<?php echo ($is_index) ? ' on' : ' on'; ?>">
-					<a href="javascript:;" data-toggle="collapse" data-target="#menu_all" class="me-a f-md" title="전체메뉴">
-						<i class="fa fa-bars" aria-hidden="true"></i>
-					</a>
-				</div>
-				<div class="me-cell me-list">
-					<ul class="me-ul nav-slide">
+			<div class="d-flex">
+				<div class="flex-grow-1 order-2 me-list">
+					<ul class="row m-0 me-ul nav-slide">
 					<?php for ($i=0; $i < $menu_cnt; $i++) { 
 						$me = $menu[$i]; 
 					?>
-						<li class="me-li<?php echo ($me['on']) ? ' on' : ''; ?>">
+						<li class="col p-0 me-li<?php echo ($me['on']) ? ' on' : ''; ?>">
 							<a class="me-a f-md en" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
 								<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
 								<?php echo $me['text'];?>
@@ -84,7 +80,7 @@ $is_col_all = 6;
 
 										<li class="sub-1dli<?php echo ($me1['on']) ? ' on' : ''; ?>">
 											<a href="<?php echo $me1['href'];?>" class="me-sh sub-1da<?php echo (isset($me1['s'])) ? ' sub-icon' : '';?>" target="<?php echo $me1['target'];?>">
-												<i class="<?php echo $me1['icon'] ?>" aria-hidden="true"></i>
+												<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 												<?php echo $me1['text'];?>
 											</a>
 											<?php if(isset($me1['s'])) { // Is Sub Menu ?>
@@ -106,7 +102,7 @@ $is_col_all = 6;
 
 														<li class="sub-2dli<?php echo ($me2['on']) ? ' on' : ''; ?>">
 															<a href="<?php echo $me2['href'] ?>" class="me-sh sub-2da" target="<?php echo $me2['target'] ?>">
-																<i class="<?php echo $me2['icon'] ?>" aria-hidden="true"></i>
+																<i class="<?php echo $me2['icon'] ?> fa-fw" aria-hidden="true"></i>
 																<?php echo $me2['text'];?>
 															</a>
 														</li>
@@ -124,13 +120,18 @@ $is_col_all = 6;
 						</li>
 					<?php } //for ?>
 					<?php if(!$menu_cnt) { ?>
-						<li class="me-li">
+						<li class="flex-grow-1 order-2 me-li">
 							<a class="me-a f-md" href="javascript:;">테마설정 > 메뉴설정에서 메뉴를 등록해 주세요.</a>
 						</li>
 					<?php } ?>
 					</ul>							
 				</div>
-				<div class="me-cell me-tail me-li">
+				<div class="me-icon order-1 me-li<?php echo ($is_index) ? ' on' : ' on'; ?>">
+					<a href="javascript:;" data-toggle="collapse" data-target="#menu_all" class="me-a f-md" title="전체메뉴">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</a>
+				</div>
+				<div class="me-icon order-3 me-li">
 					<a href="javascript:;" onclick="sidebar_open('sidebar-menu'); return false;" class="me-a f-md" title="마이메뉴">
 						<i class="fa fa-toggle-on" aria-hidden="true"></i>
 					</a>
@@ -140,12 +141,11 @@ $is_col_all = 6;
 	</nav>
 
 	<!-- 전체 메뉴 -->
-	<nav id="nt_menu_all" class="me-all d-none d-md-block f-sm font-weight-normal">
+	<nav id="nt_menu_all" class="d-none d-md-block f-de font-weight-normal bg-white">
 		<h3 class="sr-only">전체 메뉴</h3>
 		<div id="menu_all" class="collapse">
-			<div class="nt-container table-responsive pt-4 px-3 px-sm-4 px-xl-0">
-				<table class="table">
-				<tr>
+			<div class="nt-container pt-4 px-3 px-sm-4 px-xl-0">
+				<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
 				<?php 
 					$az = 0;
 					for ($i=0; $i < $menu_cnt; $i++) {
@@ -157,39 +157,39 @@ $is_col_all = 6;
 							echo '</tr><tr>'.PHP_EOL;
 						}
 				?>
-					<td class="<?php echo $me['on'];?>">
-						<a class="me-a" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
-							<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
-							<?php echo $me['text'];?>
+					<div class="col">
+						<a class="d-block py-2 text-center border-bottom border-primary<?php echo ($me['on']) ? ' text-primary' : '';?>" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
+							<h5>
+								<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
+								<strong><?php echo $me['text'];?></strong>
+							</h5>
 						</a>
 						<?php if(isset($me['s'])) { //Is Sub Menu ?>
-							<div class="sub-1div">
-								<ul class="sub-1dul">
-								<?php for($j=0; $j < count($me['s']); $j++) { 
-										$me1 = $me['s'][$j]; 
-								?>
+							<ul class="p-3">
+							<?php for($j=0; $j < count($me['s']); $j++) { 
+									$me1 = $me['s'][$j]; 
+							?>
 
-									<?php if($me1['line']) { //구분라인 ?>
-										<li class="sub-1line"><a class="me-sh"><?php echo $me1['line'];?></a></li>
-									<?php } ?>
+								<?php if($me1['line']) { //구분라인 ?>
+									<li class="sub-line text-black-50 pb-1 pt-2"><?php echo $me1['line'];?></li>
+								<?php } ?>
 
-									<li class="sub-1dli<?php echo ($me1['on']) ? ' on' : ''; ?>">
-										<a href="<?php echo $me1['href'];?>" class="me-sh sub-1da<?php echo (isset($me1['s'])) ? ' sub-icon' : '';?>" target="<?php echo $me1['target'];?>">
-											<i class="<?php echo $me1['icon'] ?>" aria-hidden="true"></i>
-											<?php echo $me1['text'];?>
-										</a>
-									</li>
-								<?php } //for ?>
-								</ul>
-							</div>
+								<li class="pb-1 sub-li">
+									<a href="<?php echo $me1['href'];?>" class="sub-a<?php echo ($me1['on']) ? ' on text-primary' : '';?>" target="<?php echo $me1['target'];?>">
+										<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
+										<?php echo $me1['text'];?>
+									</a>
+								</li>
+							<?php } //for ?>
+							</ul>
 						<?php } ?>
-					</td>
+					</div>
 				<?php $az++; } //for ?>
-				</tr>
-				</table>
-				<div class="btn-me-all">
-					<a href="javascript:;" class="btn btn-lightgray" data-toggle="collapse" data-target="#menu_all" title="닫기">
-						<i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i>
+				</div>
+
+				<div class="text-center">
+					<a href="javascript:;" class="btn border-0" data-toggle="collapse" data-target="#menu_all" title="닫기">
+						<i class="fa fa-chevron-up fa-lg text-primary" aria-hidden="true"></i>
 						<span class="sr-only">전체메뉴 닫기</span>	
 					</a>
 				</div>
@@ -223,7 +223,7 @@ function sticky_menu (e) {
 		$("#nt_menu_wrap").removeClass("me-sticky");
 	}
 }
-$(document).ready(function() {
+$(window).on('load', function () {
 	$(window).scroll(sticky_menu);
 	$(window).resize(sticky_menu);
 });

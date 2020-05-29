@@ -41,7 +41,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 						<i class="fa fa-caret-down tree-toggle me-i"></i>
 					<?php } ?>
 					<a class="me-a" href="<?php echo $me['href'];?>" target="<?php echo $me['target'];?>">
-						<i class="<?php echo $me['icon'] ?>" aria-hidden="true"></i>
+						<i class="<?php echo $me['icon'] ?> fa-fw" aria-hidden="true"></i>
 						<?php echo $me['text'];?>
 					</a>
 
@@ -56,7 +56,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 							<li class="me-li1<?php echo ($me1['on']) ? ' active' : ''; ?>">
 								<a class="me-a1" href="<?php echo $me1['href'];?>" target="<?php echo $me1['target'];?>">
-									<i class="<?php echo $me1['icon'] ?>" aria-hidden="true"></i>
+									<i class="<?php echo $me1['icon'] ?> fa-fw" aria-hidden="true"></i>
 									<?php echo $me1['text'];?>
 								</a>
 							</li>

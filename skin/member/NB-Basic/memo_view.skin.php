@@ -97,5 +97,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 			</div>
 		</div>
 	</div>
-
 </div>
+
+<script>
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+});
+</script>

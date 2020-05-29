@@ -20,7 +20,11 @@ add_stylesheet('<link rel="stylesheet" href="'.NA_URL.'/css/modal.css">', 0);
 $is_modal_win = true;
 
 // Loader
-include_once(NA_PATH.'/theme/loader.php');
+if(is_file(G5_THEME_PATH.'/_loader.php')) {
+	include_once(G5_THEME_PATH.'/_loader.php');
+} else {
+	include_once(NA_PATH.'/theme/loader.php');
+}
 
 ?>
 
@@ -225,14 +229,11 @@ include_once(NA_PATH.'/theme/loader.php');
 </ul>
 
 <script>
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+});
+
 $(document).ready(function() {
-
-	// 상단간격
-	var topHeight = $("#topNav").height();
-
-	$("#topHeight").height(topHeight);
-	$("#topNav").addClass('fixed-top');
-
 	<?php if($is_clip) { ?>
 		var clipboard = new ClipboardJS('.btn-clip');
 		clipboard.on('success', function(e) {

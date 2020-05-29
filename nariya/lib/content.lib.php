@@ -1746,7 +1746,7 @@ function na_add_tag($it_tag, $bo_table, $wr_id='', $mb_id='') {
 }
 
 // Get Tag
-function na_get_tag($it_tag, $opt='') {
+function na_get_tag($it_tag) {
 
 	$it_tag = na_get_text($it_tag);
 
@@ -1756,21 +1756,13 @@ function na_get_tag($it_tag, $opt='') {
 	$tags = array();
 	$tags = array_map('trim', explode(",", $it_tag));
 
-	if($opt) { //해시태그
-		$hash1 = '<span class="hash-tag">#';
-		$hash2 = '</span>';	
-	} else {
-		$hash1 = '';
-		$hash2 = '';
-	}
-
 	$i = 0;
 	$str = '';
 	foreach($tags as $tag) {
 		if($i > 0)
 			$str .= ', ';
 
-		$str .= '<a href="'.G5_BBS_URL.'/tag.php?q='.urlencode($tag).'" rel="tag">'.$hash1.$tag.$hash2.'</a>';
+		$str .= '<a href="'.G5_BBS_URL.'/tag.php?q='.urlencode($tag).'" rel="tag">#'.$tag.'</a>';
 		$i++;
 	}
 
@@ -1801,6 +1793,30 @@ function na_delete($bo_table, $wr_id) {
 		if($row['mb_id'])
 			na_delete_xp($row['mb_id'], $bo_table, $wr_id, $row['xp_rel_action']);
 	}
+}
+
+function na_rich_content_video($matches){
+	global $view;
+
+	$num = $matches[2];
+
+	if(isset($view['file'][$num]['file']) && $view['file'][$num]['file'])
+		$num = $view['file'][$num]['path'].'/'.$view['file'][$num]['file'];
+
+	$str = ($matches[3]) ? $num.':'.$matches[3] : $num;
+
+	return '{동영상:'.$str.'}';
+}
+
+function na_view($data){
+
+	if(isset($data['as_img']) && $data['as_img'] == "2") {
+		$data['content'] = $data['rich_content'];
+	}
+
+	$data['content'] = preg_replace_callback("/{(동영상|video)\:([0-9]+)[:]?([^}]*)}/i", "na_rich_content_video", $data['content']);
+
+	return na_content($data['content']);
 }
 
 ?>

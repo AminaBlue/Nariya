@@ -26,16 +26,6 @@
 	position:relative;  
 }
 
-#nt_menu .me-wrap { 
-	display:table; 
-	width:100%; 
-	table-layout:fixed; 
-	margin:0; 
-}
-#nt_menu .me-cell { 
-	display:table-cell; 
-	padding:0; 
-}
 #nt_menu .sub-slide { 
 	display:none; 
 	visibility:visible; 
@@ -49,9 +39,9 @@
 #nt_menu .me-a { 
 	display:block; 
 	position:relative;
+	text-align:center;
 }
-#nt_menu .me-head,
-#nt_menu .me-tail { 
+#nt_menu .me-icon {
 	width:4.0rem;
 	text-align:center;
 }
@@ -81,16 +71,6 @@
 } 
 #nt_menu .sub-2line { 
 	display:block; 
-}
-#nt_menu .me-ul { 
-	display:table; 
-	width:100%; 
-	table-layout:fixed; 
-	margin:0; 
-}
-#nt_menu .me-li { 
-	display:table-cell; 
-	text-align:center; 
 }
 #nt_menu .sub-1div { 
 	width:100%; 
@@ -165,65 +145,14 @@
 /********************************************************
 ■ 전체 메뉴
 ********************************************************/
-.me-all { 
-	position:relative; 
-	background:#fafafa; 
-	z-index:2; 
+#menu_all { 
 	-webkit-box-shadow: inset 0px -10px 10px -10px rgba(0,0,0,0.2); 
 	-moz-box-shadow: inset 0px -10px 10px -10px rgba(0,0,0,0.2); 
-	box-shadow: inset 0px -10px 10px -10px rgba(0,0,0,0.2); 
+	box-shadow: inset 0px -10px 10px -10px rgba(0,0,0,0.2);
 }
-.me-all .table td { 
-	width:1%; 
-	background:#fff; 
-	border:1px solid #ddd; 
-	padding:0; 
-	line-height:1.6; 
-}
-.me-all .me-a { 
-	display:block; 
-	color:#000; 
-	padding:6px 12px; 
-	background:#f5f5f5; 
-	border-bottom:1px solid #ddd; 
-	font-weight:bold; 
-	text-align:center; 
-}
-.me-all .table td.on .me-a { 
-	color:crimson; 
-}
-.me-all .sub-1div { 
-	padding:8px 0; 
-}
-.me-all .sub-1dul { 
-	list-style:none; 
-	padding:0; 
-	margin:0; 
-}
-.me-all .sub-1dli .sub-1da { 
-	display:block; 
-	padding:2px 12px; 
-	color:#333; 
-}
-.me-all .sub-1dli.on .sub-1da,
-.me-all .sub-1dli:hover .sub-1da { 
-	color:crimson; 
-}
-.me-all .sub-1line { 
-	display:block; 
-	color:#000; 
-	padding:5px 12px; 
-	margin:4px 0; 
-	font-weight:bold; 
-	background:#fafafa; 
-}
-.btn-me-all {
-	text-align:center;
-}
-.btn-me-all .btn {
-	border-radius:0;
-	border-bottom:0;
-	margin-bottom:2px;
+
+#menu_all .sub-a.on {
+	font-weight:bold;
 }
 
 /* 상단고정시 */

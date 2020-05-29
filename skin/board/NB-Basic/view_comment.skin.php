@@ -19,7 +19,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 
 <!-- 댓글 시작 { -->
 <div id="viewcomment">
-	<div class="px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
+	<div class="f-de px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
 		댓글 <b class="orangered"><?php echo $write['wr_comment'] ?></b>개
 		<?php if($is_paging) { ?>
 			/ <?php echo $page ?>페이지
@@ -46,6 +46,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 			$cmt_sv = $cmt_amt - $i + 1; // 댓글 헤더 z-index 재설정 ie8 이하 사이드뷰 겹침 문제 해결
 			$c_reply_href = $comment_common_url.'&amp;c_id='.$comment_id.'&amp;w=c#bo_vc_w';
 			$c_edit_href = $comment_common_url.'&amp;c_id='.$comment_id.'&amp;w=cu#bo_vc_w';
+			$is_comment_reply_edit = ($list[$i]['is_reply'] || $list[$i]['is_edit'] || $list[$i]['is_del']) ? 1 : 0;
 			$cmt_shingo = (IS_NA_BBS && $boset['na_shingo']) ? true : false;
 			$by_writer = ($view['mb_id'] && $view['mb_id'] == $list[$i]['mb_id']) ? ' by-writer' : '';
 		 ?>
@@ -82,7 +83,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 				</header>
 		
 				<!-- 댓글 출력 -->
-				<div class="cmt-content px-3 py-2">
+				<div class="cmt-content p-3">
 					<?php if(IS_NA_BBS && $is_admin && $list[$i]['as_type'] == "-1") { // 신고처리 ?>
 						<p class="text-danger font-weight-bold">신고처리된 댓글입니다.</p>
 					<?php } ?>
@@ -105,7 +106,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 					<?php } ?>
 				</div>
 
-				<?php if($list[$i]['is_reply'] || $list[$i]['is_edit'] || $list[$i]['is_del'] || $cmt_shingo || $is_cgood || $is_cnogood) {
+				<?php if($is_comment_reply_edit || $cmt_shingo || $is_cgood || $is_cnogood) {
 					if($w == 'cu') {
 						$sql = " select wr_id, wr_content, mb_id from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
 						$cmt = sql_fetch($sql);
@@ -126,7 +127,7 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 							<li><a href="<?php echo $list[$i]['del_link']; ?>" onclick="<?php echo ($list[$i]['del_back']) ? "na_delete('viewcomment', '".$list[$i]['del_href']."','".$list[$i]['del_back']."'); return false;" : "return comment_delete();";?>">삭제</a></li>
 						<?php } ?>
 						<?php if ($cmt_shingo) { ?>
-							<li><a href="javascript:;" onclick="na_shingo('<?php echo $bo_table ?>','<?php echo $comment_id ?>','<?php echo $wr_id ?>'); return false;">신고</a><li>
+							<li><a href="javascript:;" onclick="na_shingo('<?php echo $bo_table ?>','<?php echo $comment_id ?>','<?php echo $wr_id ?>'); return false;">신고</a></li>
 						<?php } ?>
 						<?php if($is_cgood || $is_cnogood) { ?>
 							<li class="no-bar p-0">

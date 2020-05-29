@@ -22,7 +22,11 @@ $is_modal_win = true;
 $idn = 1;
 
 // Loader
-include_once(NA_PATH.'/theme/loader.php');
+if(is_file(G5_THEME_PATH.'/_loader.php')) {
+	include_once(G5_THEME_PATH.'/_loader.php');
+} else {
+	include_once(NA_PATH.'/theme/loader.php');
+}
 
 ?>
 
@@ -92,64 +96,58 @@ include_once(NA_PATH.'/theme/loader.php');
 </form>
 
 <script>
-	function all_checked(sw) {
-		var f = document.fboardmoveall;
+function all_checked(sw) {
+	var f = document.fboardmoveall;
 
-		for (var i=0; i<f.length; i++) {
-			if (f.elements[i].name == "chk_bo_table[]")
-				f.elements[i].checked = sw;
-		}
+	for (var i=0; i<f.length; i++) {
+		if (f.elements[i].name == "chk_bo_table[]")
+			f.elements[i].checked = sw;
 	}
+}
 
-	function fsetup_submit(f) {
-		var check = false;
+function fsetup_submit(f) {
+	var check = false;
 
-		if (typeof(f.elements['chk_bo_table[]']) == 'undefined')
-			;
-		else {
-			if (typeof(f.elements['chk_bo_table[]'].length) == 'undefined') {
-				if (f.elements['chk_bo_table[]'].checked)
+	if (typeof(f.elements['chk_bo_table[]']) == 'undefined')
+		;
+	else {
+		if (typeof(f.elements['chk_bo_table[]'].length) == 'undefined') {
+			if (f.elements['chk_bo_table[]'].checked)
+				check = true;
+		} else {
+			for (i=0; i<f.elements['chk_bo_table[]'].length; i++) {
+				if (f.elements['chk_bo_table[]'][i].checked) {
 					check = true;
-			} else {
-				for (i=0; i<f.elements['chk_bo_table[]'].length; i++) {
-					if (f.elements['chk_bo_table[]'][i].checked) {
-						check = true;
-						break;
-					}
+					break;
 				}
 			}
 		}
+	}
 
-		if (!check) {
-			alert('게시판을 한개 이상 선택해 주십시오.');
-			return false;
-		}
-
-		if (confirm("정말 스킨 설정을 복사해 주시겠습니까?\n\n복사해 줄 경우 각 게시판은 이전 설정값으로 복구할 수 없습니다.")) {
-			return true;
-		} else {
-			return false;
-		}
-
+	if (!check) {
+		alert('게시판을 한개 이상 선택해 주십시오.');
 		return false;
 	}
 
-	$(document).ready(function() {
+	if (confirm("정말 스킨 설정을 복사해 주시겠습니까?\n\n복사해 줄 경우 각 게시판은 이전 설정값으로 복구할 수 없습니다.")) {
+		return true;
+	} else {
+		return false;
+	}
 
-		// 상하단 간격
-		var topHeight = $("#topNav").height();
-		var bottomHeight = $("#bottomNav").height();
+	return false;
+}
 
-		$("#topHeight").height(topHeight);
-		$("#bottomHeight").height(bottomHeight);
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+	na_nav('bottomNav', 'bottomHeight', 'fixed-bottom');
+});
 
-		$("#topNav").addClass('fixed-top');
-		$("#bottomNav").addClass('fixed-bottom');
-
-		$('.close-setup').click(function() {
-			window.parent.closeSetupModal();
-		});
+$(document).ready(function() {
+	$('.close-setup').click(function() {
+		window.parent.closeSetupModal();
 	});
+});
 </script>
 
 <?php 

@@ -22,7 +22,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	<input type="hidden" name="wr_id" value="<?php echo $wr_id ?>">
 
 		<div class="pb-2 pt-4">
-			<?php echo get_text(cut_str($write['wr_subject'], 255)) ?>
+			<strong><?php echo get_text(cut_str($write['wr_subject'], 255)) ?></strong>
 		</div>
 
 		<div class="pb-3">
@@ -35,8 +35,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 </div>
 
 <script>
-$(document).ready(function() {
-	$("#topHeight").height($("#topNav").height());
-	$("#topNav").addClass('fixed-top');
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
 });
 </script>

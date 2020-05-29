@@ -210,7 +210,7 @@ $list_cnt = count($list);
 					</div>
 				</div>
 
-				<div class="clearfix font-weight-normal f-small">
+				<div class="clearfix font-weight-normal f-sm">
 					<div class="float-right ml-2">
 						<span class="sr-only">등록자</span>
 						<?php echo na_name_photo($list[$i]['mb_id'], $list[$i]['name']) ?>

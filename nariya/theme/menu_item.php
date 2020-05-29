@@ -11,6 +11,7 @@ function na_menu_page() {
 	$p[] = array('subject'=>'현재접속자', 'link'=> './'.G5_BBS_DIR.'/current_connect.php');
 	$p[] = array('subject'=>'FAQ', 'link'=> './'.G5_BBS_DIR.'/faq.php');
 	$p[] = array('subject'=>'1:1문의', 'link'=> './'.G5_BBS_DIR.'/qalist.php');
+	$p[] = array('subject'=>'알림모음', 'link'=> './'.G5_BBS_DIR.'/noti.php');
 	// 게시판 플러그인
 	if(IS_NA_BBS) {
 		$p[] = array('subject'=>'태그모음', 'link'=> './'.G5_BBS_DIR.'/tag.php');

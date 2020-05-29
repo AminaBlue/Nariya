@@ -33,7 +33,11 @@ $px_css = '';
 $action_url = './page_update.php';
 
 // Loader
-include_once(NA_PATH.'/theme/loader.php');
+if(is_file(G5_THEME_PATH.'/_loader.php')) {
+	include_once(G5_THEME_PATH.'/_loader.php');
+} else {
+	include_once(NA_PATH.'/theme/loader.php');
+}
 ?>
 
 <div id="topNav" class="bg-primary text-white">
@@ -73,14 +77,11 @@ include_once (NA_THEME_ADMIN_PATH.'/setup_form.php');
 </form>
 
 <script>
+$(window).on('load', function () {
+	na_nav('topNav', 'topHeight', 'fixed-top');
+});
+
 $(document).ready(function() {
-
-	// 상단간격
-	var topHeight = $("#topNav").height();
-
-	$("#topHeight").height(topHeight);
-	$("#topNav").addClass('fixed-top');
-
 	$('.close-setup').click(function() {
 		window.parent.closeSetupModal();
 	});

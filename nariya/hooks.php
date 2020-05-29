@@ -341,7 +341,7 @@ class G5_NARIYA {
 			}
 
 			// 답글 알림
-			if($w == 'r' && isset($_POST['wr_id']) && $_POST['wr_id']) {
+			if($w == 'r' && isset($_POST['wr_id']) && $_POST['wr_id'] && !$boset['noti_no']) {
 				// 원글
 				$org = get_write(get_write_table_name($board['bo_table']), (int) $_POST['wr_id'], true);
 
@@ -467,7 +467,7 @@ class G5_NARIYA {
 		}
 
 		// 알림
-		if (IS_NA_NOTI && $comment_id && $w === 'c') {
+		if (IS_NA_NOTI && $comment_id && $w === 'c' && !$boset['noti_no']) {
 
 			$noti = array();
 
@@ -543,44 +543,48 @@ class G5_NARIYA {
 	} // end function
 
     public function bbs_good($bo_table, $wr_id, $good){
-        global $g5, $is_member, $member;
+        global $g5, $is_member, $member, $boset;
 
-        $ph_from_case = ($good === 'good') ? 'good' : 'nogood';
+		if (!$boset['noti_no']) {
+			$ph_from_case = ($good === 'good') ? 'good' : 'nogood';
 
-        $wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+			$wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
 
-		$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
-		$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
-		$noti['wr_parent'] = $wr['wr_parent'];
-		$noti['rel_mb_id'] = $member['mb_id'];
-		$noti['rel_mb_nick'] = $member['mb_nick'];
-		$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
-		$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_subject'], 70));
-		$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id;
+			$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+			$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
+			$noti['wr_parent'] = $wr['wr_parent'];
+			$noti['rel_mb_id'] = $member['mb_id'];
+			$noti['rel_mb_nick'] = $member['mb_nick'];
+			$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+			$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_subject'], 70));
+			$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr_id;
 
-		// 알림 등록
-		na_noti('board', $ph_from_case, $wr['mb_id'], $noti);
-    }
+			// 알림 등록
+			na_noti('board', $ph_from_case, $wr['mb_id'], $noti);
+		}
+	}
 
     public function comment_good($bo_table, $wr_id, $good){
-        global $g5, $is_member, $member;
+        global $g5, $is_member, $member, $boset;
 
-        $ph_from_case = ($good === 'good') ? 'good' : 'nogood';
+		if (!$boset['noti_no']) {
+			$ph_from_case = ($good === 'good') ? 'good' : 'nogood';
 
-        $wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+			$wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
 
-		$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
-		$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
-		$noti['wr_parent'] = $wr['wr_parent'];
-		$noti['rel_mb_id'] = $member['mb_id'];
-		$noti['rel_mb_nick'] = $member['mb_nick'];
-		$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
-		$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
-		$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr['wr_parent']."#c_".$wr_id;
+			$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
+			$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
+			$noti['wr_parent'] = $wr['wr_parent'];
+			$noti['rel_mb_id'] = $member['mb_id'];
+			$noti['rel_mb_nick'] = $member['mb_nick'];
+			$noti['rel_msg'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+			$noti['parent_subject'] = sql_real_escape_string(na_cut_text($wr['wr_content'], 70));
+			$noti['rel_url'] = "/".G5_BBS_DIR."/board.php?bo_table=".$bo_table."&wr_id=".$wr['wr_parent']."#c_".$wr_id;
 
-		// 알림 등록
-		na_noti('comment', $ph_from_case, $wr['mb_id'], $noti);
-    }
+			// 알림 등록
+			na_noti('comment', $ph_from_case, $wr['mb_id'], $noti);
+		}
+	}
 
 	// 새글삭제
 	public function bbs_new_delete($chk_bn_id, $save_bo_table){
@@ -663,7 +667,7 @@ class G5_NARIYA {
 
 	} // end function
 
-	// 레벨&등업 메시지
+	// 레벨업 메시지
 	public function tail_sub(){
 		global $g5, $member;
 

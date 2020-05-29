@@ -4,7 +4,7 @@
 #bo_v_title {
 	font-size:23px;
 	font-weight:bold;
-	line-height:34px;
+	line-height:1.4;
 	letter-spacing:-1px;
 }
 #bo_v_con {
@@ -13,6 +13,10 @@
 	overflow:hidden
 }
 @media all and (max-width:575px) {
+	.responsive #bo_v_title {
+		font-size:20px;
+		line-height:1.5;
+	}
 	.responsive #bo_v_con { 
 		min-height:140px; 
 	}

@@ -190,6 +190,20 @@ na_script('iconpicker');
 					<th class="text-center nw-c2">설정</th>
 					<th class="text-center">비고</th>
 					</tr>
+					<?php if(IS_NA_BBS) { ?>
+					<tr>
+					<td class="text-center">메인글</td>
+					<td class="text-center">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" name="wset[main]" value="1"<?php echo get_checked('1', $wset['main'])?> class="custom-control-input" id="idCheck<?php echo $idn ?>">
+							<label class="custom-control-label" for="idCheck<?php echo $idn; $idn++; ?>"></label>
+						</div>
+					</td>
+					<td class="text-muted">
+						메인글 체크된 게시물만 추출
+					</td>
+					</tr>
+					<?php } ?>
 					<tr>
 					<td class="text-center">PC 목록수</td>
 					<td>
