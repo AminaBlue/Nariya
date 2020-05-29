@@ -50,7 +50,7 @@ class G5_NARIYA {
 			add_event('bbs_new_delete', array($this, 'bbs_new_delete'), 10, 2);
 
 			// 알림
-			if(IS_NA_NOTI) {
+			if(IS_NA_BBS || IS_NA_NOTI) {
 				// 글 추천
 		        add_event('bbs_increase_good_json', array($this, 'bbs_good'), 10, 3);
 
@@ -491,6 +491,14 @@ class G5_NARIYA {
 			}
 		}
 
+		// 새글 DB 업데이트
+		if(IS_NA_BBS && $comment_id && $w === 'c') {
+			if(!isset($wr['wr_id'])) {
+				$wr = get_write($write_table, $wr_id, true);
+			}
+			sql_query(" update {$g5['board_new_table']} set as_comment = '{$wr['wr_comment']}' where bo_table = '{$bo_table}' and wr_id = '{$wr_id}' ", false);
+		}
+
 	} // end function
 
     public function bbs_good($bo_table, $wr_id, $good){
@@ -499,7 +507,7 @@ class G5_NARIYA {
 		if (!$boset['noti_no']) {
 			$ph_from_case = ($good === 'good') ? 'good' : 'nogood';
 
-			$wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+			$wr = get_write(get_write_table_name($bo_table), $wr_id, true);
 
 			$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
 			$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;
@@ -513,6 +521,15 @@ class G5_NARIYA {
 			// 알림 등록
 			na_noti('board', $ph_from_case, $wr['mb_id'], $noti);
 		}
+
+		// 새글 DB 업데이트
+		if(IS_NA_BBS) {
+			if(!isset($wr['wr_id'])) {
+				$wr = get_write(get_write_table_name($bo_table), $wr_id, true);
+			}
+			$sql_new = ($good === 'good') ? "as_good = '{$wr['wr_good']}'" : "as_nogood = '{$wr['wr_nogood']}'";
+			sql_query(" update {$g5['board_new_table']} set $sql_new where bo_table = '{$bo_table}' and wr_id = '{$wr_id}' ", false);
+		}
 	}
 
     public function comment_good($bo_table, $wr_id, $good){
@@ -521,7 +538,7 @@ class G5_NARIYA {
 		if (!$boset['noti_no']) {
 			$ph_from_case = ($good === 'good') ? 'good' : 'nogood';
 
-			$wr = get_write(get_write_table_name($bo_table), (int)$wr_id, true);
+			$wr = get_write(get_write_table_name($bo_table), $wr_id, true);
 
 			$noti['bo_table'] = $noti['rel_bo_table'] = $bo_table;
 			$noti['wr_id'] = $noti['rel_wr_id'] = $wr_id;

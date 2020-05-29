@@ -1019,10 +1019,22 @@ function na_sql_sort($type, $sort) {
 
 	$orderby = '';
 	if($type == 'new') {
-		switch($sort) { 
-			case 'asc'			: $orderby = 'a.bn_id'; break;
-			case 'date'			: $orderby = 'a.bn_datetime desc'; break;
-			default				: $orderby = 'a.bn_id desc'; break;
+		if(IS_NA_BBS) {
+			switch($sort) { 
+				case 'asc'			: $orderby = 'a.bn_id'; break;
+				case 'date'			: $orderby = 'a.bn_datetime desc'; break;
+				case 'comment'		: $orderby = 'a.as_comment desc'; break;
+				case 'good'			: $orderby = 'a.as_good desc'; break;
+				case 'nogood'		: $orderby = 'a.as_nogood desc'; break;
+				case 'like'			: $orderby = '(a.as_good - a.as_nogood) desc'; break;
+				default				: $orderby = 'a.bn_id desc'; break;
+			}
+		} else {
+			switch($sort) { 
+				case 'asc'			: $orderby = 'a.bn_id'; break;
+				case 'date'			: $orderby = 'a.bn_datetime desc'; break;
+				default				: $orderby = 'a.bn_id desc'; break;
+			}
 		}
 	} else if($type == 'bo') {
 		switch($sort) { 

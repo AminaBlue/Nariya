@@ -254,7 +254,7 @@ $view_subject = get_text($view['wr_subject']);
 					<div class="px-0">
 						<i class="fa fa-user-o" aria-hidden="true"></i>
 					</div>
-					<div class="pl-3 flex-grow-1">
+					<div class="pl-3 flex-grow-1 text-break-all">
 						<?php echo $signature ?>
 					</div>
 				</div>
@@ -280,7 +280,7 @@ $view_subject = get_text($view['wr_subject']);
 						<div class="px-0">
 							<i class="fa fa-link" aria-hidden="true"></i>	
 						</div>
-						<div class="pl-3 flex-grow-1">
+						<div class="pl-3 flex-grow-1 text-break-all">
 							<a href="<?php echo $view['link_href'][$i] ?>">
 								<?php echo get_text($view['link'][$i]) ?>
 								<?php if($view['link_hit'][$i]) { ?>
@@ -325,7 +325,7 @@ $view_subject = get_text($view['wr_subject']);
 						<div class="px-0">
 							<i class="fa fa-download" aria-hidden="true"></i>	
 						</div>
-						<div class="pl-3 pr-2 flex-grow-1">
+						<div class="pl-3 pr-2 flex-grow-1 text-break-all">
 							<a href="<?php echo $view['file'][$i]['href'] ?>" class="view_file_download" title="<?php echo $view['file'][$i]['content'] ?>">
 								<?php echo $view['file'][$i]['source'] ?>
 								<span class="sr-only">파일크기</span>
@@ -361,7 +361,7 @@ $view_subject = get_text($view['wr_subject']);
 					<div class="px-0">
 						<i class="fa fa-chevron-up" aria-hidden="true"></i>	
 					</div>
-					<div class="pl-3 pr-2 flex-grow-1">
+					<div class="pl-3 pr-2 flex-grow-1 text-break-all">
 						<a href="<?php echo $prev_href ?>">
 							<?php echo $prev_wr_subject;?>
 						</a>	
@@ -387,7 +387,7 @@ $view_subject = get_text($view['wr_subject']);
 					<div class="px-0">
 						<i class="fa fa-chevron-down" aria-hidden="true"></i>	
 					</div>
-					<div class="px-3 flex-grow-1">
+					<div class="px-3 flex-grow-1 text-break-all">
 						<a href="<?php echo $next_href ?>">
 							<?php echo $next_wr_subject;?>
 						</a>	

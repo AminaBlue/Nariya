@@ -42,7 +42,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 				<div class="input-group mt-3 mb-0">
 					<div class="input-group-prepend">
-						<span class="input-group-text">비밀번호</span>
+						<span class="input-group-text">비밀번호<strong class="sr-only"> 필수</strong></span>
 					</div>
 					<input type="password" name="wr_password" id="password_wr_password" required class="form-control required" maxLength="255">
 					<div class="input-group-append">

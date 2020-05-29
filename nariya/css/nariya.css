@@ -221,6 +221,10 @@ img.light-circle {
 .cursor { 
 	cursor:pointer;
 }
+.text-break-all {
+	word-break:break-all; 
+	word-wrap:break-word;
+}
 .ellipsis { 
 	display:block; 
 	text-overflow:ellipsis; 

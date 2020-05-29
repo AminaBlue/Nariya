@@ -28,6 +28,15 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 			</tr>
 			<tr>
 				<th scope="row">
+					새글 DB
+				</th>
+				<td colspan="3">
+					<?php echo help('기본환경설정의 최근글 삭제일 기준으로 새글 DB를 복구합니다.') ?>
+					<button type="button" class="btn btn_03" onclick="na_upgrade('<?php echo NA_URL ?>/bbs/restore_new.php');">복구하기</button>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
 					최고관리자
 				</th>
 				<td colspan="3">

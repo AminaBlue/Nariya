@@ -19,14 +19,13 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 
 <!-- 댓글 시작 { -->
 <div id="viewcomment">
+<?php } ?>
 	<div class="f-de px-3 px-sm-0 pt-4 pt-sm-5 pb-1">
 		댓글 <b class="orangered"><?php echo $write['wr_comment'] ?></b>개
 		<?php if($is_paging && $page) { ?>
 			/ <?php echo $page ?>페이지
 		<?php } ?>
 	</div>
-<?php } ?>
-
 	<section id="bo_vc" class="na-fadein">
 		<?php
 		// 댓글목록
@@ -98,14 +97,13 @@ $is_cnogood = ($boset['na_cnogood']) ? true : false;
 					
 					<?php echo $comment ?>
 
-					<?php if(!$is_lock && (int)$list[$i]['wr_10']) { // 럭키포인트 ?>
-						<p class="f-sm text-muted mt-3">
-							<i class="fa fa-gift" aria-hidden="true"></i> 
-							<b class="orangered"><?php echo number_format($list[$i]['wr_10']) ?></b> 럭키포인트 당첨!
-						</p>
-					<?php } ?>
 				</div>
-
+				<?php if(!$is_lock && (int)$list[$i]['wr_10']) { // 럭키포인트 ?>
+					<div class="f-de text-muted px-3 my-2">
+						<i class="fa fa-gift" aria-hidden="true"></i> 
+						<b class="orangered"><?php echo number_format($list[$i]['wr_10']) ?></b> 럭키포인트 당첨!
+					</div>
+				<?php } ?>
 				<?php if($is_comment_reply_edit || $cmt_shingo || $is_cgood || $is_cnogood) {
 					if($w == 'cu') {
 						$sql = " select wr_id, wr_content, mb_id from $write_table where wr_id = '$c_id' and wr_is_comment = '1' ";
